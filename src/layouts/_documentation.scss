@@ -1,0 +1,46 @@
+@mixin oLayoutDocumentation ($class: 'o-layout') {
+	@include _oLayoutLeftColumn($class);
+	.#{$class}--documentation {
+		h1	{
+			@include oTypographyProductHeadingLevel1();
+			margin-top: 20px;
+		}
+
+		h2 {
+			@include oTypographyProductHeadingLevel2();
+		}
+
+		h3 {
+			@include oTypographyProductHeadingLevel3();
+		}
+
+		h6 {
+			@include oTypographyProductHeadingLevel6();
+		}
+	}
+}
+
+@mixin _oLayoutLeftColumn($class: 'o-layout') {
+	.#{$class}--left-column {
+		grid-area: sidebar;
+		position: sticky;
+		top: 0;
+		height: 100vh;
+		display: flex;
+
+		ol {
+			list-style: none;
+			padding: 0;
+			margin-left: auto;
+
+			li {
+				padding-top: 8px;
+
+				a {
+					@include oTypographyLink();
+					border: none;
+				}
+			}
+		}
+	}
+}

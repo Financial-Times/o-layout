@@ -1,22 +1,36 @@
-.o-layout {
-	display: grid;
-	grid-template-columns: 25% oTypographyMaxLineWidth(3) 20%;
-	column-gap: 20px;
-}
+@import 'layouts/documentation';
 
 
-.left-column {
-	position: sticky;
-	height: 10vh;
-	top: 0;
-	padding: 20px;
+@mixin oLayoutBase ($class: 'o-layout') {
+	.#{$class} {
+		@include oTypographySans(1);
 
-	ol {
-		list-style: none;
-		padding: 0;
+		display: grid;
+		grid-template-columns: 1fr oTypographyMaxLineWidth(3) 1fr;
+		grid-auto-rows: auto;
+		grid-column-gap: 30px;
+		grid-row-gap: 20px;
+		grid-template-areas:
+			"header  header header"
+			"sidebar main   ."
+			"footer  footer footer";
 	}
 }
 
-.center-column {
-	text-align: justify;
+@include oLayoutDocumentation;
+
+header { grid-area: header; background: firebrick;}
+footer {grid-area: footer; background: lemonchiffon; height: 100px}
+main { grid-area: main; }
+
+section {
+	grid-column: 2 / 3;
+}
+
+.section-with-aside {
+	grid-column-start: 1;
+	grid-column-end: 4;
+	display: grid; //TODO: change to subgrid when property is implemented in browsers
+	grid-template-columns: oTypographyMaxLineWidth(3) auto;
+	grid-column-gap: 20px;
 }
