@@ -24,8 +24,7 @@ $o-layout-breakpoints: (
 		@include oTypographySans(1);
 		display: grid;
 		grid-auto-rows: auto;
-		grid-gap: 20px;
-		padding: 0 20px;
+		grid-column-gap: 20px;
 
 		@include oLayoutBreakPoint($from: M, $until: L) {
 			grid-template-columns: 1fr $_o-layout-main-section-width;
