@@ -1,9 +1,9 @@
 @import 'variables';
-@import 'layouts/media-queries';
+@import 'layouts/layout-grid';
 @import 'layouts/documentation';
-@import 'layouts/header';
-
-@include oLayoutDocumentation;
+//
+@include oLayoutBase();
+@include oLayoutDocumentation();
 
 section {
 	overflow: hidden;

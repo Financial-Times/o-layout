@@ -1,6 +1,9 @@
 @mixin oLayoutDocumentation ($class: 'o-layout') {
-	@include _oLayoutLeftColumn($class);
 	.#{$class}--documentation {
+		@include oTypographySans(1);
+		@include _oLayoutNavigation($class);
+		padding: 0 20px;
+
 		h1	{
 			@include oTypographyProductHeadingLevel1();
 			margin-top: 20px;
@@ -17,27 +20,30 @@
 		h6 {
 			@include oTypographyProductHeadingLevel6();
 		}
+
+		a {
+			@include oTypographyLink();
+			border: none;
+		}
 	}
 }
 
-@mixin _oLayoutLeftColumn($class: 'o-layout') {
-	.#{$class}--left-column {
+@mixin _oLayoutNavigation($class: 'o-layout') {
+	.#{$class}__navigation {
 		grid-column: 1;
 		padding-left: 20px;
 
-		@include oLayoutBreakPoint($until: M) {
-			display: none;
+		@include oLayoutBreakPoint($from: M) {
+			position: sticky;
+			top: 0;
+			height: 100%;
+			display: flex;
+			justify-content: center;
 		};
 
 		@include oLayoutBreakPoint($from: XXL) {
 			grid-column-start: 2;
 		};
-
-		position: sticky;
-		top: 0;
-		height: 100%;
-		display: flex;
-		justify-content: center;
 
 		ol {
 			list-style: none;
@@ -45,11 +51,6 @@
 
 			li {
 				padding-top: 8px;
-
-				a {
-					@include oTypographyLink();
-					border: none;
-				}
 			}
 		}
 	}
