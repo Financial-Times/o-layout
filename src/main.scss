@@ -1,36 +1,29 @@
+@import 'variables';
 @import 'layouts/documentation';
-
-
-@mixin oLayoutBase ($class: 'o-layout') {
-	.#{$class} {
-		@include oTypographySans(1);
-
-		display: grid;
-		grid-template-columns: 1fr oTypographyMaxLineWidth(3) 1fr;
-		grid-auto-rows: auto;
-		grid-column-gap: 30px;
-		grid-row-gap: 20px;
-		grid-template-areas:
-			"header  header header"
-			"sidebar main   ."
-			"footer  footer footer";
-	}
-}
+@import 'layouts/media-queries';
 
 @include oLayoutDocumentation;
 
-header { grid-area: header; background: firebrick;}
-footer {grid-area: footer; background: lemonchiffon; height: 100px}
-main { grid-area: main; }
-
 section {
-	grid-column: 2 / 3;
-}
+	overflow: hidden;
+	@include oLayoutBreakPoint($from: M){
+		grid-column: 2 / span 1;
+	};
 
-.section-with-aside {
-	grid-column-start: 1;
-	grid-column-end: 4;
-	display: grid; //TODO: change to subgrid when property is implemented in browsers
-	grid-template-columns: oTypographyMaxLineWidth(3) auto;
-	grid-column-gap: 20px;
+	@include oLayoutBreakPoint($from: XXL) {
+		grid-column-start: 3;
+	};
+
+		&.section-with-aside {
+			@include oLayoutBreakPoint($from: L) {
+				display: grid; //TODO: change to subgrid when property is implemented in browsers
+				grid-column-end: span 2;
+				grid-template-columns: $_o-layout-main-section-width auto;
+				grid-column-gap: 20px;
+			};
+
+			@include oLayoutBreakPoint($from: XXL) {
+				grid-column-end: -1;
+			};
+	};
 }

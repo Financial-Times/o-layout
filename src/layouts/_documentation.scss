@@ -22,16 +22,25 @@
 
 @mixin _oLayoutLeftColumn($class: 'o-layout') {
 	.#{$class}--left-column {
-		grid-area: sidebar;
+		grid-column: 1;
+
+		@include oLayoutBreakPoint($until: M) {
+			display: none;
+		};
+
+		@include oLayoutBreakPoint($from: XXL) {
+			grid-column-start: 2;
+		};
+
 		position: sticky;
 		top: 0;
-		height: 100vh;
+		height: 100%;
 		display: flex;
+		justify-content: center;
 
 		ol {
 			list-style: none;
 			padding: 0;
-			margin-left: auto;
 
 			li {
 				padding-top: 8px;
