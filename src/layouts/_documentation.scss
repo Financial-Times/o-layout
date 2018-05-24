@@ -3,12 +3,12 @@
 		@include oTypographySans(1);
 		@include _oLayoutNavigation($class);
 		padding: 0 $_o-layout-gutter;
+		margin-top: $_o-layout-gutter;
 		box-sizing: border-box;
 		grid-row-gap: $_o-layout-gutter;
 
 		h1	{
 			@include oTypographyProductHeadingLevel1();
-			margin-top: $_o-layout-gutter;
 		}
 
 		h2 {
@@ -42,6 +42,7 @@
 
 		ol {
 			list-style: none;
+			margin: 0;
 			padding: 0;
 
 			li {

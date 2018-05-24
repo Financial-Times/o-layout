@@ -1,35 +1,7 @@
 @import 'variables';
 @import 'layouts/layout-grid';
+@import 'layouts/columns';
 @import 'layouts/documentation';
-//
+
 @include oLayoutBase();
 @include oLayoutDocumentation();
-
-section {
-	overflow: hidden;
-
-	@include oLayoutBreakPoint($from: M){
-		grid-column: 2 / span 1;
-	};
-
-	@include oLayoutBreakPoint($from: XXL) {
-		grid-column-start: 3;
-	};
-
-		&.section-with-aside {
-			@include oLayoutBreakPoint($from: L) {
-				display: grid; //TODO: change to subgrid when property is implemented in browsers
-				grid-column-end: span 2;
-				grid-template-columns: minmax($_o-layout-main-section-width) auto;
-				grid-column-gap: $_o-layout-gutter;
-			};
-
-			@include oLayoutBreakPoint($from: XXL) {
-				grid-column-end: -1;
-
-				.section-aside {
-					max-width: 80%;
-				}
-			};
-	};
-}
