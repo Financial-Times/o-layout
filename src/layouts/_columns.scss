@@ -1,0 +1,48 @@
+//TODO: change to subgrid when property is implemented in browsers
+
+.o-layout__column {
+	// &--wide {
+	// 	grid-column: 1 / -1;
+	// 	@include oLayoutBreakPoint($from: XXL) {
+	// 		grid-column: 2 / -2;
+	// 	}
+	// }
+
+	&--left {
+		grid-column: 1;
+
+		@include oLayoutBreakPoint($from: XXL) {
+			grid-column-start: 2;
+		};
+	}
+
+	&--center {
+		overflow: hidden;
+
+		@include oLayoutBreakPoint($from: M){
+			grid-column: 2 / span 1;
+		};
+
+		@include oLayoutBreakPoint($from: XXL) {
+			grid-column-start: 3;
+		};
+
+		&-aside {
+			@include oLayoutBreakPoint($from: L) {
+				display: grid; //TODO: change to subgrid when property is implemented in browsers
+				padding-right: 20px;
+				grid-column-end: span 2;
+				grid-template-columns: $_o-layout-main-section-width auto;
+				grid-column-gap: 20px;
+			};
+
+			@include oLayoutBreakPoint($from: XXL) {
+				grid-column-end: -1;
+
+				.content--aside {
+					max-width: 75%;
+				}
+			};
+		}
+	}
+}

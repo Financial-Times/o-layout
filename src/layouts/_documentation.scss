@@ -32,18 +32,12 @@
 
 @mixin _oLayoutNavigation($class: 'o-layout') {
 	.#{$class}__navigation {
-		grid-column: 1;
-
 		@include oLayoutBreakPoint($from: M) {
 			position: sticky;
 			top: 0;
 			height: 100%;
 			display: flex;
 			justify-content: center;
-		};
-
-		@include oLayoutBreakPoint($from: XXL) {
-			grid-column-start: 2;
 		};
 
 		ol {
