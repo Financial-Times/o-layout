@@ -17,7 +17,7 @@
 		"sass": "demos/src/demo.scss",
 		"js": "demos/src/demo.js",
 		"documentClasses": "",
-		"dependencies": "o-fonts"
+		"dependencies": ["o-fonts", "o-footer-services", "o-header-services"]
 	},
 	"demos": [
 		{
@@ -31,14 +31,14 @@
 			"title": "Lists & Tables Layout",
 			"name": "lists-tables-layout",
 			"data": "demos/src/data/lists-tables-layout.json",
-			"template": "demos/src/lists-tables-layout.mustache",
+			"template": "demos/src/lists-tables/layout.mustache",
 			"description": "Lists & Tables Layout"
 		},
 		{
 			"title": "Search Results Layout",
 			"name": "search-results-layout",
 			"data": "demos/src/data/search-results-layout.json",
-			"template": "demos/src/search-results-layout.mustache",
+			"template": "demos/src/search-results/layout.mustache",
 			"description": "Search Results Layout"
 		}
 	]
