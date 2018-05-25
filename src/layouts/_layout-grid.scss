@@ -22,6 +22,7 @@ $o-layout-breakpoints: (
 	min-width: 100%;
 	display: grid;
 	grid-auto-rows: auto;
+	grid-template-columns: 100%;
 	grid-column-gap: 20px;
 
 	@include oLayoutBreakPoint($from: M, $until: L) {
