@@ -9,6 +9,9 @@
 		"email": "origami.support@ft.com",
 		"slack": "financialtimes/ft-origami"
 	},
+	"brands": [
+		"internal"
+	],
 	"supportStatus": "experimental",
 	"ci": {
 		"circle": "https://circleci.com/api/v1/project/Financial-Times/o-layout"
@@ -25,7 +28,10 @@
 			"name": "documentation-layout",
 			"data": "demos/src/data/documentation-layout.json",
 			"template": "demos/src/documentation-layout.mustache",
-			"description": "Documentation Layout"
+			"description": "Documentation Layout",
+			"brands": [
+				"internal"
+			]
 		},
 		{
 			"title": "Lists & Tables Layout",
