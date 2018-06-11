@@ -33,7 +33,7 @@
 			@include oLayoutBreakPoint($from: L) {
 				display: grid; //TODO: change to subgrid when property is implemented in browsers
 				padding-right: 20px;
-				grid-column-end: span 2;
+				grid-column-end: span 3;
 				grid-template-columns: $_o-layout-main-section-width auto;
 				grid-column-gap: 20px;
 			};
@@ -46,5 +46,9 @@
 				}
 			}
 		}
+	}
+
+	&--table {
+		grid-column: 2 / span 2;
 	}
 }

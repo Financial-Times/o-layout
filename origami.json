@@ -20,7 +20,7 @@
 		"sass": "demos/src/demo.scss",
 		"js": "demos/src/demo.js",
 		"documentClasses": "",
-		"dependencies": ["o-fonts", "o-footer-services", "o-header-services"]
+		"dependencies": ["o-fonts", "o-footer-services", "o-header-services", "o-table"]
 	},
 	"demos": [
 		{
@@ -37,7 +37,7 @@
 			"title": "Lists & Tables Layout",
 			"name": "lists-tables-layout",
 			"data": "demos/src/data/lists-tables-layout.json",
-			"template": "demos/src/lists-tables/layout.mustache",
+			"template": "demos/src/lists-tables-layout.mustache",
 			"description": "Lists & Tables Layout"
 		},
 		{

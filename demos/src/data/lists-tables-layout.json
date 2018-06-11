@@ -26,7 +26,22 @@
 		},
 		{
 			"name": "Tables",
-			"href": "#"
+			"href": "#",
+			"current": true,
+			"navigation": [
+				{
+					"name": "Third party components: the A list",
+					"href": "#third-party-components"
+				},
+				{
+					"name": "Something Else",
+					"href": "#"
+				},
+				{
+					"name": "Something Else",
+					"href": "#"
+				}
+			]
 		}
 	]
 }
