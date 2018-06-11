@@ -5,3 +5,8 @@
 
 @include oLayoutBase();
 @include oLayoutDocumentation();
+
+.content--aside-wrapper {
+	border-left: 2px solid oColorsGetPaletteColor('teal');
+	padding-left: 1rem;
+}
