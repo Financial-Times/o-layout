@@ -33,7 +33,7 @@
 	.#{$class}__navigation {
 		@include oLayoutBreakPoint($from: M) {
 			position: sticky;
-			top: 0;
+			top: 20px;
 			height: 100%;
 			display: flex;
 			justify-content: center;

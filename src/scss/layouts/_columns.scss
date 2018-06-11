@@ -2,7 +2,9 @@
 
 .o-layout__column {
 	&--wide {
+		margin: 0;
 		grid-column: 1 / -1;
+		
 		@include oLayoutBreakPoint($from: XXL) {
 			grid-column: 2 / -2;
 		}
