@@ -21,7 +21,7 @@
 	&--center {
 		overflow: hidden;
 
-		@include oLayoutBreakPoint($from: M){
+		@include oLayoutBreakPoint($from: M) {
 			grid-column: 2 / span 1;
 		};
 
@@ -32,23 +32,27 @@
 		&-aside {
 			@include oLayoutBreakPoint($from: L) {
 				display: grid; //TODO: change to subgrid when property is implemented in browsers
-				padding-right: 20px;
+				padding-right: $_o-layout-gutter;
 				grid-column-end: span 3;
 				grid-template-columns: $_o-layout-main-section-width auto;
-				grid-column-gap: 20px;
+				grid-column-gap: $_o-layout-gutter;
 			};
 
 			@include oLayoutBreakPoint($from: XXL) {
-				grid-column-end: -1;
-
-				.content--aside {
-					max-width: 75%;
-				}
+				grid-column-end: -2;
 			}
 		}
 	}
 
 	&--table {
-		grid-column: 2 / span 2;
+		overflow-x: scroll;
+
+		@include oLayoutBreakPoint($from: M) {
+			grid-column: 2 / span 2;
+		};
+
+		@include oLayoutBreakPoint($from: XXL) {
+			grid-column-start: 3;
+		};
 	}
 }

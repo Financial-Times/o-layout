@@ -11,7 +11,7 @@
 		},
 		{
 			"name": "Search Results",
-			"href": "search-results-layout.html",
+			"href": "search-layout.html",
 			"current": true
 		}
 	]

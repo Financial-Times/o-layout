@@ -42,9 +42,9 @@
 		},
 		{
 			"title": "Search Results Layout",
-			"name": "search-results-layout",
-			"data": "demos/src/data/search-results-layout.json",
-			"template": "demos/src/search-results/layout.mustache",
+			"name": "search-layout",
+			"data": "demos/src/data/search-layout.json",
+			"template": "demos/src/search-layout.mustache",
 			"description": "Search Results Layout"
 		}
 	]

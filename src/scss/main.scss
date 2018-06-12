@@ -6,6 +6,14 @@
 @include oLayoutBase();
 @include oLayoutDocumentation();
 
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
 .content--aside-wrapper {
 	border-left: 2px solid oColorsGetPaletteColor('teal');
 	padding-left: 1rem;

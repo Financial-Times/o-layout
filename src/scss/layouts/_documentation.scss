@@ -4,7 +4,6 @@
 		@include _oLayoutNavigation($class);
 		padding: $_o-layout-gutter;
 		grid-row-gap: $_o-layout-gutter;
-		box-sizing: border-box;
 
 		h1	{
 			@include oTypographyProductHeadingLevel1();
@@ -31,21 +30,31 @@
 
 @mixin _oLayoutNavigation($class: 'o-layout') {
 	.#{$class}__navigation {
+		text-align: left;
+
+
 		@include oLayoutBreakPoint($from: M) {
 			position: sticky;
-			top: 20px;
-			height: 100%;
-			display: flex;
-			justify-content: center;
+			top: $_o-layout-gutter;
+
+			text-align: right;
+
 		};
 
 		ol {
 			list-style: none;
 			margin: 0;
-			padding: 0;
+			padding: 0 $_o-layout-gutter .5em;
+			border-right: 0;
+			border-left: 2px solid oColorsGetPaletteColor('teal');
+
+			@include oLayoutBreakPoint($from: M) {
+				border-left: 0;
+				border-right: 2px solid oColorsGetPaletteColor('teal');
+			}
 
 			li {
-				padding-top: 8px;
+				padding-top: .5em;
 			}
 		}
 	}

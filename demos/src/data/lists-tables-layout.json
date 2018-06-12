@@ -11,8 +11,8 @@
 			"current": true
 		},
 		{
-			"name": "Search Results",
-			"href": "search-results-layout.html"
+			"name": "Search",
+			"href": "search-layout.html"
 		}
 	],
 	"hasChildren": true,
