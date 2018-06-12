@@ -53,22 +53,27 @@ $o-layout-breakpoints: (
 
 	.o-layout__column--right,
 	.o-layout__column--left {
-		display: none;
 		background: #f4f4f4;
 	}
 
-	@include oLayoutBreakPoint($from: ML) {
-		grid-template-columns: minmax(10%, 20%) auto minmax(10%, 25%);
+	@include oLayoutBreakPoint($until: S) {
+		.o-layout__column--left { display: none; }
+	};
+
+	@include oLayoutBreakPoint($until: M) {
+		.o-layout__column--right { display: none; }
+	};
+
+
+	@include oLayoutBreakPoint($from: S) {
+		grid-template-columns: minmax(230px, 25%) auto;
 
 		.o-layout__column--left { grid-column: 1; }
-		.o-layout__column--center { grid-column: 2 }
+		.o-layout__column--center { grid-column: 2; }
 	};
 
 	@include oLayoutBreakPoint($from: ML) {
-		grid-template-columns: minmax(10%, 20%) auto minmax(10%, 25%);
-
-		.o-layout__column--left { grid-column: 1; }
-		.o-layout__column--center { grid-column: 2 }
+		grid-template-columns: minmax(230px, 25%) auto minmax(10%, 25%);
 		.o-layout__column--right { grid-column: 3; }
 	};
 
