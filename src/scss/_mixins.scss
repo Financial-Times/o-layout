@@ -1,0 +1,9 @@
+@mixin oLayoutBreakPoint($from: false, $until: false) {
+	@include mq(
+		$from: $from,
+		$until: $until,
+		$breakpoints: $o-layout-breakpoints
+	) {
+		@content;
+	}
+}

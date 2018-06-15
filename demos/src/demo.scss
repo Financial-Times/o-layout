@@ -17,3 +17,10 @@ $logo-image: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcv
 		margin-right: 10px;
 	}
 }
+
+.o-layout--search {
+	.o-layout__column--right,
+	.o-layout__column--left {
+		background: #f4f4f4;
+	}
+}

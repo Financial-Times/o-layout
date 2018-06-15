@@ -1,10 +1,11 @@
+@import 'mixins';
 @import 'variables';
 @import 'layouts/layout-grid';
 @import 'layouts/columns';
-@import 'layouts/documentation';
+@import 'layouts/navigation';
 
 @include oLayoutBase();
-@include oLayoutDocumentation();
+@include oLayoutSearch();
 
 html {
   box-sizing: border-box;

@@ -1,32 +1,45 @@
-$o-layout-breakpoints: (
-	XS: 300px,
-	S: 520px,
-	M: 780px,
-	ML: 900px,
-	L: 1090px,
-	XL: 1200px,
-	XXL: 1350px
-) !default;
+%o-layout-base {
+	@include oTypographySans(1);
+	min-width: 100%;
+	margin: 0;
+	display: grid;
+	grid-auto-rows: auto;
+	grid-template-columns: 100%;
+	grid-row-gap: $_o-layout-gutter;
+	position: relative;
 
-@mixin oLayoutBreakPoint($from: false, $until: false) {
-	@include mq(
-		$from: $from,
-		$until: $until,
-		$breakpoints: $o-layout-breakpoints
-	) {
-		@content;
+	h1	{
+		@include oTypographyProductHeadingLevel1();
+	}
+
+	h2 {
+		@include oTypographyProductHeadingLevel2();
+	}
+
+	h3 {
+		@include oTypographyProductHeadingLevel3();
+	}
+
+	h6 {
+		@include oTypographyProductHeadingLevel6();
+	}
+}
+
+.o-layout--documentation {
+	padding: $_o-layout-gutter;
+
+	a {
+		@include oTypographyLink();
+		border: none;
 	}
 }
 
 @mixin oLayoutBase ($class: 'o-layout') {
 	.#{$class} {
-		min-width: 100%;
-		display: grid;
-		grid-auto-rows: auto;
-		grid-column-gap: $_o-layout-gutter;
-		margin: 0;
+		@extend %o-layout-base;
+		@include _oLayoutNavigation($class);
 
-		grid-template-columns: 100%;
+		grid-column-gap: $_o-layout-gutter;
 
 		@include oLayoutBreakPoint($from: M) {
 			grid-template-columns: minmax(10%, 25%) minmax(auto, $_o-layout-main-section-width);
@@ -42,42 +55,34 @@ $o-layout-breakpoints: (
 	}
 }
 
-.o-layout--search {
-	min-width: 100%;
-	display: grid;
-	grid-auto-rows: auto;
-	grid-column-gap: $_o-layout-gutter;
-	margin: 0;
+@mixin oLayoutSearch ($class: 'o-layout') {
+	.#{$class}--search {
+		@extend %o-layout-base;
 
-	grid-template-columns: 100%;
+		@include oLayoutBreakPoint($until: S) {
+			.#{$class}__column--left { display: none; }
+		};
 
-	.o-layout__column--right,
-	.o-layout__column--left {
-		background: #f4f4f4;
+		@include oLayoutBreakPoint($until: ML) {
+			.#{$class}__column--right { display: none; }
+		};
+
+
+		@include oLayoutBreakPoint($from: S) {
+			grid-template-columns: minmax(220px, 25%) auto;
+
+			.#{$class}__column--left { grid-column: 1; }
+			.#{$class}__column--center { grid-column: 2; }
+		};
+
+		@include oLayoutBreakPoint($from: ML) {
+			grid-template-columns: minmax(220px, 25%) auto minmax(10%, 25%);
+
+			.#{$class}__column--right { grid-column: 3; }
+		};
+
+		@include oLayoutBreakPoint($from: XXL) {
+			grid-template-columns: minmax(220px, 15%) auto minmax(10%, 25%);
+		};
 	}
-
-	@include oLayoutBreakPoint($until: S) {
-		.o-layout__column--left { display: none; }
-	};
-
-	@include oLayoutBreakPoint($until: M) {
-		.o-layout__column--right { display: none; }
-	};
-
-
-	@include oLayoutBreakPoint($from: S) {
-		grid-template-columns: minmax(230px, 25%) auto;
-
-		.o-layout__column--left { grid-column: 1; }
-		.o-layout__column--center { grid-column: 2; }
-	};
-
-	@include oLayoutBreakPoint($from: ML) {
-		grid-template-columns: minmax(230px, 25%) auto minmax(10%, 25%);
-		.o-layout__column--right { grid-column: 3; }
-	};
-
-	@include oLayoutBreakPoint($from: XXL) {
-		grid-template-columns: minmax(auto, 15%) auto minmax(10%, 25%);
-	};
 }

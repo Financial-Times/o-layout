@@ -1,2 +1,12 @@
-$_o-layout-main-section-width: oTypographyMaxLineWidth(3);
+$_o-layout-main-section-width: 65ch; //average optimal line width https://baymard.com/blog/line-length-readability
 $_o-layout-gutter: 1em;
+
+$o-layout-breakpoints: (
+	XS: 300px,
+	S: 520px,
+	M: 780px,
+	ML: 900px,
+	L: 1090px,
+	XL: 1200px,
+	XXL: 1350px
+) !default;
