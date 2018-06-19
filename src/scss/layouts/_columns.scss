@@ -12,28 +12,37 @@
 
 	&--left {
 		grid-column: 1 / span 1;
-		position: absolute;
-		top: 0;
-		right: 0;
-		left: 0;
-		bottom: 0;
+
+		@include oLayoutBreakPoint($from: M) {
+			position: absolute;
+			top: 0;
+			right: 0;
+			left: 0;
+			bottom: 0;
+		}
 
 
 		@include oLayoutBreakPoint($from: XXL) {
 			grid-column-start: 2;
-		};
+		}
 	}
 
 	&--center {
 		overflow: hidden;
 
+		@include oLayoutBreakPoint($until: ML) {
+			.o-layout--table & {
+				grid-column-end: span 2;
+			}
+		}
+
 		@include oLayoutBreakPoint($from: M) {
 			grid-column: 2 / span 1;
-		};
+		}
 
 		@include oLayoutBreakPoint($from: XXL) {
 			grid-column-start: 3;
-		};
+		}
 
 		&-aside {
 			@include oLayoutBreakPoint($from: L) {
@@ -42,7 +51,7 @@
 				grid-column-end: span 3;
 				grid-template-columns: $_o-layout-main-section-width auto;
 				grid-column-gap: $_o-layout-gutter;
-			};
+			}
 
 			@include oLayoutBreakPoint($from: XXL) {
 				grid-column-end: -2;

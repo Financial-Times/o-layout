@@ -1,10 +1,9 @@
-@import 'mixins';
 @import 'variables';
-@import 'layouts/layout-grid';
-@import 'layouts/columns';
-@import 'layouts/navigation';
+@import 'placeholders';
+@import 'layouts/main';
 
 @include oLayoutBase();
+@include oLayoutDocumentation();
 @include oLayoutSearch();
 
 html {
@@ -13,9 +12,4 @@ html {
 
 *, *:before, *:after {
   box-sizing: inherit;
-}
-
-.content--aside-wrapper {
-	border-left: 2px solid oColorsGetPaletteColor('teal');
-	padding-left: 1rem;
 }

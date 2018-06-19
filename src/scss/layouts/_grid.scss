@@ -1,39 +1,3 @@
-%o-layout-base {
-	@include oTypographySans(1);
-	min-width: 100%;
-	margin: 0;
-	display: grid;
-	grid-auto-rows: auto;
-	grid-template-columns: 100%;
-	grid-row-gap: $_o-layout-gutter;
-	position: relative;
-
-	h1	{
-		@include oTypographyProductHeadingLevel1();
-	}
-
-	h2 {
-		@include oTypographyProductHeadingLevel2();
-	}
-
-	h3 {
-		@include oTypographyProductHeadingLevel3();
-	}
-
-	h6 {
-		@include oTypographyProductHeadingLevel6();
-	}
-}
-
-.o-layout--documentation {
-	padding: $_o-layout-gutter;
-
-	a {
-		@include oTypographyLink();
-		border: none;
-	}
-}
-
 @mixin oLayoutBase ($class: 'o-layout') {
 	.#{$class} {
 		@extend %o-layout-base;
@@ -55,9 +19,21 @@
 	}
 }
 
+@mixin oLayoutDocumentation ($class: 'o-layout') {
+	.#{$class}--documentation {
+		@extend %o-layout-base--body;
+
+		.content--aside-wrapper {
+			border-left: 2px solid oColorsGetPaletteColor('teal');
+			padding-left: 1rem;
+		}
+	}
+}
+
 @mixin oLayoutSearch ($class: 'o-layout') {
 	.#{$class}--search {
 		@extend %o-layout-base;
+		@extend %o-layout-base--body;
 
 		@include oLayoutBreakPoint($until: S) {
 			.#{$class}__column--left { display: none; }

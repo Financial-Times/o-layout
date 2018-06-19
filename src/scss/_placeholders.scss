@@ -1,0 +1,53 @@
+%o-layout-base {
+	min-width: 100%;
+	margin: 0;
+	display: grid;
+	grid-auto-rows: auto;
+	grid-template-columns: 100%;
+	position: relative;
+}
+
+%o-layout-base--body {
+	@include oTypographySans(1);
+	padding: $_o-layout-gutter;
+	grid-row-gap: $_o-layout-gutter;
+
+	a {
+		@include oTypographyLink();
+		border: none;
+	}
+
+	h1	{
+		@include oTypographyProductHeadingLevel1();
+	}
+
+	h2 {
+		@include oTypographyProductHeadingLevel2();
+	}
+
+	h3 {
+		@include oTypographyProductHeadingLevel3();
+	}
+
+	h6 {
+		@include oTypographyProductHeadingLevel6();
+	}
+
+	ol,
+	ul {
+		list-style-type: none;
+		position: relative;
+
+		li {
+			margin-bottom: .5em;
+
+			&:before {
+				content: '—';
+				position: absolute;
+				left: 1em;
+				color: oColorsGetPaletteColor('teal');
+				font-weight: 900;
+			}
+		}
+	}
+}
