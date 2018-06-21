@@ -1,3 +1,21 @@
+@mixin oLayoutColumn($class: 'o-layout', $type: 'all') {
+	@if $type == 'all' {
+		@include oLayoutColumnLeft;
+		@include oLayoutColumnCenter;
+		@include oLayoutColumnCenterWithAside;
+		@include oLayoutColumnWide;
+		@include oLayoutColumnTable;
+	}
+	@else if $type == 'left' { @include oLayoutColumnLeft($class) }
+	@else if $type == 'center' { @include oLayoutColumnCenter($class) }
+	@else if $type == 'center-aside' { @include oLayoutColumnCenterWithAside($class) }
+	@else if $type == 'wide' { @include oLayoutColumnWide($class) }
+	@else if $type == 'table' { @include oLayoutColumnTable($class) }
+	@else {
+		@error ('nope');
+	}
+}
+
 @mixin oLayoutBreakPoint($from: false, $until: false) {
 	@include mq(
 		$from: $from,

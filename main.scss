@@ -1,9 +1,12 @@
 $o-brand: 'internal';
 
-$o-syntax-highlight-is-silent: false;
-
-@import 'o-syntax-highlight/main';
+@import 'sass-mq/mq';
 @import 'o-typography/main';
 
-@import 'sass-mq/mq';
 @import 'src/scss/main';
+
+@if $o-layout-is-silent == false {
+	@include oLayout();
+
+	$o-layout-is-silent: true !global;
+}

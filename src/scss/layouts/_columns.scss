@@ -1,7 +1,6 @@
 //TODO: change to subgrid when property is implemented in browsers
-
-.o-layout__column {
-	&--wide {
+@mixin oLayoutColumnWide($class: 'o-layout') {
+	.#{$class}__column--wide {
 		margin: 0;
 		grid-column: 1 / -1;
 
@@ -9,8 +8,10 @@
 			grid-column: 2 / -2;
 		}
 	}
+}
 
-	&--left {
+@mixin oLayoutColumnLeft($class: 'o-layout') {
+	.#{$class}__column--left {
 		grid-column: 1 / span 1;
 
 		@include oLayoutBreakPoint($from: M) {
@@ -21,13 +22,14 @@
 			bottom: 0;
 		}
 
-
 		@include oLayoutBreakPoint($from: XXL) {
 			grid-column-start: 2;
 		}
 	}
+}
 
-	&--center {
+@mixin oLayoutColumnCenter($class: 'o-layout') {
+	.#{$class}__column--center {
 		overflow: hidden;
 
 		@include oLayoutBreakPoint($until: ML) {
@@ -43,23 +45,27 @@
 		@include oLayoutBreakPoint($from: XXL) {
 			grid-column-start: 3;
 		}
+	}
+}
 
-		&-aside {
-			@include oLayoutBreakPoint($from: L) {
-				display: grid; //TODO: change to subgrid when property is implemented in browsers
-				padding-right: $_o-layout-gutter;
-				grid-column-end: span 3;
-				grid-template-columns: $_o-layout-main-section-width auto;
-				grid-column-gap: $_o-layout-gutter;
-			}
+@mixin oLayoutColumnCenterWithAside($class: 'o-layout') {
+	.#{$class}__column--center-aside {
+		@include oLayoutBreakPoint($from: L) {
+			display: grid; //TODO: change to subgrid when property is implemented in browsers
+			padding-right: $_o-layout-gutter;
+			grid-column-end: span 3;
+			grid-template-columns: $_o-layout-main-section-width auto;
+			grid-column-gap: $_o-layout-gutter;
+		}
 
-			@include oLayoutBreakPoint($from: XXL) {
-				grid-column-end: -2;
-			}
+		@include oLayoutBreakPoint($from: XXL) {
+			grid-column-end: -2;
 		}
 	}
+}
 
-	&--table {
+@mixin oLayoutColumnTable($class: 'o-layout') {
+	.#{$class}__column--table {
 		overflow-x: scroll;
 
 		@include oLayoutBreakPoint($from: M) {

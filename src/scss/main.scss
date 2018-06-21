@@ -2,14 +2,10 @@
 @import 'placeholders';
 @import 'layouts/main';
 
-@include oLayoutBase();
-@include oLayoutDocumentation();
-@include oLayoutSearch();
+@mixin oLayout {
+	@include oLayoutBase();
+	@include oLayoutDocumentation();
+	// @include oLayoutSearch();
 
-html {
-  box-sizing: border-box;
-}
-
-*, *:before, *:after {
-  box-sizing: inherit;
+	@include oLayoutColumn();
 }

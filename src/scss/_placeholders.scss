@@ -5,6 +5,7 @@
 	grid-auto-rows: auto;
 	grid-template-columns: 100%;
 	position: relative;
+	box-sizing: border-box;
 }
 
 %o-layout-base--body {
@@ -29,6 +30,14 @@
 		@include oTypographyProductHeadingLevel3();
 	}
 
+	h4 {
+		@include oTypographyProductHeadingLevel4();
+	}
+
+	h5 {
+		@include oTypographyProductHeadingLevel5();
+	}
+
 	h6 {
 		@include oTypographyProductHeadingLevel6();
 	}
@@ -37,6 +46,7 @@
 	ul {
 		list-style-type: none;
 		position: relative;
+		padding-left: 1.5em;
 
 		li {
 			margin-bottom: .5em;
@@ -44,7 +54,7 @@
 			&:before {
 				content: '—';
 				position: absolute;
-				left: 1em;
+				left: 0;
 				color: oColorsGetPaletteColor('teal');
 				font-weight: 900;
 			}
