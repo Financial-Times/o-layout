@@ -1,37 +1,36 @@
 //TODO: change to subgrid when property is implemented in browsers
 @mixin oLayoutColumnWide($class: 'o-layout') {
 	.#{$class}__column--wide {
-		margin: 0;
-		grid-column: 1 / -1;
-
 		@include oLayoutBreakPoint($from: XXL) {
 			grid-column: 2 / -2;
 		}
+
+		margin: 0;
+		grid-column: 1 / -1;
 	}
 }
 
 @mixin oLayoutColumnLeft($class: 'o-layout') {
+	@include oLayoutBreakPoint($from: M) {
+		position: absolute;
+		top: 0;
+		right: 0;
+		left: 0;
+		bottom: 0;
+	}
+
+	@include oLayoutBreakPoint($from: XXL) {
+		grid-column-start: 2;
+	}
+
 	.#{$class}__column--left {
 		grid-column: 1 / span 1;
 
-		@include oLayoutBreakPoint($from: M) {
-			position: absolute;
-			top: 0;
-			right: 0;
-			left: 0;
-			bottom: 0;
-		}
-
-		@include oLayoutBreakPoint($from: XXL) {
-			grid-column-start: 2;
-		}
 	}
 }
 
 @mixin oLayoutColumnCenter($class: 'o-layout') {
 	.#{$class}__column--center {
-		overflow: hidden;
-
 		@include oLayoutBreakPoint($until: ML) {
 			.o-layout--table & {
 				grid-column-end: span 2;
@@ -45,6 +44,8 @@
 		@include oLayoutBreakPoint($from: XXL) {
 			grid-column-start: 3;
 		}
+
+		overflow: hidden;
 	}
 }
 
@@ -66,8 +67,6 @@
 
 @mixin oLayoutColumnTable($class: 'o-layout') {
 	.#{$class}__column--table {
-		overflow-x: scroll;
-
 		@include oLayoutBreakPoint($from: M) {
 			grid-column: 2 / span 2;
 		};
@@ -75,5 +74,7 @@
 		@include oLayoutBreakPoint($from: XXL) {
 			grid-column-start: 3;
 		};
+
+		overflow-x: scroll;
 	}
 }
