@@ -12,7 +12,7 @@
 	@else if $type == 'wide' { @include oLayoutColumnWide($class) }
 	@else if $type == 'table' { @include oLayoutColumnTable($class) }
 	@else {
-		@error ('nope');
+		@include _oLayoutError('#{$type} is not an available column span, please use #{$_o-layout-columns} instead');
 	}
 }
 
@@ -25,3 +25,7 @@
 		@content;
 	}
 }
+
+@mixin _oLayoutError($message) {
+	@error '*** oLayout SCSS error: #{$message} ***';
+};

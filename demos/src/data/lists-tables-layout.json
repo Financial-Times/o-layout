@@ -9,10 +9,6 @@
 			"name": "Lists & Tables",
 			"href": "lists-tables-layout.html",
 			"current": true
-		},
-		{
-			"name": "Search",
-			"href": "search-layout.html"
 		}
 	],
 	"hasChildren": true,

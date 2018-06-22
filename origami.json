@@ -39,13 +39,6 @@
 			"data": "demos/src/data/lists-tables-layout.json",
 			"template": "demos/src/lists-tables-layout.mustache",
 			"description": "Lists & Tables Layout"
-		},
-		{
-			"title": "Search Results Layout",
-			"name": "search-layout",
-			"data": "demos/src/data/search-layout.json",
-			"template": "demos/src/search-layout.mustache",
-			"description": "Search Results Layout"
 		}
 	]
 }

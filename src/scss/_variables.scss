@@ -2,6 +2,7 @@ $o-layout-is-silent: true !default;
 $_o-layout-main-section-width: 65ch; //average optimal line width https://baymard.com/blog/line-length-readability
 $_o-layout-gutter: 1em;
 
+$_o-layout-columns: ('left', 'center', 'center-aside', 'wide', 'table');
 $o-layout-breakpoints: (
 	XS: 300px,
 	S: 520px,
