@@ -11,21 +11,20 @@
 }
 
 @mixin oLayoutColumnLeft($class: 'o-layout') {
-	@include oLayoutBreakPoint($from: M) {
-		position: absolute;
-		top: 0;
-		right: 0;
-		left: 0;
-		bottom: 0;
-	}
-
-	@include oLayoutBreakPoint($from: XXL) {
-		grid-column-start: 2;
-	}
-
 	.#{$class}__column--left {
-		grid-column: 1 / span 1;
+		@include oLayoutBreakPoint($from: M) {
+			position: absolute;
+			top: 0;
+			right: 0;
+			left: 0;
+			bottom: 0;
+		}
 
+		@include oLayoutBreakPoint($from: XXL) {
+			grid-column-start: 2;
+		}
+
+		grid-column: 1 / span 1;
 	}
 }
 
@@ -62,6 +61,22 @@
 		@include oLayoutBreakPoint($from: XXL) {
 			grid-column-end: -2;
 		}
+	}
+}
+
+@mixin oLayoutColumnRight($class: 'o-layout') {
+	.#{$class}__column--right {
+		@include oLayoutBreakPoint($from: L) {
+			grid-column: 3 / span 2;
+			position: absolute;
+			padding: 1em 0;
+		}
+
+		@include oLayoutBreakPoint($from: XXL) {
+			grid-column: -3 / span 1;
+		}
+
+		grid-column: 2 / span 1;
 	}
 }
 

@@ -14,10 +14,7 @@
     "tests"
   ],
   "dependencies": {
-    "sass-mq": "^4.0.2",
-    "o-typography": "^5.6.6"
-  },
-  "resolutions": {
-    "sass-mq": "^4.0.2"
+    "o-typography": "^5.6.6",
+    "sass-mq": "^5.0.0"
   }
 }
