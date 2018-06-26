@@ -9,3 +9,13 @@
 
 	@include oLayoutColumn();
 }
+
+.o-layout {
+	&--header {
+		grid-area: header
+	}
+
+	&--footer {
+		grid-area: footer
+	}
+}

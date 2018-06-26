@@ -1,8 +1,6 @@
-<header class="o-header-services" data-o-component="o-header">
-	<div class="o-header-services__top o-header-services__container o-layout">
+<header class="o-header-services o-layout--header" data-o-component="o-header">
+	<div class="o-header-services__top o-header-services__container">
 
-		<div class="o-layout__column--wide">
-			
 			<div class="o-header-services__hamburger">
 				<a class="o-header-services__hamburger-icon" href="#o-header-drawer" aria-controls="o-header-drawer"><span class="o-header__visually-hidden">Menu</span></a>
 			</div>
@@ -14,11 +12,10 @@
 				</h1>
 				<span class="o-header-subrand__product-tagline">{{description}}</span>
 			</div>
-		</div>
 	</div>
 
-	<nav class="o-header-services__primary-nav o-layout">
-		<div class="o-header-services__container o-layout__column--wide">
+	<nav class="o-header-services__primary-nav">
+		<div class="o-header-services__container">
 			<ul class="o-layout__primary-nav o-header-services__nav-list">
 				{{#mainNav}}
 					<li class="o-header-services__nav-item">
@@ -32,9 +29,9 @@
 	</nav>
 
 	{{#hasChildren}}
-		<nav class="o-header__subnav o-layout" role="navigation" aria-label="Sub navigation" data-o-header-subnav="">
-			<div class="o-header-services__container  o-layout__column--wide">
-				<div class="o-layout__subnav o-header__subnav-wrap-outside o-layout__column--wide">
+		<nav class="o-header__subnav" role="navigation" aria-label="Sub navigation" data-o-header-subnav="">
+			<div class="o-header-services__container">
+				<div class="o-layout__subnav o-header__subnav-wrap-outside">
 					<div class="o-header__subnav-wrap-inside" data-o-header-subnav-wrapper="">
 						<div class="o-header__subnav-content">
 							<ol class="o-header__subnav-list o-header__subnav-list--breadcrumb" aria-label="Breadcrumb">

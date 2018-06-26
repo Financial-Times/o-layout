@@ -1,0 +1,157 @@
+{
+	"images": [
+		{
+			"name": "arrow-down"
+		},
+		{
+			"name": "arrow-left"
+		},
+		{
+			"name": "arrow-right"
+		},
+		{
+			"name": "arrow-up"
+		},
+		{
+			"name": "arrows-left-right"
+		},
+		{
+			"name": "arrows-up-down"
+		},
+		{
+			"name": "book"
+		},
+		{
+			"name": "bookmark-outline"
+		},
+		{
+			"name": "bookmark"
+		},
+		{
+			"name": "circle"
+		},
+		{
+			"name": "corporate"
+		},
+		{
+			"name": "cross"
+		},
+		{
+			"name": "dollar"
+		},
+		{
+			"name": "download"
+		},
+		{
+			"name": "edit"
+		},
+		{
+			"name": "gift"
+		},
+		{
+			"name": "grid"
+		},
+		{
+			"name": "hamburger"
+		},
+		{
+			"name": "ipad"
+		},
+		{
+			"name": "link"
+		},
+		{
+			"name": "list"
+		},
+		{
+			"name": "lock"
+		},
+		{
+			"name": "mail"
+		},
+		{
+			"name": "minus"
+		},
+		{
+			"name": "more"
+		},
+		{
+			"name": "newspaper"
+		},
+		{
+			"name": "notifications"
+		},
+		{
+			"name": "outside-page"
+		},
+		{
+			"name": "pause"
+		},
+		{
+			"name": "phone"
+		},
+		{
+			"name": "play"
+		},
+		{
+			"name": "plus"
+		},
+		{
+			"name": "podcast"
+		},
+		{
+			"name": "print"
+		},
+		{
+			"name": "refresh"
+		},
+		{
+			"name": "search"
+		},
+		{
+			"name": "series"
+		},
+		{
+			"name": "settings"
+		},
+		{
+			"name": "share"
+		},
+		{
+			"name": "speech-left"
+		},
+		{
+			"name": "speech-right"
+		},
+		{
+			"name": "speech"
+		},
+		{
+			"name": "stop"
+		},
+		{
+			"name": "tick"
+		},
+		{
+			"name": "trash"
+		},
+		{
+			"name": "upload"
+		},
+		{
+			"name": "user"
+		},
+		{
+			"name": "users"
+		},
+		{
+			"name": "video"
+		},
+		{
+			"name": "warning"
+		},
+		{
+			"name": "written-text"
+		}
+	]
+}

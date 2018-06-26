@@ -1,0 +1,20 @@
+@import "o-assets/main";
+
+@import "scss/variables";
+@import "scss/mixins";
+@import "scss/icon-list";
+
+// Only output base classes once in non-silent mode
+@if ($o-icons-is-silent == false) {
+	.o-icons-icon {
+		@include oIconsBaseStyles;
+	}
+
+	@each $icon in $o-icons-list {
+		.o-icons-icon--#{$icon} {
+			@include oIconsGetIcon($icon, $apply-base-styles: false);
+		}
+	}
+
+	$o-icons-is-silent: true !global;
+}

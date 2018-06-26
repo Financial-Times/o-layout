@@ -1,0 +1,57 @@
+$o-icons-is-silent: false;
+$o-icons-use-local-assets: true;
+@import "../../main";
+
+body {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 16px;
+	padding: 1em;
+	overflow: auto;
+}
+
+.demo-count {
+	margin-left: 30px;
+	color: #777777;
+}
+
+.demo-examples {
+	margin: 20px 0;
+	padding: 0;
+	list-style-type: none;
+	overflow: hidden;
+}
+
+.demo-example {
+	float: left;
+	margin: 0 0 20px;
+	padding: 0;
+	width: 180px;
+	text-align: center;
+}
+
+.demo-label {
+	display: block;
+	padding: 5px 0;
+	font-size: 14px;
+	color: #333333;
+}
+
+.demo-icon {
+	display: inline-block;
+	border: 1px dotted #333333;
+	text-align: center;
+	color: #000000;
+	width: 40px;
+	height: 40px;
+}
+
+.demo-icon-special {
+	@include oIconsGetIcon('lock');
+}
+.demo-icon-special--coloured {
+	@include oIconsGetIcon('lock', $color: #0000ff);
+}
+
+.demo-icon-special--coloured--resized {
+	@include oIconsGetIcon('lock', #0000ff, 40);
+}

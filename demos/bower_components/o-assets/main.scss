@@ -1,0 +1,59 @@
+////
+/// @group o-assets
+/// @link http://registry.origami.ft.com/components/o-assets
+////
+
+/// Default global path to assets
+///
+/// @type String
+$o-assets-global-path: '/bower_components/' !default;
+
+/// Cast the asset map
+///
+/// It should contain pairs such as `o-module: path/to/module/assets`
+///
+/// @type map
+$o-assets-paths-map: () !default;
+
+/// Resolve the full path to an asset
+///
+/// @example scss
+///  el { background: url(oAssetsResolve("img/symbols-sprite.png", o-weather)); }
+///
+/// @param {String} $asset - path to an asset, relative to the module's root
+/// @param {String} $module - name of the module
+@function oAssetsResolve($asset, $module) {
+	$full-path: $asset;
+
+	// Trim forward slash at the beginning of the asset path
+	// turns "/img/foo.png" into "img/foo.png"
+	@if (str-index($asset, '/') == 1) {
+		$full-path: str-slice($asset, 2);
+	}
+
+	@if (map-has-key($o-assets-paths-map, $module)) {
+		$module-path: map-get($o-assets-paths-map, $module);
+
+		// allows putting assets in single directory shared by all modules
+		@if ($module-path) {
+			$full-path: $module-path + '/' + $full-path;
+		}
+	} @else {
+		// defaults to use module name
+		$full-path: $o-assets-global-path + $module + '/' + $full-path;
+	}
+
+	@return #{$full-path};
+}
+
+/// Set asset paths for one or multiple modules
+///
+/// @example scss
+///  @include oAssetsSetModulePaths((
+///    o-header: /assets/header
+///  ));
+///
+/// @param {Map} $path-map - Set of module names and paths
+@mixin oAssetsSetModulePaths($path-map) {
+	$o-assets-paths-map: map-merge($o-assets-paths-map, $path-map) !global;
+}

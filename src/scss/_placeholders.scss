@@ -1,17 +1,22 @@
 %o-layout-base {
 	min-width: 100%;
 	margin: 0;
+	position: relative;
+	box-sizing: border-box;
+
 	display: grid;
 	grid-auto-rows: auto;
 	grid-template-columns: 100%;
-	position: relative;
-	box-sizing: border-box;
+	grid-gap: $_o-layout-gutter;
+	grid-template-areas:
+		"header"
+		"sidebar"
+		"main"
+		"footer";
 }
 
 %o-layout-base--body {
 	@include oTypographySans(1);
-	padding: $_o-layout-gutter;
-	grid-row-gap: $_o-layout-gutter;
 
 	a {
 		@include oTypographyLink();

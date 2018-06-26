@@ -1,50 +1,47 @@
-//TODO: change to subgrid when property is implemented in browsers
 @mixin oLayoutColumnWide($class: 'o-layout') {
-	.#{$class}__column--wide {
-		@include oLayoutBreakPoint($from: XXL) {
-			grid-column: 2 / -2;
-		}
-
-		margin: 0;
-		grid-column: 1 / -1;
-	}
+// 	.#{$class}__column--wide {
+// 		@include oLayoutBreakPoint($from: XXL) {
+// 			grid-column: 2 / -2;
+// 		}
+//
+// 		margin: 0;
+// 		grid-column: 1 / -1;
+// 	}
 }
 
 @mixin oLayoutColumnLeft($class: 'o-layout') {
 	.#{$class}__column--left {
-		@include oLayoutBreakPoint($from: M) {
-			position: absolute;
-			top: 0;
-			right: 0;
-			left: 0;
-			bottom: 0;
-		}
+		grid-area: sidebar;
+		@include oTypographySans(1);
 
-		@include oLayoutBreakPoint($from: XXL) {
-			grid-column-start: 2;
+		a {
+			@include oTypographyLink();
+			border: 0;
 		}
-
-		grid-column: 1 / span 1;
 	}
 }
 
 @mixin oLayoutColumnCenter($class: 'o-layout') {
 	.#{$class}__column--center {
-		@include oLayoutBreakPoint($until: ML) {
-			.o-layout--table & {
-				grid-column-end: span 2;
-			}
-		}
+		@extend %o-layout-base--body;
+		grid-column: main;
 
-		@include oLayoutBreakPoint($from: M) {
-			grid-column: 2 / span 1;
+		@include oLayoutBreakPoint($from: ML) {
+			display: grid;
+			grid-column-gap: $_o-layout-gutter;
+			grid-template-columns: minmax(auto, $_o-layout-main-section-width) .5fr;
+			grid-auto-rows: auto;
 		}
 
 		@include oLayoutBreakPoint($from: XXL) {
-			grid-column-start: 3;
+			grid-template-columns: minmax(auto, $_o-layout-main-section-width) 1fr;
 		}
 
 		overflow: hidden;
+
+		> * {
+			grid-column: 1;
+		}
 	}
 }
 
@@ -52,43 +49,22 @@
 	.#{$class}__column--center-aside {
 		@include oLayoutBreakPoint($from: L) {
 			display: grid; //TODO: change to subgrid when property is implemented in browsers
-			grid-column-end: span 3;
+			grid-column-end: span 2;
 			grid-template-columns: $_o-layout-main-section-width auto;
 			grid-column-gap: $_o-layout-gutter;
-		}
-
-		@include oLayoutBreakPoint($from: XXL) {
-			grid-column-end: -2;
 		}
 	}
 }
 
 @mixin oLayoutColumnRight($class: 'o-layout') {
 	.#{$class}__column--right {
-		@include oLayoutBreakPoint($from: L) {
-			grid-column: 3 / span 2;
-			position: absolute;
-			padding: 1em 0;
-		}
-
-		@include oLayoutBreakPoint($from: XXL) {
-			grid-column: -3 / span 1;
-		}
-
 		grid-column: 2 / span 1;
 	}
 }
 
 @mixin oLayoutColumnTable($class: 'o-layout') {
 	.#{$class}__column--table {
-		@include oLayoutBreakPoint($from: M) {
-			grid-column: 2 / span 2;
-		};
-
-		@include oLayoutBreakPoint($from: XXL) {
-			grid-column-start: 3;
-		};
-
+		grid-column: 1 / span 2;
 		overflow-x: scroll;
 	}
 }

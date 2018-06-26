@@ -1,0 +1,11 @@
+{
+	"name": "o-icons",
+	"main": ["main.scss"],
+	"ignore": [
+		"node_modules"
+	],
+	"dependencies": {
+		"fticons": "v1.12.0",
+		"o-assets": ">= 0.4.1 <4"
+	}
+}

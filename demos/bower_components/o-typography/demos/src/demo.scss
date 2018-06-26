@@ -1,0 +1,87 @@
+$o-typography-is-silent: false;
+
+@import '../../main';
+
+html {
+	@include oColorsFor(page);
+	overflow-y: scroll;
+	font-family: $o-typography-sans;
+}
+
+.demo {
+	// prevent images and media from expanding its container
+	img {
+		max-width: 100%;
+		height: auto;
+		display: block;
+	}
+	figure {
+		margin: 0 0 28px;
+	}
+}
+
+.type-scale {
+	margin-bottom: 8px;
+	white-space: nowrap;
+	overflow: hidden;
+
+	&__label {
+		@include oTypographySans(1);
+		color: oColorsGetPaletteColor('black-60');
+		display: inline-block;
+		width: 20px;
+		padding-left: 5px;
+		padding-right: 10px;
+	}
+
+	&__example {
+		margin-bottom: 12px;
+		white-space: nowrap;
+		overflow: hidden;
+	}
+
+	@each $scale, $values in $o-typography-font-scale {
+		&__example-#{$scale} {
+			@include oTypographyDisplay($scale);
+		}
+	}
+}
+
+.o-typography-link--custom {
+	@include oTypographyLinkCustom(
+		$baseColor: 'claret',
+		$hoverColor: 'claret-30'
+	);
+}
+
+.line-width-demo {
+	display: flex;
+
+	.selection {
+		min-width: 100px;
+		margin: 20px;
+	}
+
+	.scale {
+		&--1 {
+			@include oTypographySans(-1);
+			max-width: oTypographyMaxLineWidth(-1);
+		}
+		&--2 {
+			@include oTypographySans(-2);
+			max-width: oTypographyMaxLineWidth(-2);
+		}
+		&-0 {
+			@include oTypographySans(0);
+			max-width: oTypographyMaxLineWidth(0);
+		}
+		&-1 {
+			@include oTypographySans(1);
+			max-width: oTypographyMaxLineWidth(1);
+		}
+		&-2 {
+			@include oTypographySans(2);
+			max-width: oTypographyMaxLineWidth(2);
+		}
+	}
+}

@@ -1,0 +1,11 @@
+{
+  "name": "o-grid",
+  "main": [
+    "main.scss",
+    "main.js"
+  ],
+  "dependencies": {
+    "sass-mq": "^3.1.0"
+  },
+  "ignore" : []
+}

@@ -1,0 +1,37 @@
+{
+	"description": "Webfont loader for the FT's fonts.",
+	"origamiType": "module",
+	"origamiCategory": "primitives",
+	"origamiVersion": 1,
+	"support": "https://github.com/Financial-Times/o-fonts/issues",
+	"supportContact": {
+		"email": "origami.support@ft.com",
+		"slack": "financialtimes/ft-origami"
+	},
+	"supportStatus": "active",
+	"ci": {
+		"circle": "https://circleci.com/api/v1/project/Financial-Times/o-fonts"
+	},
+	"demosDefaults": {
+		"template": "demos/src/family.mustache",
+		"sass": "demos/src/demo.scss"
+	},
+	"demos": [
+		{
+			"name": "metricweb",
+			"data": {
+				"font": "metricweb"
+			},
+			"description": "Metric is used for utility text, eg categories, tags and navigation",
+			"display_html": false
+		},
+		{
+			"name": "financierdisplayweb",
+			"data": {
+				"font": "financierdisplayweb"
+			},
+			"description": "Financier Display is used for headlines and editorial content at large sizes.",
+			"display_html": false
+		}
+	]
+}

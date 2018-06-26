@@ -1,0 +1,66 @@
+////
+/// @group o-fonts
+/// @link http://registry.origami.ft.com/components/o-fonts
+////
+
+/// Path to the assets
+///
+/// @type String
+$o-fonts-path: 'https://www.ft.com/__origami/service/build/v2/files/o-fonts-assets@1.3.2/' !default;
+
+/// Silent mode
+///
+/// @type Bool
+$o-fonts-is-silent: true !default;
+
+/// Font families
+///
+/// @type Map
+$o-fonts-families: (
+	MetricWeb: (
+		font-family: 'MetricWeb, sans-serif',
+		variants: (
+			(weight: thin, style: normal),
+			(weight: light, style: normal),
+			(weight: light, style: italic),
+			(weight: regular, style: normal),
+			(weight: regular, style: italic),
+			(weight: medium, style: normal),
+			(weight: semibold, style: normal),
+			(weight: bold, style: normal),
+			(weight: bold, style: italic),
+		)
+	),
+	FinancierDisplayWeb: (
+		font-family: 'FinancierDisplayWeb, serif',
+		variants: (
+			(weight: light, style: italic),
+			(weight: regular, style: normal),
+			(weight: medium, style: italic),
+			(weight: semibold, style: italic),
+			(weight: bold, style: normal)
+		)
+	),
+) !default;
+
+/// Human-readable Font-weights
+///
+/// @access private
+///
+/// @type Map
+$_o-fonts-weights: (
+	'thin':       100,
+	'light':      200,
+	'regular':    400,
+	'normal':     400,
+	'medium':     500,
+	'semibold':   600,
+	'bold':       700,
+	'black':      800,
+) !default;
+
+/// Map of families and styles which have already been included
+/// Used to avoid declarations from being multiple times in the CSS output
+///
+/// @access private
+$_o-fonts-families-included: () !default;

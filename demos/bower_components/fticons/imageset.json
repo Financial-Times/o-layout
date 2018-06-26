@@ -1,0 +1,312 @@
+{
+	"sourceDirectory": "svg",
+	"scheme": "fticon",
+	"images": [
+		{
+			"name": "arrow-down",
+			"extension": "svg",
+			"path": "svg/arrow-down.svg",
+			"hash": "7aa367d6ac3beb635447ec854141af022c36904108eeb27d91f23102bcaeacbad6f86d4325787e81e45cd830c7d51580808da0f8c01857f601f0bde38ff836f4"
+		},
+		{
+			"name": "arrow-left",
+			"extension": "svg",
+			"path": "svg/arrow-left.svg",
+			"hash": "8fc9c5a07652330e3bae8a38d177f93ff3e26dc2a72777b3661425ab49cbe635e1aceb768be98f2b8a6388049e80273470f6acd70793798b860fd94e576dcd17"
+		},
+		{
+			"name": "arrow-right",
+			"extension": "svg",
+			"path": "svg/arrow-right.svg",
+			"hash": "e6de58a6d9e3c73d81f25ee83f26ee2f5bff7c6803467e95d2256eed7e84ed88eec757b26912d18ee7985e0dcc44e13d0f2c315baecf2d34571ed3c69d91800b"
+		},
+		{
+			"name": "arrow-up",
+			"extension": "svg",
+			"path": "svg/arrow-up.svg",
+			"hash": "509f22d52c8061e21fde794b6b18a8e80ce221cced330645706f5ab69d28a45c4b919b9a5f2dea474c57437c8bbc5db1664ff3fdd3789f4d154f634dcdabb6f6"
+		},
+		{
+			"name": "arrows-left-right",
+			"extension": "svg",
+			"path": "svg/arrows-left-right.svg",
+			"hash": "495a438f0aa747a883ca25f15e85d538d5f5398c4f93911c486c180ec7ae457f9b83f286df9b9aa336704467b475f1c71ad78861d4fbf511c9b5384664cf4295"
+		},
+		{
+			"name": "arrows-up-down",
+			"extension": "svg",
+			"path": "svg/arrows-up-down.svg",
+			"hash": "390aba6769709d8f6356b5d5c4b5b7738cf4774154ab663a1eddc68e4b9c577f0a047838e59011ad77436ba42755fd46a1d044d30616c8ecaa7abd5846b5f6df"
+		},
+		{
+			"name": "book",
+			"extension": "svg",
+			"path": "svg/book.svg",
+			"hash": "83bdf9b971074f0fdfbb81972705f2ff229f0ad0cde145f6fd5742dc3c74411826524bc4710960eb47f8527031f20c5dc3d833802c161842c76940ea57a30474"
+		},
+		{
+			"name": "bookmark-outline",
+			"extension": "svg",
+			"path": "svg/bookmark-outline.svg",
+			"hash": "6d22bc241c07006d738346176971012b6dfcecb263d465c57634b1d3d660d43b981d4c7821c4f15847e342bd1299edf7700759011502a00c082cbfdbb310e8a2"
+		},
+		{
+			"name": "bookmark",
+			"extension": "svg",
+			"path": "svg/bookmark.svg",
+			"hash": "6e4d4d6524f20c8993de58473d44c095acaa08e2923f5a5ffc35f0adff74198390b29502ba38cac9a31fc1ee568a32da6bf12dc0c3f5b9ebb4e32c3641095402"
+		},
+		{
+			"name": "circle",
+			"extension": "svg",
+			"path": "svg/circle.svg",
+			"hash": "eaf5b0a421db6c561f579124a7e53dc3528530c2698477633d363b4214ccd2677f34aeac3bcf32e62d9e44efeb3fd6e026b23ea3da2448fa5afba0a90924095a"
+		},
+		{
+			"name": "corporate",
+			"extension": "svg",
+			"path": "svg/corporate.svg",
+			"hash": "c89355b3e130f565408022ac1c09c13ac73d4f448a99094668406f2f7b6ba069280b0eb4dd120c45b20fed1b31bdd47750622f3b61c44db0c162ba30c738a02c"
+		},
+		{
+			"name": "cross",
+			"extension": "svg",
+			"path": "svg/cross.svg",
+			"hash": "78b9c39161bb6e59353734caf04527ab334054a693395c1bc897ba6c91343d1346977a4d6c3ef6a8eb6c0752e5fa866ed0baab687fb408f430ace6f9ee22c840"
+		},
+		{
+			"name": "dollar",
+			"extension": "svg",
+			"path": "svg/dollar.svg",
+			"hash": "35366b74f824f0e4f011b581cac9ef95ec9ff9cc6603d02e1187de9fe6ba7e9ee3c932e52251bb5f898ff61bcaa461c27db1088f6b379b9d2b1868c36fabb01e"
+		},
+		{
+			"name": "download",
+			"extension": "svg",
+			"path": "svg/download.svg",
+			"hash": "ad4f8307435c21088436aead8d9c9408bb42db7a60b17f927dfede6a91155cbd1f76e08da7f7790011509fa9dbec3f2bfb23b19ecf142222babeeacb615d540b"
+		},
+		{
+			"name": "edit",
+			"extension": "svg",
+			"path": "svg/edit.svg",
+			"hash": "3261f954b055a61201c2b21808a73bbeb772ba9200ac2f9523c6225838267b9b7b1c5245785ceaf6c7318a4fb205517f6d8f2d457b23b15eb7cd42c090e90ef2"
+		},
+		{
+			"name": "gift",
+			"extension": "svg",
+			"path": "svg/gift.svg",
+			"hash": "0c2904f2e7ddb7f3b2370bbbef39dabf1a27eb080ec7a2cfb7dbbad6f5f582ee3e20e3f3bae9c425dc8723a2aed58b4a0a011b3e8d8c9e0997dec736f91504e7"
+		},
+		{
+			"name": "grid",
+			"extension": "svg",
+			"path": "svg/grid.svg",
+			"hash": "59d1dddab6b740a433d34ec5b08137a4df154d8574e2db700cccbec55bd7ef25ae752fd5646548272b16ef7fc8c727cadec022f35138aebc5bb2cfe4dbf48aef"
+		},
+		{
+			"name": "hamburger",
+			"extension": "svg",
+			"path": "svg/hamburger.svg",
+			"hash": "bb452f0976037fee20d1fdc894c8a19fa5baa16bb508565eeb109487650c8dde0e987473e13b16bad6c6028c07755b333815340b14467fb1602a3919ff019f7a"
+		},
+		{
+			"name": "ipad",
+			"extension": "svg",
+			"path": "svg/ipad.svg",
+			"hash": "f712a01a7dba58237040aa2d989663d0f1cc03931ee7693a4d25dec59c956a690e43a0c83afdc07588643aa5dbbf11cc60061a930596443195d38e39a92d3fad"
+		},
+		{
+			"name": "link",
+			"extension": "svg",
+			"path": "svg/link.svg",
+			"hash": "2c1f3014103d6aef6de68329b1a0bb35e3db9dd375f38f841d3d31f56c8c6a83549ae5819232837283fc7ed15adbe2c97f9ad84614bbfed58f8c55efd8949e66"
+		},
+		{
+			"name": "list",
+			"extension": "svg",
+			"path": "svg/list.svg",
+			"hash": "ba33b9c36f193e64293564b0393c5d30f7a7f7e926f4040b933c607313bf53d981d4081a4daa623d845ceb458f0f01fe4691c13ca5d89a8d9ac5543ec00506e8"
+		},
+		{
+			"name": "lock",
+			"extension": "svg",
+			"path": "svg/lock.svg",
+			"hash": "a5945de93f1bf7b178f451a5683cbf9cd120ad7e5c111354119cd7ca57d72cd49e1361a911732d7adfeec0189b7b78b737a40c89ac582f2248f5d5a8b43538cc"
+		},
+		{
+			"name": "mail",
+			"extension": "svg",
+			"path": "svg/mail.svg",
+			"hash": "43996fd4f63c8223e0db1a09e2b9ba23c6ca0d86babbc1c3ee4ddd77e2c16e130308711dd6f55cfee8eef225f05f6bc018ab8df7c52847935f8698aeeb8cbd46"
+		},
+		{
+			"name": "minus",
+			"extension": "svg",
+			"path": "svg/minus.svg",
+			"hash": "fcdd11eee188adf7a2349510069e78fdf2bffafd5e713ee9ec6dfce86b6cad2098522f603f2b0b9d5093081b635617059b1defcd6957d55ef7a76edd2e24f256"
+		},
+		{
+			"name": "more",
+			"extension": "svg",
+			"path": "svg/more.svg",
+			"hash": "d498e00c69c29b1a8203289e680a9f78a41e467b8d6a61c8d29eb045b370943d9b06043bee48a37070b253c8653936243099903748355aa94597afea0b5a633a"
+		},
+		{
+			"name": "newspaper",
+			"extension": "svg",
+			"path": "svg/newspaper.svg",
+			"hash": "2266c129b14166786f033d0370b1a7f826ea9cd34c089aa590fee1bd361a2d8bc996ebcb9249da21b1ce68e7bc99f24d5fbb237dbb1b7da18610859bb69fe02c"
+		},
+		{
+			"name": "notifications",
+			"extension": "svg",
+			"path": "svg/notifications.svg",
+			"hash": "48e02895910fe7ab1976ba92d9d5db785296ab80f315bfa3f89aa1f2504b07efe6c70c38acf1f1fc50c31ffe4e172dde2eabf995aa0af155b553747733275558"
+		},
+		{
+			"name": "outside-page",
+			"extension": "svg",
+			"path": "svg/outside-page.svg",
+			"hash": "ef396e8d58146eab7da8837069f21e110916d7fb77eef1716e15e112abde50427c031679e2ff842b345cdec8dfbe144898a980e5b41d488c7794ca897e57effd"
+		},
+		{
+			"name": "pause",
+			"extension": "svg",
+			"path": "svg/pause.svg",
+			"hash": "3f464da69df1526a354fc1c52af48c30eb00f72bdf8ac92e10b50928194c0e06ee7800926d22c81638f0c0f6ab76267f1b6de890eb81a9f35e19a92bc42e2854"
+		},
+		{
+			"name": "phone",
+			"extension": "svg",
+			"path": "svg/phone.svg",
+			"hash": "3de36260936ffc0f2fd9d0ae7bd31cb321ac9d03ca5d632696cba1bd3e51eb6a0258c042239ed98aaf74c129040b00742030de9013da990dff49c223c33d150c"
+		},
+		{
+			"name": "play",
+			"extension": "svg",
+			"path": "svg/play.svg",
+			"hash": "c0d09e699885da8e8a9b83f515915700ad715933b23690b5cea06764c04b0115e94d38ecd21a2e3e4ebbb2f8c216798e72a705e4e508616aa96c05c2c93ea809"
+		},
+		{
+			"name": "plus",
+			"extension": "svg",
+			"path": "svg/plus.svg",
+			"hash": "4aaa1f7ec049f4ad038f712bc3599e0ea88b51a5b9d6e8bd2ecf2dd823494ca5fa0cecbcffeaf2fa6b8d725734b7af1549d923e5b2bf4c0632e2ca99165c6411"
+		},
+		{
+			"name": "podcast",
+			"extension": "svg",
+			"path": "svg/podcast.svg",
+			"hash": "a68db86919c458f0de651efc794f4c604cf06b7fac9b0683c06bc1b0bff1109896e95ecc1b067fdd63387fce1057eac7ac0098ba3088c3d7444bcfeb96e6bf8c"
+		},
+		{
+			"name": "print",
+			"extension": "svg",
+			"path": "svg/print.svg",
+			"hash": "5fc55228561ec99387b5f0a793d09ed529c8b6b08a119968202e173bea74e8fcb6a4d02e7925c428d1711a68e9cac3475abd03f075af6ba491335066f93d6b3a"
+		},
+		{
+			"name": "refresh",
+			"extension": "svg",
+			"path": "svg/refresh.svg",
+			"hash": "8486686a8dc33d2d864cf5c413faa303f17b82d6d5e8795e1b2e95450dbc89faf779ce03dcc422ad91818d2c46e6fb53d20e9cae7bb23ce9a4853850b19726b9"
+		},
+		{
+			"name": "search",
+			"extension": "svg",
+			"path": "svg/search.svg",
+			"hash": "0c8a79afaea568436a826993bb3b2a731f778dfa293408e4830f438c302c643d034da55d9ba0cdbe0e0b60b66e565d81a9e6e66dcd949bb74adadc941598f058"
+		},
+		{
+			"name": "series",
+			"extension": "svg",
+			"path": "svg/series.svg",
+			"hash": "0b22623d9e674a9d758e0a018c53e7155b0f36aab6054aa806752f43be1003f9d3ffa865e4c8e10d751c53b80c06d57247b763dd3adcb9ba83a70e438659c770"
+		},
+		{
+			"name": "settings",
+			"extension": "svg",
+			"path": "svg/settings.svg",
+			"hash": "8c8a18eef48c30cebde37c41b66241d5f52faead5d4586a6176a9f6eb766333e1867140648c7f84c63181ded2acb77413bb356e540d14cd7bf220bda96a66ab3"
+		},
+		{
+			"name": "share",
+			"extension": "svg",
+			"path": "svg/share.svg",
+			"hash": "451dd84d54661f4a8efe0e8de5271edf2ad0b088f80cbecea6f5aac0c2966ff96430f63cea544ddac3a4abde57d52a922cb83ce1bb356b24d2b94a1c01a848ac"
+		},
+		{
+			"name": "speech-left",
+			"extension": "svg",
+			"path": "svg/speech-left.svg",
+			"hash": "45ef626b23e3ee5dd8faba5fb7b109a83913f587bb3c653756a5e6c13a3f2c74db7e7fb7593ce2344a5cac9e22b68c06a3fcf24922680cc479c0698fff3b98d7"
+		},
+		{
+			"name": "speech-right",
+			"extension": "svg",
+			"path": "svg/speech-right.svg",
+			"hash": "1490544ddda4aa4492911af33095f996989a0f0f11d3b629d2229a7c22839a3bbf8b0f14874b050a82004d41bad80e205737a38f3567a10c5cacbe034e96230f"
+		},
+		{
+			"name": "speech",
+			"extension": "svg",
+			"path": "svg/speech.svg",
+			"hash": "d691b0af5f03d64109a056390969a79e7eed16f46a25c2291f76e690eb651a9970eb5dce156694afedd26881bcdadc1c486b5edec522dc0d31bc6fa52d4168e6"
+		},
+		{
+			"name": "stop",
+			"extension": "svg",
+			"path": "svg/stop.svg",
+			"hash": "8928a1aaf8d6f578a200997a2d36755849c0cc3c751027a68a1c04d36efd0ed6a03c323d62fa5b557adb299c35f09e54ad7c099b5e9081a1149b0e8cc3e5ea12"
+		},
+		{
+			"name": "tick",
+			"extension": "svg",
+			"path": "svg/tick.svg",
+			"hash": "7e00d5da30d5995ab6fd24a073b045c693e5422cece06e00e5182b434e14b4a208b19451fb26c2b0af1a62228f6856b1333abf3ff62eee47271d02ffc5e167f2"
+		},
+		{
+			"name": "trash",
+			"extension": "svg",
+			"path": "svg/trash.svg",
+			"hash": "1a9a99bf759805ae050577d22715b542772ae45a03bb1cd9bdb3cfa9bf2f538094d23be95a73aa0ae6b37213e26807475f9c270b62aef13b7dcba33b0eebcf92"
+		},
+		{
+			"name": "upload",
+			"extension": "svg",
+			"path": "svg/upload.svg",
+			"hash": "e978f92f1f53d9e9461da6c2e18783588304de98ce67d28f8a855fea9f9992f9f3841a2cbbf4646d583dfe8336d6d8bd03ac59ea31d1ec85285efa178e056570"
+		},
+		{
+			"name": "user",
+			"extension": "svg",
+			"path": "svg/user.svg",
+			"hash": "8256fb3f6a8d97e70b8c049bb35d2ebc62ecbb7e03090c10cab20f77a8047c1e551386afaaabdb984a3a7b3a3fceea27b27a55f8a0296c82f3ad2ca2e373d1cc"
+		},
+		{
+			"name": "users",
+			"extension": "svg",
+			"path": "svg/users.svg",
+			"hash": "845e7a34b5351e821393ecf58fb5b9e3e43529409d9161253f3823e874c14e8bac6185ea1eeae423513e3037e7bf5067726039c5f454f6a66e91784c3d4af0e6"
+		},
+		{
+			"name": "video",
+			"extension": "svg",
+			"path": "svg/video.svg",
+			"hash": "77fc33616202327c90eed52396bd2d26b0c00c09b3987ee69844e335d08a267d5775c6f4bf1b0a7b80f518d4036fc2e21fbd91a5a97bdd5cd957ce14b5612186"
+		},
+		{
+			"name": "warning",
+			"extension": "svg",
+			"path": "svg/warning.svg",
+			"hash": "f5e9f5de2e929d19104b05f599474b31dccd10637fd7dac5dc4246bc9b9e6055508bd6dee02b2102581797bf23e84e079b366406a2fa24b9471e5cdaaf50f0f0"
+		},
+		{
+			"name": "written-text",
+			"extension": "svg",
+			"path": "svg/written-text.svg",
+			"hash": "df87394e7409236b7272de4896e2635ab0cbe2774c0006596d5d63579c88d8111006e388d328d931efc146840de2167deb940b567f7883c4ceb66c1fc8a9fd3b"
+		}
+	]
+}

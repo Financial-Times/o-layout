@@ -1,18 +1,31 @@
 @mixin oLayoutBase ($class: 'o-layout') {
 	.#{$class} {
 		@extend %o-layout-base;
-
+		font-size: 18px;
 		@include _oLayoutNavigation($class);
-		@include oLayoutBreakPoint($from: M) {
+
+		@include oLayoutBreakPoint($from: M, $until: ML) {
 			grid-template-columns: minmax(10%, 25%) minmax(auto, $_o-layout-main-section-width);
+			grid-template-areas:
+				"header header"
+				"sidebar main"
+				"footer footer";
 		};
 
 		@include oLayoutBreakPoint($from: ML, $until: XXL) {
 			grid-template-columns: minmax(10%, 20%) minmax(auto, $_o-layout-main-section-width) repeat(2, 0.5fr);
+			grid-template-areas:
+				"header header header header"
+				"sidebar main main ."
+				". footer footer .";
 		};
 
 		@include oLayoutBreakPoint($from: XXL) {
-			grid-template-columns: 1fr 1fr minmax(auto, $_o-layout-main-section-width) repeat(2, 1fr);
+			grid-template-columns: repeat(2, 1fr) minmax(auto, $_o-layout-main-section-width) repeat(2, 1fr);
+			grid-template-areas:
+				"header header header header header"
+				". sidebar main main ."
+				". footer footer footer .";
 		};
 
 		grid-column-gap: $_o-layout-gutter;
@@ -21,8 +34,6 @@
 
 @mixin oLayoutDocumentation($class: 'o-layout') {
 	.#{$class}--documentation {
-		@extend %o-layout-base--body;
-
 		.#{$class}__rule-left {
 			@include oLayoutRule('left');
 		}
