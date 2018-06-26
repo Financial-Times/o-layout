@@ -1,11 +1,11 @@
+@import 'layouts/main';
+
 @import 'variables';
 @import 'placeholders';
-@import 'layouts/main';
 
 @mixin oLayout {
 	@include oLayoutBase();
 	@include oLayoutDocumentation();
-	// @include oLayoutSearch();
 
 	@include oLayoutColumn();
 }

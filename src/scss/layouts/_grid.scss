@@ -1,6 +1,7 @@
 @mixin oLayoutBase ($class: 'o-layout') {
 	.#{$class} {
 		@extend %o-layout-base;
+
 		@include _oLayoutNavigation($class);
 		@include oLayoutBreakPoint($from: M) {
 			grid-template-columns: minmax(10%, 25%) minmax(auto, $_o-layout-main-section-width);
@@ -18,13 +19,16 @@
 	}
 }
 
-@mixin oLayoutDocumentation ($class: 'o-layout') {
+@mixin oLayoutDocumentation($class: 'o-layout') {
 	.#{$class}--documentation {
 		@extend %o-layout-base--body;
 
-		.content--aside-wrapper {
-			border-left: 2px solid oColorsGetPaletteColor('teal');
-			padding-left: 1rem;
+		.#{$class}__rule-left {
+			@include oLayoutRule('left');
+		}
+
+		.#{$class}__rule-right {
+			@include oLayoutRule('right');
 		}
 	}
 }

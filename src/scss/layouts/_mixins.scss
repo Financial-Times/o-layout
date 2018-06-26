@@ -31,6 +31,17 @@
 	}
 }
 
+@mixin oLayoutRule($side: 'left') {
+	@if map-has-key($_o-layout-rules, $side) {
+		border-width: map-get($_o-layout-rules, $side);
+		border-color: oColorsGetPaletteColor('teal');
+		border-style: solid;
+		padding: 0 $_o-layout-gutter;
+	} @else {
+		@include _oLayoutError("#{$side} is not a rule side, please use 'left' or 'right'.");
+	}
+}
+
 @mixin _oLayoutError($message) {
 	@error '*** oLayout SCSS error: #{$message} ***';
 };

@@ -42,6 +42,12 @@
 		@include oTypographyProductHeadingLevel6();
 	}
 
+	aside {
+		align-self: flex-start;
+		font-style: italic;
+		@include oLayoutRule('left');
+	}
+
 	ol,
 	ul {
 		list-style-type: none;

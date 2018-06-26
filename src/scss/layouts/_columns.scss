@@ -52,7 +52,6 @@
 	.#{$class}__column--center-aside {
 		@include oLayoutBreakPoint($from: L) {
 			display: grid; //TODO: change to subgrid when property is implemented in browsers
-			padding-right: $_o-layout-gutter;
 			grid-column-end: span 3;
 			grid-template-columns: $_o-layout-main-section-width auto;
 			grid-column-gap: $_o-layout-gutter;
