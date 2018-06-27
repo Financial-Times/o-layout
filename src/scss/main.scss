@@ -10,7 +10,7 @@
 	@include oLayoutColumn();
 }
 
-.o-layout {
+.o-layout__area {
 	&--header {
 		grid-area: header
 	}

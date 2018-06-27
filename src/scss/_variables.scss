@@ -1,5 +1,5 @@
 $o-layout-is-silent: true !default;
-$_o-layout-main-section-width: 65ch; //average optimal line width https://baymard.com/blog/line-length-readability
+$_o-layout-main-section-width: minmax(auto, 65ch); //average optimal line width https://baymard.com/blog/line-length-readability
 $_o-layout-gutter: 1em;
 
 $_o-layout-columns: ('left', 'center', 'center-aside', 'wide', 'table');
