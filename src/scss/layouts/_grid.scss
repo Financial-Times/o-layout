@@ -1,8 +1,8 @@
 @mixin oLayoutBase ($class: 'o-layout') {
 	.#{$class} {
-		@extend %o-layout-base;
-		font-size: 18px;
+		@include _oLayoutGridBase;
 		@include _oLayoutNavigation($class);
+		@include oTypographySize(1);
 
 		@include oLayoutBreakPoint($from: M, $until: ML) {
 			grid-template-columns: minmax(10%, 25%) $_o-layout-main-section-width;
@@ -29,17 +29,5 @@
 		};
 
 		grid-column-gap: $_o-layout-gutter;
-	}
-}
-
-@mixin oLayoutDocumentation($class: 'o-layout') {
-	.#{$class}--documentation {
-		.#{$class}__rule-left {
-			@include oLayoutRule('left');
-		}
-
-		.#{$class}__rule-right {
-			@include oLayoutRule('right');
-		}
 	}
 }

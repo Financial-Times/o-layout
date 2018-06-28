@@ -1,7 +1,8 @@
-{{> shared/header}}
 
-<div class="o-layout o-layout--documentation o-layout--table" data-o-component="o-syntax-highlight">
-	<div class="o-layout__column--left">
+<div class="o-layout" data-o-component="o-syntax-highlight">
+	{{> shared/header}}
+
+	<div class="o-layout__area--sidebar">
 		<ol class="o-layout__navigation">
 			{{#children}}
 				{{#current}}
@@ -15,8 +16,9 @@
 		</ol>
 	</div>
 
-	{{> content/3-party-table}}
+	<div class="o-layout__area--main">
+		{{> content/3-party-table}}
+	</div>
 
+	{{> shared/footer}}
 </div>
-
-{{> shared/footer}}

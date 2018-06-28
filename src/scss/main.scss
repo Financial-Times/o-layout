@@ -1,21 +1,8 @@
+@import 'variables';
 @import 'layouts/main';
 
-@import 'variables';
-@import 'placeholders';
 
-@mixin oLayout {
-	@include oLayoutBase();
-	@include oLayoutDocumentation();
-
-	@include oLayoutColumn();
-}
-
-.o-layout__area {
-	&--header {
-		grid-area: header
-	}
-
-	&--footer {
-		grid-area: footer
-	}
+@mixin oLayout($class: 'o-layout') {
+	@include oLayoutBase($class);
+	@include oLayoutAreas($class);
 }

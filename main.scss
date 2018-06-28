@@ -1,7 +1,8 @@
-@import 'sass-mq/mq';
 
 $o-typography-is-silent: false;
 @import 'o-typography/main';
+
+@import 'sass-mq/mq';
 
 @import 'src/scss/main';
 
