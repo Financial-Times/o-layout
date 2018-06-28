@@ -29,18 +29,13 @@
 		@include oLayoutBreakPoint($from: ML) {
 			display: grid;
 			grid-column-gap: $_o-layout-gutter;
-			grid-template-columns: $_o-layout-main-section-width .5fr;
-			grid-auto-rows: auto;
-		}
-
-		@include oLayoutBreakPoint($from: XXL) {
 			grid-template-columns: $_o-layout-main-section-width 1fr;
 		}
 
 		* {
 			grid-column: 1;
 		}
-		
+
 		overflow: hidden;
 	}
 }

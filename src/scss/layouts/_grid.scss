@@ -13,11 +13,11 @@
 		};
 
 		@include oLayoutBreakPoint($from: ML, $until: XXL) {
-			grid-template-columns: minmax(10%, 20%) $_o-layout-main-section-width repeat(2, 0.5fr);
+			grid-template-columns: minmax(10%, 20%) $_o-layout-main-section-width 1fr;
 			grid-template-areas:
-				"header header header header"
-				"sidebar main main ."
-				". footer footer .";
+				"header header header"
+				"sidebar main main"
+				"footer footer footer";
 		};
 
 		@include oLayoutBreakPoint($from: XXL) {
