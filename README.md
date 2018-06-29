@@ -23,14 +23,14 @@ It provides:
 In essence, the `o-layout` provides a grid that looks like this:
 ```
 ┌————————————————————————————┐
-| 		  HEADER 	  	|
+|           HEADER           |
 ├————————————————————————————┤
-|		|		  		 |
-|  SIDE  |	 MAIN	 	 |
-|  BAR   |	 CONTENT	   |
-|		|			  	 |
+|        |                   |
+|  SIDE  |    MAIN           |
+|  BAR   |    CONTENT        |
+|        |                   |
 ├————————————————————————————┤
-| 	  	FOOTER		   |
+|           FOOTER           |
 └————————————————————————————┘
 ```
 
