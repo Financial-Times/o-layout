@@ -81,7 +81,13 @@
 /// Outputs grid footer area
 ///
 /// @param {String} $class — class name for grid
-@mixin oLayoutAreaFooter($class: $o-layout-class) {
+@mixin oLayoutAreaFooter($class: $o-layout-class, $logo: null) {
+	@include oFooterServicesBase();
+
+	@if $logo != null {
+		@include oFooterServicesWithLogo($image: $logo);
+	}
+
 	.#{$class}__area--footer {
 		grid-area: footer;
 		padding: 0;
