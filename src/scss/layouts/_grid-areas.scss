@@ -1,63 +1,83 @@
 @mixin oLayoutAreas($class: 'o-layout') {
-	.#{$class}__area {
-		&--header {
-			grid-area: header
+	@include oLayoutAreaHeader($class);
+	@include oLayoutAreaSidebar($class);
+	@include oLayoutAreaMain($class);
+	@include oLayoutAreaFooter($class);
+}
+
+@mixin oLayoutAreaHeader($class: 'o-layout') {
+	.#{$class}__area--header {
+		grid-area: header;
+	}
+}
+
+@mixin oLayoutAreaSidebar($class: 'o-layout') {
+	.#{$class}__area--sidebar {
+		@include oTypographySans(1);
+		@include _oLayoutNavigation($class);
+		grid-area: sidebar;
+
+		a {
+			@include oTypographyLink;
+			border: 0;
 		}
 
 		@include oLayoutBreakPoint($until: M) {
-			&--sidebar,
-			&--main {
-				padding: 0 1rem;
-			}
-		};
+			padding: 0 1rem;
+		}
+	}
+}
 
-		&--sidebar {
-			@include oTypographySans(1);
-			@include _oLayoutAside($class);
-			grid-area: sidebar;
+@mixin oLayoutAreaMain($class: 'o-layout') {
+	.#{$class}__area--main {
+		@include _oLayoutBody;
+		@include _oLayoutAside($class);
+		@include _oLayoutTable($class);
+		grid-area: main;
+		overflow: hidden;
 
-			a {
-				@include oTypographyLink();
-				border: 0;
-			}
+		@include oLayoutBreakPoint($until: M) {
+			padding: 0 1rem;
 		}
 
-		&--main {
-			@include _oLayoutBody;
-			@include _oLayoutAside($class);
-			@include _oLayoutTable($class);
-			grid-area: main;
-
-			@include oLayoutBreakPoint($from: ML) {
-				display: grid;
-				grid-column-gap: $_o-layout-gutter;
-				grid-template-columns: $_o-layout-main-section-width 1fr;
-			}
-
-			* {
-				grid-column: 1;
-			}
-
-			overflow: hidden;
+		@include oLayoutBreakPoint($from: ML) {
+			display: grid;
+			grid-column-gap: $_o-layout-gutter;
+			grid-template-columns: $_o-layout-main-section-width 1fr;
 		}
 
-		&--footer {
-			grid-area: footer
+		* {
+			grid-column: 1;
 		}
+
+		.#{$class}__rule-left {
+			@include oLayoutRule('left');
+		}
+
+		.#{$class}__rule-right {
+			@include oLayoutRule('right');
+		}
+	}
+}
+
+@mixin oLayoutAreaFooter($class: 'o-layout') {
+	.#{$class}__area--footer {
+		grid-area: footer;
+		padding: 0;
 	}
 }
 
 @mixin _oLayoutNavigation($class: 'o-layout') {
 	.#{$class}__navigation {
 		@include oLayoutBreakPoint($from: M) {
-			@include _oLayoutRule('right');
+			@include oLayoutRule('right');
 			position: sticky;
 			top: $_o-layout-gutter;
 			text-align: right;
 			margin-top: $_o-layout-gutter;
 		}
 
-		@include _oLayoutRule('left');
+		@include oLayoutRule('left');
 		text-align: left;
 		list-style: none;
 		margin: 0;

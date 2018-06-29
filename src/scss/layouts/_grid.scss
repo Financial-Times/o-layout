@@ -1,7 +1,6 @@
 @mixin oLayoutBase ($class: 'o-layout') {
 	.#{$class} {
 		@include _oLayoutGridBase;
-		@include _oLayoutNavigation($class);
 		@include oTypographySize(1);
 
 		@include oLayoutBreakPoint($from: M, $until: ML) {

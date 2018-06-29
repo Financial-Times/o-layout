@@ -58,7 +58,7 @@
 	}
 
 	aside {
-		@include _oLayoutRule('left');
+		@include oLayoutRule('left');
 		align-self: flex-start;
 		font-style: italic;
 	}
@@ -91,7 +91,7 @@
 	}
 }
 
-@mixin _oLayoutRule($side: 'left') {
+@mixin oLayoutRule($side: 'left') {
 	@if map-has-key($_o-layout-rules, $side) {
 		border-width: map-get($_o-layout-rules, $side);
 		border-color: oColorsGetPaletteColor('teal');
