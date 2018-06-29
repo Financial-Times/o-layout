@@ -15,6 +15,10 @@
 	.#{$class}__area--sidebar {
 		@include oTypographySans(1);
 		@include _oLayoutNavigation($class);
+		@include oLayoutBreakPoint($until: M) {
+			padding: 0 1rem;
+		}
+		
 		grid-area: sidebar;
 
 		a {
@@ -22,9 +26,6 @@
 			border: 0;
 		}
 
-		@include oLayoutBreakPoint($until: M) {
-			padding: 0 1rem;
-		}
 	}
 }
 
@@ -33,9 +34,6 @@
 		@include _oLayoutBody;
 		@include _oLayoutAside($class);
 		@include _oLayoutTable($class);
-		grid-area: main;
-		overflow: hidden;
-
 		@include oLayoutBreakPoint($until: M) {
 			padding: 0 1rem;
 		}
@@ -45,6 +43,9 @@
 			grid-column-gap: $_o-layout-gutter;
 			grid-template-columns: $_o-layout-main-section-width 1fr;
 		}
+
+		grid-area: main;
+		overflow: hidden;
 
 		* {
 			grid-column: 1;
