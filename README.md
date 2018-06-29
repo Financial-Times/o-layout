@@ -201,7 +201,7 @@ Otherwise, you can initialise the styling for o-layout with your own classnames,
 ```sass
 import 'o-layout/main';
 
-@include oLayout($class: my-layout)
+@include oLayout($class: my-layout);
 ```
 
 ---
