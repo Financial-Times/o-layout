@@ -3,7 +3,6 @@ $o-brand: 'internal';
 $o-typography-is-silent: false;
 @import 'o-typography/main';
 
-$o-header-services-is-silent: false;
 @import 'o-header-services/main';
 
 $o-footer-services-is-silent: false;
@@ -16,7 +15,7 @@ $o-footer-services-is-silent: false;
 
 
 @if $o-layout-is-silent == false {
-	
+
 	// Set to silent again to avoid being output twice
 	@include oLayout();
 
