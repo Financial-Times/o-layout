@@ -1,4 +1,5 @@
 $o-brand: 'internal';
+
 $o-typography-is-silent: false;
 @import 'o-typography/main';
 
@@ -10,9 +11,13 @@ $o-footer-services-is-silent: false;
 
 @import 'sass-mq/mq';
 
+
 @import 'src/scss/main';
 
+
 @if $o-layout-is-silent == false {
+	
+	// Set to silent again to avoid being output twice
 	@include oLayout();
 
 	$o-layout-is-silent: true !global;

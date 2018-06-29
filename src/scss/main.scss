@@ -1,8 +1,9 @@
 @import 'variables';
-@import 'layouts/main';
+@import 'mixins';
+@import 'grid';
+@import 'grid-areas';
 
-
-@mixin oLayout($class: 'o-layout') {
+@mixin oLayout($class: $o-layout-class) {
 	@include oLayoutBase($class);
 	@include oLayoutAreas($class);
 }
