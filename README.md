@@ -6,6 +6,9 @@ It provides:
 - consistent design (typography, colors),
 - ease of set up (header, footer, sidebar, navigation)
 
+
+## Table of Contents
+
 - [Usage](#usage)
 	- [Markup](#markup)
 		- [Layout Base](#layout-base)
