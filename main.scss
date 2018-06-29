@@ -1,12 +1,11 @@
 $o-brand: 'internal';
 
-$o-typography-is-silent: false;
+@import 'o-fonts/main';
 @import 'o-typography/main';
 
 @import 'o-header-services/main';
-
-$o-footer-services-is-silent: false;
-@import 'o-footer-services/main';
+// $o-footer-services-is-silent: false;
+// @import 'o-footer-services/main';
 
 @import 'sass-mq/mq';
 
