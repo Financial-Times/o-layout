@@ -3,7 +3,7 @@
 @import 'grid';
 @import 'grid-areas';
 
-@mixin oLayout($class: $o-layout-class) {
+@mixin oLayout($class: $o-layout-class, $footer-logo: null) {
 	@include oLayoutBase($class);
-	@include oLayoutAreas($class);
+	@include oLayoutAreas($class, $footer-logo);
 }

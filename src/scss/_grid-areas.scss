@@ -2,11 +2,11 @@
 /// Outputs grid grid template areas
 ///
 /// @param {String} $class — class name for grid
-@mixin oLayoutAreas($class: $o-layout-class) {
+@mixin oLayoutAreas($class: $o-layout-class, $footer-logo: null) {
 	@include oLayoutAreaHeader($class);
 	@include oLayoutAreaSidebar($class);
 	@include oLayoutAreaMain($class);
-	@include oLayoutAreaFooter($class);
+	@include oLayoutAreaFooter($class, $footer-logo);
 }
 
 /// Header Area
@@ -85,12 +85,11 @@
 	@include oFooterServicesBase();
 
 	@if $logo != null {
-		@include oFooterServicesWithLogo($image: $logo);
+		@include oFooterServicesWithLogo($logo);
 	}
 
 	.#{$class}__area--footer {
 		grid-area: footer;
-		padding: 0;
 	}
 }
 

@@ -28,10 +28,7 @@
 			"name": "documentation-layout",
 			"data": "demos/src/data/documentation-layout.json",
 			"template": "demos/src/documentation-layout.mustache",
-			"description": "Documentation Layout",
-			"brands": [
-				"internal"
-			]
+			"description": "Documentation Layout"
 		},
 		{
 			"title": "Lists & Tables Layout",

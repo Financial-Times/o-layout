@@ -39,7 +39,7 @@ In essence, the `o-layout` provides a grid that looks like this:
 
 ### Markup
 
-`o-layout` uses CSS Grid Layout, and more specifically [grid template  areas](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout/Grid_Template_Areas).   
+`o-layout` uses CSS Grid Layout, and more specifically [grid template areas](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout/Grid_Template_Areas).   
 All grid areas must be present in the markup in order to get the full layout.  
 
 ##### Layout Base
