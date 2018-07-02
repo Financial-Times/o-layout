@@ -28,7 +28,7 @@
 			grid-template-areas:
 				"header header header header header"
 				". sidebar main main ."
-				". footer footer footer .";
+				"footer footer footer footer footer";
 		};
 
 		grid-column-gap: $_o-layout-gutter;
