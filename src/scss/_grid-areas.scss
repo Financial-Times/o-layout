@@ -48,8 +48,6 @@
 @mixin oLayoutAreaMain($class: $o-layout-class) {
 	.#{$class}__area--main {
 		@include _oLayoutBody;
-		@include _oLayoutAside($class);
-		@include _oLayoutTable($class);
 		@include oLayoutBreakPoint($until: M) {
 			padding: 0 1rem;
 		}
@@ -63,8 +61,19 @@
 		grid-area: main;
 		overflow: hidden;
 
-		* {
+		> * {
 			grid-column: 1;
+		}
+
+		> aside {
+			grid-column: 2;
+		}
+
+		> table {
+			grid-column: 1 / span 2;
+			overflow-x: scroll;
+			padding-right: 1rem;
+			margin: 0;
 		}
 
 		.#{$class}__rule-left {
@@ -121,39 +130,5 @@
 				padding: 0;
 			}
 		}
-	}
-}
-
-/// Aside
-/// Outputs container for content asides
-///
-/// @param {String} $class — class name for grid
-/// @access Private
-@mixin _oLayoutAside($class: $o-layout-class) {
-	.#{$class}__aside {
-		@include oLayoutBreakPoint($from: L) {
-			display: grid; //TODO: change to subgrid when property is implemented in browsers
-			grid-column-end: span 2;
-			grid-template-columns: $_o-layout-main-section-width auto;
-			grid-column-gap: $_o-layout-gutter;
-
-			aside {
-				grid-column: 2;
-			}
-		}
-	}
-}
-
-
-/// Aside
-/// Outputs table styles
-///
-/// @param {String} $class — class name for grid
-/// @access Private
-@mixin _oLayoutTable($class: $o-layout-class) {
-	.#{$class}__table {
-		grid-column: 1 / span 2;
-		overflow-x: scroll;
-		padding-right: 1rem;
 	}
 }

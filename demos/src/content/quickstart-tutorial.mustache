@@ -39,45 +39,43 @@
 	</pre>
 </section>
 
-<section class="o-layout__aside">
-	<div>
-		<h3 id="include-css"> 2. Include the CSS</h3>
+<div>
+	<h3 id="include-css"> 2. Include the CSS</h3>
 
-		<p>
-			OK, we've got a button there, but it's completely unstyled. Let's use the
-			<code>o-buttons</code> Origami module to style it.
-		</p>
+	<p>
+		OK, we've got a button there, but it's completely unstyled. Let's use the
+		<code>o-buttons</code> Origami module to style it.
+	</p>
 
-		<p>
-			We're going to use the Build Service to provide the styles.
-		</p>
+	<p>
+		We're going to use the Build Service to provide the styles.
+	</p>
 
-		<p>
-			To do that we need to request the <code>o-buttons</code> CSS from the Build Service:
-		</p>
+	<p>
+		To do that we need to request the <code>o-buttons</code> CSS from the Build Service:
+	</p>
 
 
-		<pre>
-			<code class="o-syntax-highlight--html">
+	<pre>
+		<code class="o-syntax-highlight--html">
 https://www.ft.com/__origami/service/build/v2/bundles/css?modules=o-buttons</code>
-		</pre>
+	</pre>
 
-		<p>This request says "give me the CSS for o-buttons at the latest version"</p>
+	<p>This request says "give me the CSS for o-buttons at the latest version"</p>
 
-		<p>Let's add that to our page in the <code>&lt;head></code> as a <code>&lt;link...></code> tag</p>
+	<p>Let's add that to our page in the <code>&lt;head></code> as a <code>&lt;link...></code> tag</p>
 
 
-		<pre>
-			<code class="o-syntax-highlight--html">
+	<pre>
+		<code class="o-syntax-highlight--html">
 &lt;link rel="stylesheet" href="https://www.ft.com/__origami/service/build/v2/bundles/css?modules=o-buttons"/></code>
-		</pre>
-	</div>
-	<aside>
-		<h6>Read more about component versioning</h6>
-		<p>This example only uses the component tag (o-buttons). To use Origami modules in production code safely, you should also use a version number with your Build Service request.</p>
-		<a class='o-buttons' href='#'>Find out more about component versioning</a>
-	</aside>
-</section>
+	</pre>
+</div>
+<aside>
+	<h6>Read more about component versioning</h6>
+	<p>This example only uses the component tag (o-buttons). To use Origami modules in production code safely, you should also use a version number with your Build Service request.</p>
+	<a class='o-buttons' href='#'>Find out more about component versioning</a>
+</aside>
 
 	<h3 id="add-the-classes"> 3. Add the classes</h3>
 
