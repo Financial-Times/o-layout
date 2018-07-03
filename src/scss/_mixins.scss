@@ -37,6 +37,7 @@
 }
 
 /// Base grid
+/// @access Private
 @mixin _oLayoutGridBase () {
 	min-width: 100%;
 	margin: 0;
@@ -55,12 +56,12 @@
 }
 
 /// Base styling for the layout content
+/// @access Private
 @mixin _oLayoutBody () {
 	@include oTypographySans(1);
 
 	a {
 		@include oTypographyLink();
-		border: 0;
 	}
 
 	h1	{
@@ -90,7 +91,6 @@
 	aside {
 		@include oLayoutRule('left');
 		align-self: flex-start;
-		font-style: italic;
 	}
 
 	p,

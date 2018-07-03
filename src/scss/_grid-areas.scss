@@ -15,7 +15,7 @@
 /// @param {String} $class — class name for grid
 @mixin oLayoutAreaHeader($class: $o-layout-class) {
 	@include oHeaderServices();
-	.#{$class}__area--header {
+	.#{$class}__header {
 		grid-area: header;
 	}
 }
@@ -25,7 +25,7 @@
 ///
 /// @param {String} $class — class name for grid
 @mixin oLayoutAreaSidebar($class: $o-layout-class) {
-	.#{$class}__area--sidebar {
+	.#{$class}__sidebar {
 		@include oTypographySans(1);
 		@include _oLayoutNavigation($class);
 		@include oLayoutBreakPoint($until: M) {
@@ -46,7 +46,7 @@
 ///
 /// @param {String} $class — class name for grid
 @mixin oLayoutAreaMain($class: $o-layout-class) {
-	.#{$class}__area--main {
+	.#{$class}__main {
 		@include _oLayoutBody;
 		@include oLayoutBreakPoint($until: M) {
 			padding: 0 1rem;
@@ -97,7 +97,7 @@
 		@include oFooterServicesWithLogo($logo);
 	}
 
-	.#{$class}__area--footer {
+	.#{$class}__footer {
 		grid-area: footer;
 	}
 }

@@ -48,19 +48,19 @@ The `sidebar` and `main` content areas accept any element, and will automaticall
 
 ```html
 <div class="o-layout">
-	<header class="o-layout__area--header">
+	<header class="o-layout__header">
 		<!-- o-header-services markup goes here -->
 	</header>
 
-	<div class="o-layout__area--sidebar">
+	<div class="o-layout__sidebar">
 		<!-- content for the sidebar goes here -->
 	</div>
 
-	<div class="o-layout__area--main">
+	<div class="o-layout__main">
 		<!-- Any and all content goes here -->
 	</div>
 
-	<footer class="o-layout__area--footer">
+	<footer class="o-layout__footer">
 		<!-- o-footer-services markup goes here -->
 	</footer>
 </div>
@@ -72,11 +72,11 @@ The `sidebar` and `main` content areas accept any element, and will automaticall
 In order to add a navigation to the side-bar, wrap a list with the navigation items like this:
 ```html
 <div class="o-layout">
-	<header class="o-layout__area--header">
+	<header class="o-layout__header">
 		<!-- o-header-services markup goes here -->
 	</header>
 
-	<div class="o-layout__area--sidebar">
+	<div class="o-layout__sidebar">
 		<!-- this can be an <ol> or a <ul> -->
 		<ol class="o-layout__navigation">
 			<li>Nav Item 1</li>
@@ -84,11 +84,11 @@ In order to add a navigation to the side-bar, wrap a list with the navigation it
 		</ol>
 	</div>
 
-	<div class="o-layout__area--main">
+	<div class="o-layout__main">
 		<!-- Any and all content goes here -->
 	</div>
 
-	<footer class="o-layout__area--footer">
+	<footer class="o-layout__footer">
 		<!-- o-footer-services markup goes here -->
 	</footer>
 </div>
@@ -100,11 +100,11 @@ In order to add a navigation to the side-bar, wrap a list with the navigation it
 
 ```html
 <div class="o-layout">
-	<header class="o-layout__area--header">
+	<header class="o-layout__header">
 		<!-- o-header-services markup goes here -->
 	</header>
 
-	<div class="o-layout__area--sidebar">
+	<div class="o-layout__sidebar">
 		<!-- this can be an <ol> or a <ul> -->
 		<ol class="o-layout__navigation">
 			<li>Nav Item 1</li>
@@ -112,7 +112,7 @@ In order to add a navigation to the side-bar, wrap a list with the navigation it
 		</ol>
 	</div>
 
-	<div class="o-layout__area--main">
+	<div class="o-layout__main">
 		<h1> This is a title</h1>
 		<p> This is some content. </p>
 		<div>
@@ -124,7 +124,7 @@ In order to add a navigation to the side-bar, wrap a list with the navigation it
 		</aside>
 	</div>
 
-	<footer class="o-layout__area--footer">
+	<footer class="o-layout__footer">
 		<!-- o-footer-services markup goes here -->
 	</footer>
 </div>
