@@ -3,11 +3,17 @@
 ///
 /// @param {String} $class — class name for grid
 @mixin oLayoutBase ($class: $o-layout-class) {
+	html,
+	body {
+		height: 100%;
+	}
+	
 	.#{$class} {
 		@include _oLayoutGridBase;
 		@include oTypographySize(1);
 
-		@include oLayoutBreakPoint($from: M, $until: ML) {
+		@include oLayoutBreakPoint($from: M) {
+			grid-template-rows: auto 1fr auto;
 			grid-template-columns: minmax(10%, 25%) $_o-layout-main-section-width;
 			grid-template-areas:
 				"header header"
@@ -15,7 +21,7 @@
 				"footer footer";
 		};
 
-		@include oLayoutBreakPoint($from: ML, $until: XXL) {
+		@include oLayoutBreakPoint($from: ML) {
 			grid-template-columns: minmax(10%, 20%) $_o-layout-main-section-width 1fr;
 			grid-template-areas:
 				"header header header"
@@ -32,5 +38,6 @@
 		};
 
 		grid-column-gap: $_o-layout-gutter;
+		min-height: 100%;
 	}
 }

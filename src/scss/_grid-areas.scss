@@ -59,6 +59,7 @@
 		}
 
 		grid-area: main;
+		align-content: flex-start;
 		overflow: hidden;
 
 		> * {
@@ -74,7 +75,6 @@
 			grid-column: 1 / span 2;
 			overflow-x: scroll;
 			padding-right: 1rem;
-			margin: 0;
 		}
 
 		.#{$class}__rule-left {
