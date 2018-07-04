@@ -52,7 +52,7 @@
 			padding: 0 1rem;
 		}
 
-		@include oLayoutBreakPoint($from: ML) {
+		@include oLayoutBreakPoint($from: L) {
 			display: grid;
 			grid-column-gap: $_o-layout-gutter;
 			grid-template-columns: $_o-layout-main-section-width 1fr;
@@ -67,6 +67,7 @@
 
 		> aside {
 			grid-column: 2;
+			grid-row: span 3; //hack mchack, need to look into spanning columns irrespective of siblings
 		}
 
 		> table {
