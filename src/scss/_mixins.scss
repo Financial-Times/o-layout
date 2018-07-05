@@ -126,19 +126,6 @@
 ///
 ///@param {String} $side — left or right rule to be styled
 @mixin oLayoutRule($side: 'left') {
-	@if map-has-key($_o-layout-rules, $side) {
-		border-width: map-get($_o-layout-rules, $side);
-		border-color: oColorsGetPaletteColor('teal');
-		border-style: solid;
-		padding: 0 $_o-layout-gutter;
-	} @else {
-		@include _oLayoutError("#{$side} is not a rule side, please use 'left' or 'right'.");
-	}
+	border-#{$side}: 2px solid oColorsGetPaletteColor('teal');
+	padding-#{$side}: $_o-layout-gutter;
 }
-
-/// Provide a component specific error message
-///
-/// @param {String} $message - The message to insert in the error.
-@mixin _oLayoutError($message) {
-	@error '*** oLayout SCSS error: #{$message} ***';
-};

@@ -52,11 +52,18 @@
 			padding: 0 1rem;
 		}
 
-		@include oLayoutBreakPoint($from: L) {
+		@include oLayoutBreakPoint($from: ML) {
 			display: grid;
 			grid-column-gap: $_o-layout-gutter;
 			grid-template-columns: $_o-layout-main-section-width 1fr;
 		}
+
+		@include oLayoutBreakPoint($from: L) {
+			> aside {
+				grid-column: 2;
+				grid-row: span 3; //hack mchack, need to look into spanning across rows irrespective of siblings
+			}
+		};
 
 		grid-area: main;
 		align-content: flex-start;
@@ -66,15 +73,11 @@
 			grid-column: 1;
 		}
 
-		> aside {
-			grid-column: 2;
-			grid-row: span 3; //hack mchack, need to look into spanning columns irrespective of siblings
-		}
-
 		> table {
 			grid-column: 1 / span 2;
 			overflow-x: scroll;
 			padding-right: 1rem;
+			width: 100%;
 		}
 
 		.#{$class}__rule-left {
@@ -112,6 +115,7 @@
 	.#{$class}__navigation {
 		@include oLayoutBreakPoint($from: M) {
 			@include oLayoutRule('right');
+			border-left: 0;
 			position: sticky;
 			top: $_o-layout-gutter;
 			text-align: right;

@@ -29,10 +29,3 @@ $o-layout-breakpoints: (
 	XL: 1200px,
 	XXL: 1350px
 ) !default;
-
-/// Styling for decorative rules
-/// @type List
-$_o-layout-rules: (
-	'left': 0 0 0 2px,
-	'right': 0 2px 0 0
-);
