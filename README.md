@@ -23,7 +23,7 @@ It provides:
 ## Usage
 `o-layout` is pure HTML and CSS, and relies on all of the sections within the markup to lay the page out correctly.
 
-In essence, the `o-layout` provides a grid that looks like this:
+In essence, the `o-layout` provides a grid has the following structure:
 ```
 ┌————————————————————————————┐
 |           HEADER           |
@@ -36,6 +36,7 @@ In essence, the `o-layout` provides a grid that looks like this:
 |           FOOTER           |
 └————————————————————————————┘
 ```
+The main content section will style tables and asides specifically to span different column widths, designed to fit within the existing grid.
 
 ### Markup
 

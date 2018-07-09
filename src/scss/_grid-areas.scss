@@ -2,8 +2,8 @@
 /// Outputs grid grid template areas
 ///
 /// @param {String} $class — class name for grid
-@mixin oLayoutAreas($class: $o-layout-class, $footer-logo: null) {
-	@include oLayoutAreaHeader($class);
+@mixin oLayoutAreas($class: $o-layout-class, $header-logo: null, $footer-logo: null) {
+	@include oLayoutAreaHeader($class, $header-logo);
 	@include oLayoutAreaSidebar($class);
 	@include oLayoutAreaMain($class);
 	@include oLayoutAreaFooter($class, $footer-logo);
@@ -13,8 +13,13 @@
 /// Outputs grid header area
 ///
 /// @param {String} $class — class name for grid
-@mixin oLayoutAreaHeader($class: $o-layout-class) {
-	@include oHeaderServices();
+@mixin oLayoutAreaHeader($class: $o-layout-class, $logo: null) {
+	@if $logo == null {
+		@include oHeaderServices()
+	} @else {
+		@include oHeaderServices($logo: $logo);
+	}
+
 	.#{$class}__header {
 		grid-area: header;
 	}
@@ -71,6 +76,10 @@
 
 		> * {
 			grid-column: 1;
+		}
+
+		> :first-child {
+			margin-top: $_o-layout-gutter;
 		}
 
 		> table {
