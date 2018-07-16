@@ -47,6 +47,9 @@ All grid areas must be present in the markup in order to get the full layout.
 The markup below ↓ will generate the ascii grid above ↑.  
 The `sidebar` and `main` content areas accept any element, and will automatically style typography, headings, asides, paragraphs, lists and links.
 
+The `main` content section is a grid, and CSS Grid Layout only affects its _immediate_ children. `o-layout` automatically constrains these children to the first column of the `main` section, but if you want an element to span the full width of the main content area, you can apply the `o-layout__main--full-span` class to that element to achieve that effect:
+
+
 ```html
 <div class="o-layout">
 	<header class="o-layout__header">
@@ -59,6 +62,12 @@ The `sidebar` and `main` content areas accept any element, and will automaticall
 
 	<div class="o-layout__main">
 		<!-- Any and all content goes here -->
+		<h1> This is a title</h1> <!-- one column wide -->
+		<p> This is some content. </p> <!-- one column wide -->
+		<div class="o-layout__main--full-span"> <!-- two columns wide -->
+			<p> This is more content</p>
+			<p> This is even more content</p>
+		</div>
 	</div>
 
 	<footer class="o-layout__footer">
@@ -87,6 +96,12 @@ In order to add a navigation to the side-bar, wrap a list with the navigation it
 
 	<div class="o-layout__main">
 		<!-- Any and all content goes here -->
+		<h1> This is a title</h1>
+		<p> This is some content. </p>
+		<div>
+			<p> This is more content</p>
+			<p> This is even more content</p>
+		</div>
 	</div>
 
 	<footer class="o-layout__footer">
@@ -114,6 +129,7 @@ In order to add a navigation to the side-bar, wrap a list with the navigation it
 	</div>
 
 	<div class="o-layout__main">
+		<!-- Any and all content goes here -->
 		<h1> This is a title</h1>
 		<p> This is some content. </p>
 		<div>
