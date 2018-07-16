@@ -96,6 +96,10 @@
 		.#{$class}__rule-right {
 			@include oLayoutRule('right');
 		}
+
+		.#{$class}__main--full-span {
+			grid-column-end: -1;
+		}
 	}
 }
 
