@@ -2,19 +2,7 @@
 <div class="o-layout" data-o-component="o-syntax-highlight">
 	{{> shared/header}}
 
-	<div class="o-layout__sidebar">
-		<ol class="o-layout__navigation">
-			{{#children}}
-				{{#current}}
-					{{#navigation}}
-						<li>
-							<a href="{{href}}">{{name}}</a>
-						</li>
-					{{/navigation}}
-				{{/current}}
-			{{/children}}
-		</ol>
-	</div>
+	<div class="o-layout__sidebar"></div>
 
 	<div class="o-layout__main">
 		{{> content/3-party-table}}
