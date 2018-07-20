@@ -21,7 +21,7 @@ class Layout {
 			return `<li><a href='#${heading.id}'>${heading.innerText}</a></li>`;
 		});
 
-		list = document.createElement('ol')
+		let list = document.createElement('ol');
 		list.classList.add(`${this.options.baseClass}__navigation`);
 		list.innerHTML = listItems.join('');
 
@@ -68,7 +68,7 @@ class Layout {
 				} else if (!possibleLocation) {
 					navAnchors.forEach(anchor => anchor.setAttribute('aria-current', false));
 				}
-			})
+			});
 		});
 	}
 
