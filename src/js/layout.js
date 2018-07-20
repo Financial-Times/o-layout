@@ -1,9 +1,14 @@
 class Layout {
+	/**
+ * Class constructor.
+ * @param {HTMLElement} [layoutElement] - The layout element in the DOM
+ * @param {Object} [options={}] - An options object for configuring aspects of the layout
+ */
 	constructor (layoutEl, options) {
 		this.layoutEl = layoutEl;
 		this.headings = document.querySelectorAll('h2, h3');
 
-
+		//Default options
 		this.options = Object.assign({}, {
 			baseClass: 'o-layout',
 			constructNav: true
@@ -16,6 +21,9 @@ class Layout {
 		}
 	}
 
+	/**
+	 * Construct the sidebar navigation from headings within the DOM.
+	 */
 	constructNavFromDOM () {
 		let listItems = Array.from(this.headings, (heading) => {
 			return `<li><a href='#${heading.id}'>${heading.innerText}</a></li>`;
@@ -30,7 +38,11 @@ class Layout {
 		this.highlightNavItems(list);
 	}
 
-
+	/**
+	* Enables navigation item highlighting based on scroll position.
+	* Relies on heading ids and anchor href being the same.
+	* @param {HTMLElement} [navigation] - the sidebar navigation list in the DOM
+	*/
 	highlightNavItems(navigation) {
 		let currentLocation;
 		let navAnchors = navigation.querySelectorAll('A');
@@ -72,6 +84,11 @@ class Layout {
 		});
 	}
 
+	/**
+	 * Initialise layout component.
+	 * @param {(HTMLElement|String)} rootElement - The root element to intialise the layout in, or a CSS selector for the root element
+	 * @param {Object} [options={}] - An options object for configuring layout behaviour.
+	 */
 	static init (rootEl, opts) {
 		if (!rootEl) {
 			rootEl = document.body;
