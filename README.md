@@ -16,6 +16,9 @@ It provides:
 		- [Asides](#asides)
 		- [Tables](#tables)
 	- [Sass](#sass)
+	- [JavaScript](#javascript)
+		- [Construction](#construction)
+		- [Custom Navigation](#custom-navigation)
 - [Contact](#contact)
 - [Licence](#licence)
 
@@ -51,7 +54,7 @@ The `main` content section is a grid, and CSS Grid Layout only affects its _imme
 
 
 ```html
-<div class="o-layout">
+<div class="o-layout" data-o-component="o-layout">
 	<header class="o-layout__header">
 		<!-- o-header-services markup goes here -->
 	</header>
@@ -62,7 +65,7 @@ The `main` content section is a grid, and CSS Grid Layout only affects its _imme
 
 	<div class="o-layout__main">
 		<!-- Any and all content goes here -->
-		<h1> This is a title</h1> <!-- one column wide -->
+		<h2 id="this-is-a-title"> This is a title</h2><!-- one column wide -->
 		<p> This is some content. </p> <!-- one column wide -->
 		<div class="o-layout__main--full-span"> <!-- two columns wide -->
 			<p> This is more content</p>
@@ -77,26 +80,28 @@ The `main` content section is a grid, and CSS Grid Layout only affects its _imme
 ```
 
 #### Navigation and Content
-`o-layout` also provides a navigation area for the sidebar, and the option to split the main content area, for use with tables, or asides.
+Unless the configuration says otherwise, `o-layout` will generate a navigation list for the sidebar, which will rely on the usage of `<h2>`s and `<h3>`s in the main content section.
+`o-layout` will automatically style all of its children according to the grid area those children are in.
 
-In order to add a navigation to the side-bar, wrap a list with the navigation items like this:
-```html
-<div class="o-layout">
+If you would like to customise your navigation in the sidebar, you will need to [add some JavaScript](#custom-navigation) to your product, and your markup will need to look like this:
+```diff
+<div class="o-layout" data-o-component="o-layout">
 	<header class="o-layout__header">
 		<!-- o-header-services markup goes here -->
 	</header>
 
 	<div class="o-layout__sidebar">
 		<!-- this can be an <ol> or a <ul> -->
-		<ol class="o-layout__navigation">
-			<li>Nav Item 1</li>
-			<li>Nav Item 2</li>
-		</ol>
++		<ol class="o-layout__navigation">
++			<li>
++				<a href="#this-is-a-title">This is a title</a>
++			</li>
++		</ol>
 	</div>
 
 	<div class="o-layout__main">
 		<!-- Any and all content goes here -->
-		<h1> This is a title</h1>
+		<h2 id="this-is-a-title"> This is a title</h2>
 		<p> This is some content. </p>
 		<div>
 			<p> This is more content</p>
@@ -112,10 +117,10 @@ In order to add a navigation to the side-bar, wrap a list with the navigation it
 
 #### Asides
 
-`o-layout` can make content asides literal asides to the content. As long as the aside is tagged as an aside and placed _after_ the content it is an aside to, that element will line up correctly:
+`o-layout` will make content asides literal asides to the content. As long as the aside is an aside element and placed _after_ the content it is an aside to, that element will line up correctly:
 
-```html
-<div class="o-layout">
+```diff
+<div class="o-layout" data-o-component="o-layout">
 	<header class="o-layout__header">
 		<!-- o-header-services markup goes here -->
 	</header>
@@ -123,22 +128,23 @@ In order to add a navigation to the side-bar, wrap a list with the navigation it
 	<div class="o-layout__sidebar">
 		<!-- this can be an <ol> or a <ul> -->
 		<ol class="o-layout__navigation">
-			<li>Nav Item 1</li>
-			<li>Nav Item 2</li>
+			<li>
+				<a href="#this-is-a-title">This is a title</a>
+			</li>
 		</ol>
 	</div>
 
 	<div class="o-layout__main">
 		<!-- Any and all content goes here -->
-		<h1> This is a title</h1>
+		<h2 id="this-is-a-title"> This is a title</h2>
 		<p> This is some content. </p>
 		<div>
 			<p> This is more content</p>
 			<p> This is even more content</p>
 		</div>
-		<aside>
-			<p> This is an aside to the content immediately above.</p>
-		</aside>
++		<aside>
++			<p> This is an aside to the content immediately above.</p>
++		</aside>
 	</div>
 
 	<footer class="o-layout__footer">
@@ -148,7 +154,7 @@ In order to add a navigation to the side-bar, wrap a list with the navigation it
 ```
 
 ### Sass
-As with all Origami components, o-layout has a [silent mode](http://origami.ft.com/docs/syntax/scss/#silent-styles). To use its compiled CSS (rather than using its mixins with your own Sass) set `$o-layout-is-silent: false;` in your Sass before you import the o-layout Sass.
+As with all Origami components, o-layout has a [silent mode](http://origami.ft.com/docs/syntax/scss/#silent-styles). To use its compiled CSS (rather than using its mixins with your own Sass) set `$o-layout-is-silent: false;` in your Sass before you import the `o-layout` Sass.
 
 Otherwise, you can initialise the styling for o-layout with your own classnames, like this:
 ```sass
@@ -157,14 +163,35 @@ import 'o-layout/main';
 @include oLayout($class: my-layout);
 ```
 
+### JavaScript
+No code will run automatically unless you are using the Build Service. You must either construct an `o-layout` object or fire an o.DOMContentLoaded event, which `o-layout` listens for.
+
+#### Construction
+
+If you have set up your HTML to use default `o-layout` classes, then you can use the following to initialise your layout:
+```js
+const oLayout = require('o-layout');
+oLayout.init();
+```
+
+#### Custom Navigation
+`o-layout` uses JavaScript to construct the sidebar navigation out of headings in the content, and to highlight those items depending on the scroll position. This is its default behaviour.
+
+If you would like to define your own navigation, you will need to initialise `o-layout` like this:
+
+```js
+const oLayout = require('o-layout');
+oLayout.init(null, { constructNav: false });
+```
+
 ---
 
-## Contact
+### Contact
 
 If you have any questions or comments about this component, or need help using it, please either [raise an issue](https://github.com/Financial-Times/o-component-boilerplate/issues), visit [#ft-origami](https://financialtimes.slack.com/messages/ft-origami/) or email [Origami Support](mailto:origami-support@ft.com).
 
 ----
 
-## Licence
+### Licence
 
 This software is published by the Financial Times under the [MIT licence](http://opensource.org/licenses/MIT).
