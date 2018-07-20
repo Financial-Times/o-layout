@@ -15,7 +15,7 @@ $o-layout-is-silent: true !default;
 $o-layout-class: o-layout !default;
 
 /// Base layout measurements
-$_o-layout-main-section-width: minmax(auto, oTypographyMaxLineWidth(3));
+$_o-layout-main-section-width: minmax(30ch, oTypographyMaxLineWidth(3));
 $_o-layout-gutter: 1rem;
 
 /// Breakpoints for responsive layout

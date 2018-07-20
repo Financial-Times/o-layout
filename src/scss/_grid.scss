@@ -15,7 +15,7 @@
 
 		@include oLayoutBreakPoint($from: M) {
 			grid-template-rows: auto 1fr auto;
-			grid-template-columns: 1fr max-content $_o-layout-main-section-width minmax(20ch, 30ch) 1fr;
+			grid-template-columns: 1fr minmax(auto, 30ch) $_o-layout-main-section-width minmax(20ch, 30ch) 1fr;
 			grid-template-areas:
 				"header header header header header"
 				". sidebar main main ."

@@ -102,8 +102,8 @@
 		margin: 0 0 1rem;
 	}
 
-	ol,
-	ul {
+	ol:not([data-o-component^="o-"]),
+	ul:not([data-o-component^="o-"]) {
 		list-style-type: none;
 		position: relative;
 		padding-left: 1.5rem;

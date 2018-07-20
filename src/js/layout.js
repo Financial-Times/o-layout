@@ -1,12 +1,12 @@
 class Layout {
-
 	constructor (layoutEl, options) {
 		this.layoutEl = layoutEl;
 		this.headings = document.querySelectorAll('h2, h3');
 
+
 		this.options = Object.assign({}, {
 			baseClass: 'o-layout',
-			constructNav: false
+			constructNav: true
 		}, options);
 
 		if (this.options.constructNav) {
@@ -14,7 +14,6 @@ class Layout {
 		} else {
 			this.highlightNavItems(document.querySelector(`.${this.options.baseClass}__navigation`));
 		}
-
 	}
 
 	constructNavFromDOM () {
