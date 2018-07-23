@@ -24,9 +24,9 @@ It provides:
 
 
 ## Usage
-`o-layout` is pure HTML and CSS, and relies on all of the sections within the markup to lay the page out correctly.
 
-In essence, the `o-layout` provides a grid that has the following structure:
+`o-layout` provides a grid that has the following structure:
+
 ```
 ┌————————————————————————————┐
 |           HEADER           |
@@ -39,19 +39,36 @@ In essence, the `o-layout` provides a grid that has the following structure:
 |           FOOTER           |
 └————————————————————————————┘
 ```
-The main content section will style tables and asides specifically to span different column widths, designed to fit within the `o-layout` grid.
+
+Within the main content section, there is another grid, which looks like this:
+
+```
+┌————————————————————————————┐
+|                            |
+├————————————————————————————┤
+|        | MAIN       |      |
+|        | CONTENT    |      |
+|        | WELL       |      |
+|        |            |      |
+├————————————————————————————┤
+|                            |
+└————————————————————————————┘
+```
+At is base, the main content section styles _elements_, not classes.
+It will automatically style paragraphs, headings, lists and anchor tags, for example.
+It will also automatically style tables and asides, which will occupy different columns or span different columns within the main content section.
+
+The grid does not require the sidebar to maintain its layout.
 
 ### Markup
 
 `o-layout` uses CSS Grid Layout, and more specifically [grid template areas](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout/Grid_Template_Areas).   
-All grid areas must be present in the markup in order to get the full layout.  
 
 #### Layout Base
 The markup below ↓ will generate the ascii grid above ↑.  
-The `sidebar` and `main` content areas accept any element, and will automatically style typography, headings, asides, paragraphs, lists and links.
 
-The `main` content section is a grid, and CSS Grid Layout only affects its _immediate_ children. `o-layout` automatically constrains these children to the first column of the `main` section, but if you want an element to span the full width of the main content area, you can apply the `o-layout__main--full-span` class to that element to achieve that effect:
-
+The main content section will constrain is _immediate_ children to its first column, with the exception of `table`s and `asides`.  
+If you want an element to span the full width of the main content area, you can apply the `o-layout__main--full-span` class to that element to achieve that effect.
 
 ```html
 <div class="o-layout" data-o-component="o-layout">
@@ -80,12 +97,16 @@ The `main` content section is a grid, and CSS Grid Layout only affects its _imme
 ```
 
 #### Navigation and Content
-Unless the configuration says otherwise, `o-layout` will generate a navigation list for the sidebar, which will rely on the usage of `<h2>`s and `<h3>`s in the main content section.
-`o-layout` will automatically style all of its children according to the grid area those children are in.
+Unless the configuration says otherwise, `o-layout` will generate a sidebar navigation, which will rely on the usage of `<h2>`s and `<h3>`s present in the main content section. If this is a feature you want to use, then you don't need to add anything to the sidebar section of `o-layout`.
 
-If you would like to customise your navigation in the sidebar, you will need to [add some JavaScript](#custom-navigation) to your product, and your markup will need to look like this:
+However, if you would like to customise your sidebar navigation, there are two ways to do this. You can add a data-attribute to your markup, or you can do [via JavaScript](#custom-navigation)
+
+Please note, automatic navigation construction creates an HTML tree structure that allows the nav items to be highlighted when you scroll down the page.
+For this effect to apply to your custom navigation, you will need to add the `o-layout__navigation` class your navigation list, and ensure that your `<a href>`s point at the `id` of the section it corresponds to.
+
+Altogether, your markup should look like this:
 ```diff
-<div class="o-layout" data-o-component="o-layout">
++<div class="o-layout" data-o-component="o-layout" data-o-layout-construct-nav="false">
 	<header class="o-layout__header">
 		<!-- o-header-services markup goes here -->
 	</header>
