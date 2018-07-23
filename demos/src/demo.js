@@ -7,5 +7,3 @@ document.querySelector('link').href += "&brand=internal";
 document.addEventListener('DOMContentLoaded', () => {
 	document.dispatchEvent(new CustomEvent('o.DOMContentLoaded'));
 });
-
-console.log('this');

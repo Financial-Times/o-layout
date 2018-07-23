@@ -12,12 +12,15 @@ class Layout {
 		this.options = Object.assign({}, {
 			baseClass: 'o-layout',
 			constructNav: true
-		}, options);
+		}, options || Layout.getDataAttributes(layoutEl));
 
 		if (this.options.constructNav) {
 			this.constructNavFromDOM();
 		} else {
-			this.highlightNavItems(document.querySelector(`.${this.options.baseClass}__navigation`));
+			let navigation = document.querySelector(`.${this.options.baseClass}__navigation`);
+			if (navigation) {
+				this.highlightNavItems(navigation);
+			}
 		}
 	}
 
@@ -83,6 +86,38 @@ class Layout {
 			});
 		});
 	}
+
+	/**
+	 * Get the data attributes from the layoutEl. If the layout is being set up
+	 * declaratively, this method is used to extract the data attributes from the DOM.
+	 * @param {HTMLElement} layoutElement - The layout element in the DOM
+	 */
+	static getDataAttributes (layoutElement) {
+		if (!(layoutElement instanceof HTMLElement)) {
+			return {};
+		}
+		return Object.keys(layoutElement.dataset).reduce((options, key) => {
+
+			// Ignore data-o-component
+			if (key === 'oComponent') {
+				return options;
+			}
+
+			// Build a concise key and get the option value
+			const shortKey = key.replace(/^oLayout(\w)(\w+)$/, (m, m1, m2) => m1.toLowerCase() + m2);
+			const value = layoutElement.dataset[key];
+
+			// Try parsing the value as JSON, otherwise just set it as a string
+			try {
+				options[shortKey] = JSON.parse(value.replace(/\'/g, '"'));
+			} catch (error) {
+				options[shortKey] = value;
+			}
+
+			return options;
+		}, {});
+	}
+
 
 	/**
 	 * Initialise layout component.

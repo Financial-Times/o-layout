@@ -22,4 +22,4 @@ export default {
 
 		<footer class="o-layout__footer"></footer>
 	</div>`
-}
+};
