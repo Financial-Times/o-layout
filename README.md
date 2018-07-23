@@ -54,7 +54,7 @@ Within the main content section, there is another grid, which looks like this:
 |                            |
 └————————————————————————————┘
 ```
-At is base, the main content section styles _elements_, not classes.
+At its base, the main content section styles _elements_, not classes.
 It will automatically style paragraphs, headings, lists and anchor tags, for example.
 It will also automatically style tables and asides, which will occupy different columns or span different columns within the main content section.
 
@@ -67,7 +67,8 @@ The grid does not require the sidebar to maintain its layout.
 #### Layout Base
 The markup below ↓ will generate the ascii grid above ↑.  
 
-The main content section will constrain is _immediate_ children to its first column, with the exception of `table`s and `asides`.  
+The main content section will constrain its _immediate_ children to its first column, with the exception of `table`s and `asides`.  
+
 If you want an element to span the full width of the main content area, you can apply the `o-layout__main--full-span` class to that element to achieve that effect.
 
 ```html
