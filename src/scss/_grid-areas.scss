@@ -97,11 +97,12 @@
 			@include oLayoutRule('right');
 		}
 
-		.#{$class}__main--single-span {
+		.#{$class}__main__single-span {
 			grid-column-end: 2;
 		}
 
-		.#{$class}__main--full-span {
+		.#{$class}__main--full-span,
+		.#{$class}__main__full-span {
 			grid-column-end: -1;
 		}
 	}
