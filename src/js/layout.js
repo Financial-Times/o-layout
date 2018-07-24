@@ -14,7 +14,7 @@ class Layout {
 			navHeadingSelector: 'h2, h3'
 		}, options || Layout.getDataAttributes(layoutEl));
 
-		this.headings = [...document.querySelectorAll(this.options.navHeadingSelector)]
+		this.headings = [...this.layoutEl.querySelectorAll(this.options.navHeadingSelector)]
 			.filter(heading => heading.getAttribute('id'));
 
 		if (this.options.constructNav) {
