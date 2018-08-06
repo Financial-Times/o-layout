@@ -72,11 +72,10 @@ If you want an element to span the full width of the main content area, you can 
 _Note: `o-layout` styles tables to span two columns automatically. If you want a table to stick to a single column, you can apply `o-layout__main__single-span`, instead. Every other element is styled to fit a single column._
 
 ```html
+<header class="o-layout__header">
+	<!-- o-header-services markup goes here -->
+</header>
 <div class="o-layout" data-o-component="o-layout">
-	<header class="o-layout__header">
-		<!-- o-header-services markup goes here -->
-	</header>
-
 	<div class="o-layout__sidebar">
 		<!-- content for the sidebar goes here -->
 	</div>
@@ -90,11 +89,10 @@ _Note: `o-layout` styles tables to span two columns automatically. If you want a
 			<p> This is even more content</p>
 		</div>
 	</div>
-
-	<footer class="o-layout__footer">
-		<!-- o-footer-services markup goes here -->
-	</footer>
 </div>
+<footer class="o-layout__footer">
+	<!-- o-footer-services markup goes here -->
+</footer>
 ```
 
 #### Navigation and Content
@@ -107,11 +105,10 @@ For this effect to apply to your custom navigation, you will need to add the `o-
 
 Altogether, your markup should look like this:
 ```diff
+<header class="o-layout__header">
+	<!-- o-header-services markup goes here -->
+</header>
 +<div class="o-layout" data-o-component="o-layout" data-o-layout-construct-nav="false">
-	<header class="o-layout__header">
-		<!-- o-header-services markup goes here -->
-	</header>
-
 	<div class="o-layout__sidebar">
 		<!-- this can be an <ol> or a <ul> -->
 +		<ol class="o-layout__navigation">
@@ -130,11 +127,10 @@ Altogether, your markup should look like this:
 			<p> This is even more content</p>
 		</div>
 	</div>
-
-	<footer class="o-layout__footer">
-		<!-- o-footer-services markup goes here -->
-	</footer>
 </div>
+<footer class="o-layout__footer">
+	<!-- o-footer-services markup goes here -->
+</footer>
 ```
 
 If you wish to use headings other than `<h2>` and `<h3>` in the navigation generation, you can customise the selector that's used. For example, to select only headings which have the class `nav-heading`, use the following:
@@ -149,11 +145,10 @@ If you wish to use headings other than `<h2>` and `<h3>` in the navigation gener
 `o-layout` will make content asides literal asides to the content. As long as the aside is an aside element and placed _after_ the content it is an aside to, that element will line up correctly:
 
 ```diff
+<header class="o-layout__header">
+	<!-- o-header-services markup goes here -->
+</header>
 <div class="o-layout" data-o-component="o-layout">
-	<header class="o-layout__header">
-		<!-- o-header-services markup goes here -->
-	</header>
-
 	<div class="o-layout__sidebar">
 		<!-- this can be an <ol> or a <ul> -->
 		<ol class="o-layout__navigation">
@@ -175,11 +170,10 @@ If you wish to use headings other than `<h2>` and `<h3>` in the navigation gener
 +			<p> This is an aside to the content immediately above.</p>
 +		</aside>
 	</div>
-
-	<footer class="o-layout__footer">
-		<!-- o-footer-services markup goes here -->
-	</footer>
 </div>
+<footer class="o-layout__footer">
+	<!-- o-footer-services markup goes here -->
+</footer>
 ```
 
 ### Sass
