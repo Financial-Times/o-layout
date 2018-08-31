@@ -18,6 +18,7 @@ It provides:
 	- [JavaScript](#javascript)
 		- [Construction](#construction)
 		- [Custom Navigation](#custom-navigation)
+– [Migration Guide](#migration-guide)
 - [Contact](#contact)
 - [Licence](#licence)
 
@@ -220,6 +221,11 @@ const oLayout = require('o-layout');
 oLayout.init(null, { navHeadingSelector: '.nav-heading' });
 ```
 
+### Migration Guide
+
+#### Migrating from v1.x.x  to v2
+
+This major now uses `o-footer-services` v2. Though this does not change anything within `o-layout` directly, please make sure that your footer markup is changed according to the [`o-footer-services` migration guide](https://github.com/Financial-Times/o-footer-services#migration-guide).
 ---
 
 ### Contact
