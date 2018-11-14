@@ -120,7 +120,7 @@
 		}
 	}
 
-	ol:not([data-o-component^="o-", .o-layout__vanilla-list]) {
+	ol:not([data-o-component^="o-", .o-layout__unstyled-element]) {
 		position: relative;
 		padding-left: 1.5rem;
 	}
