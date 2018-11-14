@@ -57,7 +57,7 @@ Within the main content section, there is another grid, which looks like this:
 At its base, the main content section styles _elements_, not classes.
 It will automatically style paragraphs, headings, lists and anchor tags, for example.
 It will also automatically style tables and asides, which will occupy different columns or span different columns within the main content section.
-Lists are also styled by default if they are not component of their own (i.e. that have `data-o-component` defined on them).
+Lists are also styled by default if they are not a component of their own (i.e. they don't have `data-o-component` defined on them).
 
 You can opt out of default list styling by applying the class: '.o-layout__unstyled-element'.
 The grid does not require the sidebar to maintain its layout.
