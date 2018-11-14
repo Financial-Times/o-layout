@@ -60,7 +60,6 @@ It will also automatically style tables and asides, which will occupy different 
 Lists are also styled by default if they are not component of their own (i.e. that have `data-o-component` defined on them).
 
 You can opt out of default list styling by applying the class: '.o-layout__unstyled-element'.
-- any that have the class `o-layout__vanilla-list`
 The grid does not require the sidebar to maintain its layout.
 
 ### Markup
