@@ -5,7 +5,6 @@
 @mixin oLayoutBase ($class: $o-layout-class) {
 	html,
 	body {
-		height: 100%;
 		margin: 0;
 	}
 
