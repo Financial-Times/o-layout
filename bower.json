@@ -14,9 +14,9 @@
     "tests"
   ],
   "dependencies": {
-    "sass-mq": "^5.0.0",
     "o-typography": "^5.7.5",
     "o-fonts": "^3.2.0",
-    "o-visual-effects": "^2.0.3"
+    "o-visual-effects": "^2.0.3",
+    "o-grid": "^4.4.4"
   }
 }

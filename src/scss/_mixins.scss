@@ -1,41 +1,3 @@
-/// Apply styles at a given layout size
-/// Wrapper for the Sass MQ mq() mixin
-///
-/// @link https://git.io/sass-mq Sass MQ documentation
-///
-/// @example
-///  // Turn the color of an element red at medium layout size and up
-///  @include oLayoutBreakPoint(M) {
-///  	element {
-///  		color: red;
-///  	}
-///  }
-///  // Turn the color of an element blue until medium layout
-///  element {
-///  	@include oLayoutBreakPoint($until: M) {
-///  		color: blue;
-///  	}
-///  }
-///  // Turn the color of an element green from small layout until medium layout
-///  element {
-///  	@include oLayoutBreakPoint($from: S, $until: M) {
-///  		color: green;
-///  	}
-///  }
-///
-/// @param {String} from - one of $o-layout-breakpoints
-/// @param {String} until - one of $o-layout-breakpoints
-
-@mixin oLayoutBreakPoint($from: false, $until: false) {
-	@include mq(
-		$from: $from,
-		$until: $until,
-		$breakpoints: $o-layout-breakpoints
-	) {
-		@content;
-	}
-}
-
 /// Base grid
 /// @access Private
 @mixin _oLayoutGridBase () {
@@ -54,7 +16,7 @@
 		"footer";
 
 	//sass-lint:disable mixins-before-declarations - Source order matters for media queries. Although @at-root is used anyway, which will always output the media after.
-	@include oLayoutBreakPoint($from: M) {
+	@include oGridRespondTo($from: M) {
 		grid-template-rows: auto 1fr auto;
 		grid-template-columns: 1fr minmax(auto, $_o-layout-aside-max-width) $_o-layout-main-section-width minmax(20ch, $_o-layout-aside-max-width) 1fr;
 		grid-template-areas:
