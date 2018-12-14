@@ -71,10 +71,10 @@ describe('LinkedHeading', () => {
 			it('sets the heading element HTML', () => {
 				const actualHtml = headingElement.outerHTML.trim().replace(/\s+/g, ' ');
 				const expectedHtml = `
-					<h2 id="mock-id" class="o-layout">
-						<a href="#mock-id" title="mock-title-option" class="o-layout__link">
-							<span class="o-layout__content">Mock Content</span>
-							<span class="o-layout__label">mock-content-option</span>
+					<h2 id="mock-id" class="o-layout__linked-heading">
+						<a href="#mock-id" title="mock-title-option" class="o-layout__linked-heading__link">
+							<span class="o-layout__linked-heading__content">Mock Content</span>
+							<span class="o-layout__linked-heading__label">mock-content-option</span>
 						</a>
 					</h2>
 				`.trim().replace(/\s+/g, ' ');
