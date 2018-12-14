@@ -1,10 +1,8 @@
 
 /// Linked Heading
 /// Outputs styles for the linked headings
-///
-/// @param {String} $base-class — base class name for layout
-@mixin oLayoutLinkedHeading ($base-class: $o-layout-class) {
-	.#{$base-class}__linked-heading {
+@mixin oLayoutLinkedHeading () {
+	.o-layout__linked-heading {
 
 		// Increased specificity needed to counteract
 		// default link styles

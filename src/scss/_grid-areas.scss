@@ -1,38 +1,32 @@
 /// Layout Areas
 /// Outputs grid grid template areas
-///
-/// @param {String} $class — class name for grid
-@mixin oLayoutAreas($class: $o-layout-class, $header-logo: null, $footer-logo: null) {
-	@include oLayoutAreaHeader($class, $header-logo);
-	@include oLayoutAreaSidebar($class);
-	@include oLayoutAreaMain($class);
-	@include oLayoutAreaFooter($class, $footer-logo);
+@mixin oLayoutAreas($header-logo: null, $footer-logo: null) {
+	@include oLayoutAreaHeader($header-logo);
+	@include oLayoutAreaSidebar();
+	@include oLayoutAreaMain();
+	@include oLayoutAreaFooter($footer-logo);
 }
 
 /// Header Area
 /// Outputs grid header area
-///
-/// @param {String} $class — class name for grid
-@mixin oLayoutAreaHeader($class: $o-layout-class, $logo: null) {
+@mixin oLayoutAreaHeader($logo: null) {
 	@if $logo == null {
 		@include oHeaderServices()
 	} @else {
 		@include oHeaderServices($logo: 'https://www.ft.com/__origami/service/image/v2/images/raw/ftlogo-v1:#{$logo}?source=o-layout');
 	}
 
-	.#{$class}__header {
+	.o-layout__header {
 		grid-area: header;
 	}
 }
 
 /// Sidebar Area
 /// Outputs grid sidebar area
-///
-/// @param {String} $class — class name for grid
-@mixin oLayoutAreaSidebar($class: $o-layout-class) {
-	.#{$class}__sidebar {
+@mixin oLayoutAreaSidebar() {
+	.o-layout__sidebar {
 		@include oTypographySans(1);
-		@include _oLayoutNavigation($class);
+		@include _oLayoutNavigation();
 		@include oLayoutBreakPoint($until: M) {
 			padding: 0 1rem;
 		}
@@ -48,10 +42,8 @@
 
 /// Main Area
 /// Outputs grid main content area
-///
-/// @param {String} $class — class name for grid
-@mixin oLayoutAreaMain($class: $o-layout-class) {
-	.#{$class}__main {
+@mixin oLayoutAreaMain() {
+	.o-layout__main {
 		@include _oLayoutBody;
 		@include oLayoutBreakPoint($until: M) {
 			padding: 0 1rem;
@@ -89,20 +81,20 @@
 			width: 100%;
 		}
 
-		.#{$class}__rule-left {
+		.o-layout__rule-left {
 			@include oLayoutRule('left');
 		}
 
-		.#{$class}__rule-right {
+		.o-layout__rule-right {
 			@include oLayoutRule('right');
 		}
 
-		.#{$class}__main__single-span {
+		.o-layout__main__single-span {
 			grid-column-end: 2;
 		}
 
-		.#{$class}__main--full-span,
-		.#{$class}__main__full-span {
+		.o-layout__main--full-span,
+		.o-layout__main__full-span {
 			grid-column-end: -1;
 		}
 	}
@@ -110,27 +102,23 @@
 
 /// Footer Area
 /// Outputs grid footer area
-///
-/// @param {String} $class — class name for grid
-@mixin oLayoutAreaFooter($class: $o-layout-class, $logo: null) {
+@mixin oLayoutAreaFooter($logo: null) {
 	@include oFooterServicesBase();
 
 	@if $logo != null {
 		@include oFooterServicesWithLogo($logo);
 	}
 
-	.#{$class}__footer {
+	.o-layout__footer {
 		grid-area: footer;
 	}
 }
 
 /// Navigation
 /// Outputs navigation styles
-///
-/// @param {String} $class — class name for grid
 /// @access Private
-@mixin _oLayoutNavigation($class: $o-layout-class) {
-	.#{$class}__navigation {
+@mixin _oLayoutNavigation() {
+	.o-layout__navigation {
 		@include oLayoutBreakPoint($from: M) {
 			border-left: 0;
 			position: sticky;

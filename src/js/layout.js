@@ -12,7 +12,6 @@ class Layout {
 
 		//Default options
 		this.options = Object.assign({}, {
-			baseClass: 'o-layout',
 			constructNav: true,
 			navHeadingSelector: 'h1, h2, h3'
 		}, options || Layout.getDataAttributes(layoutEl));
@@ -20,14 +19,12 @@ class Layout {
 		this.headings = [...this.layoutEl.querySelectorAll(this.options.navHeadingSelector)]
 			.filter(heading => heading.getAttribute('id'));
 
-		this.linkedHeadings = this.headings.map(heading => new LinkedHeading(heading, {
-			baseClass: `${this.options.baseClass}__linked-heading`,
-		}));
+		this.linkedHeadings = this.headings.map(heading => new LinkedHeading(heading, {}));
 
 		if (this.options.constructNav) {
 			this.constructNavFromDOM();
 		} else {
-			let navigation = document.querySelector(`.${this.options.baseClass}__navigation`);
+			let navigation = document.querySelector(`.o-layout__navigation`);
 			if (navigation) {
 				this.highlightNavItems(navigation);
 			}
@@ -39,17 +36,17 @@ class Layout {
 	 */
 	constructNavFromDOM () {
 		let listItems = Array.from(this.headings, (heading) => {
-			const contentElement = heading.querySelector(`.${this.options.baseClass}__linked-heading__content`);
+			const contentElement = heading.querySelector(`.o-layout__linked-heading__content`);
 			const headingText = (contentElement ? contentElement.textContent : heading.textContent);
 			const pageTitleClass = heading.nodeName === 'H1' ? 'class="o-layout__navigation-title"' : '';
 			return `<li ${pageTitleClass}><a href='#${heading.id}'>${headingText}</a></li>`;
 		});
 
 		let list = document.createElement('ol');
-		list.classList.add(`${this.options.baseClass}__navigation`);
+		list.classList.add(`o-layout__navigation`);
 		list.innerHTML = listItems.join('');
 
-		document.querySelector(`.${this.options.baseClass}__sidebar`).append(list);
+		document.querySelector(`.o-layout__sidebar`).append(list);
 
 		this.highlightNavItems(list);
 	}

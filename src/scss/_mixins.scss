@@ -43,7 +43,6 @@
 	margin: 0;
 	position: relative;
 	box-sizing: border-box;
-
 	display: grid;
 	grid-template-rows: auto auto 1fr auto;
 	grid-template-columns: 100%;
@@ -53,6 +52,15 @@
 		"sidebar"
 		"main"
 		"footer";
+
+	@include oLayoutBreakPoint($from: M) {
+		grid-template-rows: auto 1fr auto;
+		grid-template-columns: 1fr minmax(auto, $_o-layout-aside-max-width) $_o-layout-main-section-width minmax(20ch, $_o-layout-aside-max-width) 1fr;
+		grid-template-areas:
+			"header header header header header"
+			". sidebar main main ."
+			"footer footer footer footer footer";
+	};
 }
 
 /// Base styling for the layout content

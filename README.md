@@ -9,21 +9,21 @@ It provides:
 
 ## Table of Contents
 
-- [Usage](#usage)
-	- [Markup](#markup)
-		- [Layout Base](#layout-base)
-		- [Navigation and Content](#navigation-and-content)
-		- [Asides](#asides)
-	- [Sass](#sass)
-	- [JavaScript](#javascript)
-		- [Construction](#construction)
-		- [Custom Navigation](#custom-navigation)
+- [Overview](#overview)
+- [Markup](#markup)
+	- [Layout Base](#layout-base)
+	- [Navigation and Content](#navigation-and-content)
+	- [Asides](#asides)
+- [Sass](#sass)
+- [JavaScript](#javascript)
+	- [Construction](#construction)
+	- [Custom Navigation](#custom-navigation)
 - [Migration Guide](#migration-guide)
 - [Contact](#contact)
 - [Licence](#licence)
 
 
-## Usage
+## Overview
 
 `o-layout` provides a grid that has the following structure:
 
@@ -62,11 +62,11 @@ Lists are also styled by default if they are not a component of their own (i.e. 
 You can opt out of default list styling by applying the class: '.o-layout__unstyled-element'.
 The grid does not require the sidebar to maintain its layout.
 
-### Markup
+## Markup
 
 `o-layout` uses CSS Grid Layout, and more specifically [grid template areas](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout/Grid_Template_Areas).
 
-#### Layout Base
+### Layout Base
 The markup below ↓ will generate the ascii grid above ↑.
 
 The main content section will constrain its _immediate_ children to its first column, with the exception of `table`s and `aside`s.
@@ -100,7 +100,7 @@ _Note: `o-layout` styles tables to span two columns automatically. If you want a
 </div>
 ```
 
-#### Navigation and Content
+### Navigation and Content
 Unless the configuration says otherwise, `o-layout` will generate a sidebar navigation, which will rely on presence of `<h2>`s and `<h3>`s with `id`s in the main content section. If this is a feature you want to use, then you don't need to add anything to the sidebar section of `o-layout`.
 
 However, if you would like to customise your sidebar navigation, there are two ways to do this. You can add a data-attribute to your markup, or you can do so [via JavaScript](#custom-navigation)
@@ -147,7 +147,7 @@ If you wish to use headings other than `<h2>` and `<h3>` in the navigation gener
 - <div class="o-layout" data-o-component="o-layout">
 ```
 
-#### Asides
+### Asides
 
 `o-layout` will make content asides literal asides to the content. As long as the aside is an aside element and placed _after_ the content it is an aside to, that element will line up correctly:
 
@@ -185,20 +185,19 @@ If you wish to use headings other than `<h2>` and `<h3>` in the navigation gener
 </div>
 ```
 
-### Sass
-As with all Origami components, o-layout has a [silent mode](http://origami.ft.com/docs/syntax/scss/#silent-styles). To use its compiled CSS (rather than using its mixins with your own Sass) set `$o-layout-is-silent: false;` in your Sass before you import the `o-layout` Sass.
+## Sass
+As with all Origami components, o-layout has a [silent mode](http://origami.ft.com/docs/syntax/scss/#silent-styles). You can include o-layout styles with the `oLayout` mixin:
 
-Otherwise, you can initialise the styling for o-layout with your own classnames, like this:
 ```sass
 @import 'o-layout/main';
 
-@include oLayout($class: my-layout);
+@include oLayout();
 ```
 
-### JavaScript
+## JavaScript
 No code will run automatically unless you are using the Build Service. You must either construct an `o-layout` object or fire an o.DOMContentLoaded event, which `o-layout` listens for.
 
-#### Construction
+### Construction
 
 If you have set up your HTML to use default `o-layout` classes, then you can use the following to initialise your layout:
 ```js
@@ -206,7 +205,7 @@ const oLayout = require('o-layout');
 oLayout.init();
 ```
 
-#### Custom Navigation
+### Custom Navigation
 `o-layout` uses JavaScript to construct the sidebar navigation out of headings (`h1`, `h2` and `h3`) in the content, and to highlight those items depending on the scroll position. This is its default behaviour.
 
 If you would like to define your own navigation, you will need to initialise `o-layout` like this:
@@ -223,20 +222,20 @@ const oLayout = require('o-layout');
 oLayout.init(null, { navHeadingSelector: '.nav-heading' });
 ```
 
-### Migration Guide
+## Migration Guide
 
-#### Migrating from v1.x.x to v2.x.x
+State | Major Version | Last Minor Release | Migration guide |
+:---: | :---: | :---: | :---:
+✨ active | 3 | N/A | [migrate to v3](MIGRATION.md#migrating-from-v2-to-v3) |
+⚠ maintained | 2 | 2.2.4 | [migrate to v2](MIGRATION.md#migrating-from-v1-to-v2) |
+╳ deprecated | 1 | 1.3.4 | N/A |
 
-This major now uses `o-footer-services` v2. Though this does not change anything within `o-layout` directly, please make sure that your footer markup is changed according to the [`o-footer-services` migration guide](https://github.com/Financial-Times/o-footer-services#migration-guide).
 
----
-
-### Contact
+## Contact
 
 If you have any questions or comments about this component, or need help using it, please either [raise an issue](https://github.com/Financial-Times/o-component-boilerplate/issues), visit [#ft-origami](https://financialtimes.slack.com/messages/ft-origami/) or email [Origami Support](mailto:origami-support@ft.com).
 
-----
 
-### Licence
+## Licence
 
 This software is published by the Financial Times under the [MIT licence](http://opensource.org/licenses/MIT).

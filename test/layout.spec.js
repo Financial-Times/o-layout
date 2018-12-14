@@ -51,7 +51,6 @@ describe('Layout', () => {
 			assert.notStrictEqual(layout.options, options);
 			assert.deepEqual(layout.options, {
 				constructNav: true,
-				baseClass: 'o-layout',
 				navHeadingSelector: 'h1, h2, h3'
 			});
 		});

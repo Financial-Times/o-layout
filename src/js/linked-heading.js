@@ -10,7 +10,6 @@ class LinkedHeading {
 	 * @public
 	 * @param {HTMLElement} headingElement - The heading element in the DOM
 	 * @param {Object} [options={}] - An options object for configuring the linked heading
-	 * @param {String} [options.baseClass="o-layout__linked-heading"] - The class attribute to add to the created link
 	 * @param {String} [options.content="¶"] - The content to add to the created link
 	 * @param {String} [options.title="Link directly to this section of the page"] - The title attribute to add to the created link
 	 */
@@ -19,7 +18,6 @@ class LinkedHeading {
 		this.id = headingElement.getAttribute('id');
 
 		this.options = Object.assign({}, {
-			baseClass: 'o-layout__linked-heading',
 			content: '#',
 			title: 'Link directly to this section of the page'
 		}, options);
@@ -37,14 +35,14 @@ class LinkedHeading {
 			return null;
 		}
 		const headingText = this.headingElement.innerHTML.trim();
-		this.headingElement.classList.add(this.options.baseClass);
+		this.headingElement.classList.add('o-layout__linked-heading');
 		this.headingElement.innerHTML = `
-			<a href="#${this.id}" title="${this.options.title}" class="${this.options.baseClass}__link">
-				<span class="${this.options.baseClass}__content">${headingText}</span>
-				<span class="${this.options.baseClass}__label">${this.options.content}</span>
+			<a href="#${this.id}" title="${this.options.title}" class="o-layout__linked-heading__link">
+				<span class="o-layout__linked-heading__content">${headingText}</span>
+				<span class="o-layout__linked-heading__label">${this.options.content}</span>
 			</a>
 		`;
-		return this.headingElement.querySelector(`.${this.options.baseClass}__link`);
+		return this.headingElement.querySelector(`.o-layout__linked-heading__link`);
 	}
 
 	/**
