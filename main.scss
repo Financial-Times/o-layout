@@ -1,21 +1,25 @@
 $o-brand: 'internal';
 
+@import 'sass-mq/mq';
 @import 'o-fonts/main';
 @import 'o-typography/main';
 @import 'o-visual-effects/main';
-@import 'o-header-services/main';
-@import 'o-footer-services/main';
 
-@import 'sass-mq/mq';
+@import 'src/scss/variables';
+@import 'src/scss/mixins';
+@import 'src/scss/grid';
+@import 'src/scss/grid-areas';
+@import 'src/scss/linked-heading';
 
-
-@import 'src/scss/main';
-
+@mixin oLayout() {
+	@include oFonts();
+	@include oLayoutBase();
+	@include oLayoutAreas();
+	@include oLayoutLinkedHeading();
+}
 
 @if $o-layout-is-silent == false {
-
-	// Set to silent again to avoid being output twice
 	@include oLayout();
-
+	// Set to silent again to avoid being output twice
 	$o-layout-is-silent: true !global;
 }

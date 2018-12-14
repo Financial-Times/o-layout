@@ -76,9 +76,9 @@ _Note: `o-layout` styles tables to span two columns automatically. If you want a
 
 ```html
 <div class="o-layout" data-o-component="o-layout">
-	<header class="o-layout__header">
+	<div class="o-layout__header">
 		<!-- o-header-services markup goes here -->
-	</header>
+	</div>
 
 	<div class="o-layout__sidebar">
 		<!-- content for the sidebar goes here -->
@@ -111,9 +111,9 @@ For this effect to apply to your custom navigation, you will need to add the `o-
 Altogether, your markup should look like this:
 ```diff
 +<div class="o-layout" data-o-component="o-layout" data-o-layout-construct-nav="false">
-	<header class="o-layout__header">
+	<div class="o-layout__header">
 		<!-- o-header-services markup goes here -->
-	</header>
+	</div>
 
 	<div class="o-layout__sidebar">
 		<!-- this can be an <ol> or a <ul> -->
@@ -153,9 +153,9 @@ If you wish to use headings other than `<h2>` and `<h3>` in the navigation gener
 
 ```diff
 <div class="o-layout" data-o-component="o-layout">
-	<header class="o-layout__header">
+	<div class="o-layout__header">
 		<!-- o-header-services markup goes here -->
-	</header>
+	</div>
 
 	<div class="o-layout__sidebar">
 		<!-- this can be an <ol> or a <ul> -->

@@ -1,21 +1,15 @@
 /// Layout Areas
 /// Outputs grid grid template areas
-@mixin oLayoutAreas($header-logo: null, $footer-logo: null) {
-	@include oLayoutAreaHeader($header-logo);
+@mixin oLayoutAreas() {
+	@include oLayoutAreaHeader();
 	@include oLayoutAreaSidebar();
 	@include oLayoutAreaMain();
-	@include oLayoutAreaFooter($footer-logo);
+	@include oLayoutAreaFooter();
 }
 
 /// Header Area
 /// Outputs grid header area
-@mixin oLayoutAreaHeader($logo: null) {
-	@if $logo == null {
-		@include oHeaderServices()
-	} @else {
-		@include oHeaderServices($logo: 'https://www.ft.com/__origami/service/image/v2/images/raw/ftlogo-v1:#{$logo}?source=o-layout');
-	}
-
+@mixin oLayoutAreaHeader() {
 	.o-layout__header {
 		grid-area: header;
 	}
@@ -102,13 +96,7 @@
 
 /// Footer Area
 /// Outputs grid footer area
-@mixin oLayoutAreaFooter($logo: null) {
-	@include oFooterServicesBase();
-
-	@if $logo != null {
-		@include oFooterServicesWithLogo($logo);
-	}
-
+@mixin oLayoutAreaFooter() {
 	.o-layout__footer {
 		grid-area: footer;
 	}
