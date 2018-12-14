@@ -53,6 +53,7 @@
 		"main"
 		"footer";
 
+	//sass-lint:disable mixins-before-declarations - Source order matters for media queries. Although @at-root is used anyway, which will always output the media after.
 	@include oLayoutBreakPoint($from: M) {
 		grid-template-rows: auto 1fr auto;
 		grid-template-columns: 1fr minmax(auto, $_o-layout-aside-max-width) $_o-layout-main-section-width minmax(20ch, $_o-layout-aside-max-width) 1fr;
@@ -61,6 +62,7 @@
 			". sidebar main main ."
 			"footer footer footer footer footer";
 	};
+	//sass-lint:enable mixins-before-declarations
 }
 
 /// Base styling for the layout content
