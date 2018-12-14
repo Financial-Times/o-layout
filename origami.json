@@ -20,7 +20,7 @@
 		"sass": "demos/src/demo.scss",
 		"js": "demos/src/demo.js",
 		"documentClasses": "",
-		"dependencies": ["o-fonts", "o-table", "o-syntax-highlight", "o-tabs"]
+		"dependencies": ["o-table@^7.0.5", "o-syntax-highlight@^1.5.2", "o-tabs@^4.2.0", "o-header-services@^2.3.4", "o-footer-services@^2.0.3"]
 	},
 	"demos": [
 		{
