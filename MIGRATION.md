@@ -18,6 +18,7 @@
 
 </div>
 ```
+- Removes mixin `oLayoutBreakPoint`. Use `o-grid` instead, [see `oGridRespondTo`](https://registry.origami.ft.com/components/o-grid@4.4.4/sassdoc#o-grid-mixin-oGridRespondTo).
 
 ## Migrating from v1 to v2
 
