@@ -1,6 +1,7 @@
 /// Layout Base
 /// Outputs responsive base grid
-@mixin oLayoutBase() {
+/// @access private
+@mixin _oLayoutBase() {
 	html,
 	body {
 		margin: 0;

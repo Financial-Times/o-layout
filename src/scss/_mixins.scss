@@ -1,5 +1,5 @@
 /// Base grid
-/// @access Private
+/// @access private
 @mixin _oLayoutGridBase () {
 	min-width: 100%;
 	margin: 0;
@@ -28,7 +28,7 @@
 }
 
 /// Base styling for the layout content
-/// @access Private
+/// @access private
 @mixin _oLayoutBody () {
 	@include oTypographySans($scale: 1, $line-height: 1.4);
 
@@ -61,7 +61,7 @@
 	}
 
 	aside {
-		@include oLayoutRule('left');
+		@include _oLayoutRule('left');
 		align-self: flex-start;
 	}
 
@@ -101,7 +101,8 @@
 /// Styles decorative rules for containers
 ///
 ///@param {String} $side — left or right rule to be styled
-@mixin oLayoutRule($side: 'left') {
+/// @access private
+@mixin _oLayoutRule($side: 'left') {
 	border-#{$side}: 2px solid oColorsGetPaletteColor('teal');
 	padding-#{$side}: $_o-layout-gutter;
 }

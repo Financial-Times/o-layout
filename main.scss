@@ -12,9 +12,9 @@ $o-brand: 'internal';
 
 @mixin oLayout() {
 	@include oFonts();
-	@include oLayoutBase();
-	@include oLayoutAreas();
-	@include oLayoutLinkedHeading();
+	@include _oLayoutBase();
+	@include _oLayoutAreas();
+	@include _oLayoutLinkedHeading();
 }
 
 @if $o-layout-is-silent == false {
