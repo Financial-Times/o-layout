@@ -48,7 +48,6 @@ describe('LinkedHeading', () => {
 
 		it('has an `options` property set to the default options', () => {
 			assert.deepEqual(instance.options, {
-				baseClass: 'o-layout__linked-heading',
 				content: '#',
 				title: 'Link directly to this section of the page'
 			});
@@ -64,7 +63,6 @@ describe('LinkedHeading', () => {
 			let returnValue;
 
 			beforeEach(() => {
-				instance.options.baseClass = 'mock-base-class-option';
 				instance.options.content = 'mock-content-option';
 				instance.options.title = 'mock-title-option';
 				returnValue = originalConstructLinkElement.call(instance);
@@ -73,10 +71,10 @@ describe('LinkedHeading', () => {
 			it('sets the heading element HTML', () => {
 				const actualHtml = headingElement.outerHTML.trim().replace(/\s+/g, ' ');
 				const expectedHtml = `
-					<h2 id="mock-id" class="mock-base-class-option">
-						<a href="#mock-id" title="mock-title-option" class="mock-base-class-option__link">
-							<span class="mock-base-class-option__content">Mock Content</span>
-							<span class="mock-base-class-option__label">mock-content-option</span>
+					<h2 id="mock-id" class="o-layout__linked-heading">
+						<a href="#mock-id" title="mock-title-option" class="o-layout__linked-heading__link">
+							<span class="o-layout__linked-heading__content">Mock Content</span>
+							<span class="o-layout__linked-heading__label">mock-content-option</span>
 						</a>
 					</h2>
 				`.trim().replace(/\s+/g, ' ');
@@ -114,7 +112,6 @@ describe('LinkedHeading', () => {
 			testArea.innerHTML = '<h2 id="mock-id">Mock Content</h2>';
 			headingElement = testArea.querySelector('h2');
 			options = {
-				baseClass: 'mock-base-class-option',
 				content: 'mock-content-option',
 				title: 'mock-title-option'
 			};
