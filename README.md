@@ -186,9 +186,12 @@ If you wish to use headings other than `<h2>` and `<h3>` in the navigation gener
 ```
 
 ## Sass
-As with all Origami components, o-layout has a [silent mode](http://origami.ft.com/docs/syntax/scss/#silent-styles). You can include o-layout styles with the `oLayout` mixin:
+As with all Origami components, o-layout has a [silent mode](http://origami.ft.com/docs/syntax/scss/#silent-styles). You can include o-layout styles with the `oLayout` mixin.
+
+As `o-layout` only supports the internal brand, your project must also set its brand to internal `$o-brand: 'internal';`.
 
 ```sass
+$o-brand: 'internal';
 @import 'o-layout/main';
 
 @include oLayout();
