@@ -1,6 +1,9 @@
 # Migration
 
 ## Migrating from v2 to v3
+- Your project must set its brand:
+	- If using SASS, set the variable `$o-brand: 'internal';` before importing any Origami component.
+	- If using the Origami Build Service, add the brand parameter to your CSS URL `?o-table@^3.0.0&brand=internal`.
 - The ability to [customise the `o-layout` CSS class name has been removed](https://github.com/Financial-Times/origami-proposals/issues/4). The public `$o-layout-class` variable has been removed, the `$class` parameter has been removed from SCSS mixins, and the `baseClass` property has been removed from the JS `options` object. Check your project does not use these parameters and update class names to `o-layout` if needed.
 - `o-layout` no longer includes CSS and JS for `o-header-services` or `o-footer-services`. Include CSS and JS for `o-header-services` in your project, and `o-footer-services` if needed.
 - Required font faces are now output by `o-layout`, so `o-fonts` may be removed as a direct dependancy.
