@@ -1,7 +1,8 @@
 
 /// Linked Heading
 /// Outputs styles for the linked headings
-@mixin oLayoutLinkedHeading () {
+/// @access private
+@mixin _oLayoutLinkedHeading () {
 	.o-layout__linked-heading {
 
 		// Increased specificity needed to counteract

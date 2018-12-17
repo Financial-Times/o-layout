@@ -1,15 +1,17 @@
 /// Layout Areas
 /// Outputs grid grid template areas
-@mixin oLayoutAreas() {
-	@include oLayoutAreaHeader();
-	@include oLayoutAreaSidebar();
-	@include oLayoutAreaMain();
-	@include oLayoutAreaFooter();
+/// @access private
+@mixin _oLayoutAreas() {
+	@include _oLayoutAreaHeader();
+	@include _oLayoutAreaSidebar();
+	@include _oLayoutAreaMain();
+	@include _oLayoutAreaFooter();
 }
 
 /// Header Area
 /// Outputs grid header area
-@mixin oLayoutAreaHeader() {
+/// @access private
+@mixin _oLayoutAreaHeader() {
 	.o-layout__header {
 		grid-area: header;
 	}
@@ -17,7 +19,8 @@
 
 /// Sidebar Area
 /// Outputs grid sidebar area
-@mixin oLayoutAreaSidebar() {
+/// @access private
+@mixin _oLayoutAreaSidebar() {
 	.o-layout__sidebar {
 		@include oTypographySans(1);
 		@include _oLayoutNavigation();
@@ -36,7 +39,8 @@
 
 /// Main Area
 /// Outputs grid main content area
-@mixin oLayoutAreaMain() {
+/// @access private
+@mixin _oLayoutAreaMain() {
 	.o-layout__main {
 		@include _oLayoutBody;
 		padding: 0 1rem;
@@ -75,11 +79,11 @@
 		}
 
 		.o-layout__rule-left {
-			@include oLayoutRule('left');
+			@include _oLayoutRule('left');
 		}
 
 		.o-layout__rule-right {
-			@include oLayoutRule('right');
+			@include _oLayoutRule('right');
 		}
 
 		.o-layout__main__single-span {
@@ -95,7 +99,8 @@
 
 /// Footer Area
 /// Outputs grid footer area
-@mixin oLayoutAreaFooter() {
+/// @access private
+@mixin _oLayoutAreaFooter() {
 	.o-layout__footer {
 		grid-area: footer;
 	}
@@ -103,7 +108,7 @@
 
 /// Navigation
 /// Outputs navigation styles
-/// @access Private
+/// @access private
 @mixin _oLayoutNavigation() {
 	.o-layout__navigation {
 		@include oGridRespondTo($from: M) {
