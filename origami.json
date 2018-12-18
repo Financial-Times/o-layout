@@ -31,11 +31,18 @@
 			"description": "Documentation Layout"
 		},
 		{
-			"title": "Lists & Tables Layout",
-			"name": "lists-tables-layout",
-			"data": "demos/src/data/lists-tables-layout.json",
-			"template": "demos/src/lists-tables-layout.mustache",
-			"description": "Lists & Tables Layout"
+			"title": "Landing Layout",
+			"name": "landing-layout",
+			"data": "demos/src/data/landing-layout.json",
+			"template": "demos/src/landing-layout.mustache",
+			"description": "Ideal for a Homepage."
+		},
+		{
+			"title": "Base Layout",
+			"name": "base-layout",
+			"data": "demos/src/data/documentation-layout.json",
+			"template": "demos/src/base-layout.mustache",
+			"hidden": true
 		}
 	]
 }
