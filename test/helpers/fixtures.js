@@ -1,5 +1,5 @@
 export default {
-	main: `<div class="o-layout" data-o-component="o-layout">
+	main: `<div class="o-layout o-layout--docs" data-o-component="o-layout">
 		<header class="o-layout__header"></header>
 
 		<div class="o-layout__sidebar"></div>
@@ -8,7 +8,7 @@ export default {
 
 		<footer class="o-layout__footer"></footer>
 	</div>`,
-	constructNav: `<div class="o-layout" data-o-component="o-layout">
+	constructNav: `<div class="o-layout o-layout--docs" data-o-component="o-layout">
 		<header class="o-layout__header"></header>
 
 		<div class="o-layout__sidebar"></div>
