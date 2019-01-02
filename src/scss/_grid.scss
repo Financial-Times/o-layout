@@ -16,7 +16,7 @@
 		min-width: 100%;
 		grid-template-columns: 100%;
 		grid-template-rows: auto 1fr auto;
-		grid-gap: $_o-layout-gutter;
+		grid-column-gap: $_o-layout-gutter;
 		grid-template-areas:
 			"header"
 			"main"
@@ -29,9 +29,15 @@
 /// @access private
 @mixin _oLayoutLandingGrid() {
 	.o-layout.o-layout--landing {
+		grid-template-areas:
+			"header"
+			"hero"
+			"main"
+			"footer";
 		@include oGridRespondTo($from: M) {
 			grid-template-areas:
 				"header header header"
+				". hero ."
 				". main ."
 				"footer footer footer";
 			grid-template-columns: 1fr minmax(auto, $_o-layout-container-max-width) 1fr;

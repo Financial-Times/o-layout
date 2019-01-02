@@ -17,6 +17,8 @@
     "o-typography": "^5.7.5",
     "o-fonts": "^3.2.0",
     "o-visual-effects": "^2.0.3",
-    "o-grid": "^4.4.4"
+    "o-grid": "^4.4.4",
+    "o-colors": "^4.7.9",
+    "o-normalise": "^1.6.2"
   }
 }

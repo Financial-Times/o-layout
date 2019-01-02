@@ -4,6 +4,8 @@
 @mixin _oLayoutAreas() {
 	@include _oLayoutAreaHeader();
 	@include _oLayoutAreaSidebar();
+	@include _oLayoutAreaHero();
+	@include _oLayoutAreaOverview();
 	@include _oLayoutAreaMain();
 	@include _oLayoutAreaFooter();
 }
@@ -26,6 +28,7 @@
 		@include _oLayoutNavigation();
 		@include oGridRespondTo($until: M) {
 			padding: 0 1rem;
+			margin-top: $_o-layout-gutter;
 		}
 
 		grid-area: sidebar;
@@ -33,6 +36,81 @@
 		a {
 			@include oTypographyLink;
 			border: 0;
+		}
+	}
+}
+
+/// Outputs hero area
+/// @access private
+@mixin _oLayoutAreaHero() {
+	.o-layout__hero {
+		@include _oLayoutBody;
+		position: relative;
+		grid-area: hero;
+		padding: $_o-layout-gutter * 2 $_o-layout-gutter;
+		text-align: center;
+		min-height: 30vh;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		align-content: center;
+		justify-items: center;
+		justify-content: center;
+		@if $o-layout-hero-image {
+			background-image: url($o-layout-hero-image);
+		}
+		background-size: 0 0;
+		&::before {
+			position: absolute;
+			content: '';
+			width: 100vw;
+			top: 0;
+			bottom: 0;
+			left: 50%;
+			margin-left: -50vw;
+			background-color: oColorsGetPaletteColor('slate-white-5');
+			background-size: cover;
+			background-image: inherit;
+			z-index: -1;
+		}
+	}
+
+	.o-layout__hero--inverse {
+		&:before {
+			background-color: oColorsGetPaletteColor('slate');
+		}
+		h1, p {
+			color: white;
+		}
+	}
+}
+
+/// Columns for overview items, such as cards.
+/// Outputs overview area
+/// @access private
+@mixin _oLayoutAreaOverview() {
+	.o-layout__overview {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+		grid-gap: $_o-layout-gutter * 3;
+		grid-row-gap: $_o-layout-gutter;
+		margin: 0 0 oTypographySpacingSize(4);
+		.o-layout-item > p:last-child {
+			margin-bottom: 0;
+		}
+	}
+
+	.o-layout__overview--highlight {
+		grid-gap: $_o-layout-gutter;
+		.o-layout-item {
+			display: grid;
+			grid-template-rows: 1fr min-content;
+			background-color: oColorsGetPaletteColor('slate-white-5');
+			padding: $_o-layout-gutter;
+		}
+
+		.o-layout-item__footer {
+			grid-row: 2 / 3;
 		}
 	}
 }
