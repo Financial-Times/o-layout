@@ -2,7 +2,7 @@
 
 ## Migrating from v2 to v3
 - Add the modifier class `o-layout--docs` to the root layout element.
-- Replace class `o-layout__main--full-span` with `.o-layout__main__full-span` if used.
+ - Replace class `o-layout__main--full-span` with `o-layout__main__full-span` if used.
 - Your project must set its brand:
 	- If using SASS, set the variable `$o-brand: 'internal';` before importing any Origami component.
 	- If using the Origami Build Service, add the brand parameter to your CSS URL `?o-table@^3.0.0&brand=internal`.
