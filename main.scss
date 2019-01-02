@@ -11,6 +11,8 @@
 @mixin oLayout() {
 	@include oFonts();
 	@include _oLayoutBase();
+	@include _oLayoutDocsGrid();
+	@include _oLayoutLandingGrid();
 	@include _oLayoutAreas();
 	@include _oLayoutLinkedHeading();
 }

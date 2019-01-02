@@ -1,4 +1,3 @@
-
 import LinkedHeading from './linked-heading';
 
 class Layout {
@@ -9,24 +8,26 @@ class Layout {
 	 */
 	constructor (layoutEl, options) {
 		this.layoutEl = layoutEl;
+		const isDocsLayout = this.layoutEl.classList.contains('o-layout--docs');
 
-		//Default options
-		this.options = Object.assign({}, {
-			constructNav: true,
-			navHeadingSelector: 'h1, h2, h3'
-		}, options || Layout.getDataAttributes(layoutEl));
+		if (isDocsLayout) {
+			this.options = Object.assign({}, {
+				constructNav: true,
+				navHeadingSelector: 'h1, h2, h3'
+			}, options || Layout.getDataAttributes(layoutEl));
 
-		this.headings = [...this.layoutEl.querySelectorAll(this.options.navHeadingSelector)]
-			.filter(heading => heading.getAttribute('id'));
+			this.headings = [...this.layoutEl.querySelectorAll(this.options.navHeadingSelector)]
+				.filter(heading => heading.getAttribute('id'));
 
-		this.linkedHeadings = this.headings.map(heading => new LinkedHeading(heading, {}));
+			this.linkedHeadings = this.headings.map(heading => new LinkedHeading(heading, {}));
 
-		if (this.options.constructNav) {
-			this.constructNavFromDOM();
-		} else {
-			let navigation = document.querySelector(`.o-layout__navigation`);
-			if (navigation) {
-				this.highlightNavItems(navigation);
+			if (this.options.constructNav) {
+				this.constructNavFromDOM();
+			} else {
+				let navigation = document.querySelector(`.o-layout__navigation`);
+				if (navigation) {
+					this.highlightNavItems(navigation);
+				}
 			}
 		}
 	}
