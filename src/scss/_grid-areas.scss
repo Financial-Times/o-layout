@@ -52,6 +52,7 @@
 		padding: $_o-layout-gutter * 2 $_o-layout-gutter;
 		text-align: center;
 		min-height: 30vh;
+		margin: 0 0 oTypographySpacingSize(4);
 		display: flex;
 		flex-direction: column;
 		align-items: center;
