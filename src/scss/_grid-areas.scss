@@ -1,10 +1,11 @@
 /// Layout Areas
 /// Outputs grid grid template areas
+/// @param {String} $hero-image - An image for the "hero" area background.
 /// @access private
-@mixin _oLayoutAreas() {
+@mixin _oLayoutAreas($hero-image: '') {
 	@include _oLayoutAreaHeader();
 	@include _oLayoutAreaSidebar();
-	@include _oLayoutAreaHero();
+	@include _oLayoutAreaHero($hero-image);
 	@include _oLayoutAreaOverview();
 	@include _oLayoutAreaMain();
 	@include _oLayoutAreaFooter();
@@ -41,8 +42,9 @@
 }
 
 /// Outputs hero area
+/// @param {String} $hero-image - An image for the "hero" area background.
 /// @access private
-@mixin _oLayoutAreaHero() {
+@mixin _oLayoutAreaHero($hero-image: '') {
 	.o-layout__hero {
 		@include _oLayoutBody;
 		position: relative;
@@ -56,8 +58,8 @@
 		align-content: center;
 		justify-items: center;
 		justify-content: center;
-		@if $o-layout-hero-image {
-			background-image: url($o-layout-hero-image);
+		@if $hero-image {
+			background-image: url($hero-image);
 		}
 		background-size: 0 0;
 		&::before {
@@ -79,7 +81,9 @@
 		&:before {
 			background-color: oColorsGetPaletteColor('slate');
 		}
-		h1, p {
+
+		h1,
+		p {
 			color: white;
 		}
 	}

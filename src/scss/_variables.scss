@@ -14,7 +14,3 @@ $_o-layout-gutter: 1rem;
 $_o-layout-container-max-width: oGridGetMaxWidthForLayout($o-grid-fixed-layout); // To align with o-header-services.
 $_o-layout-aside-max-width: 30ch;
 $_o-layout-main-section-width: minmax(30ch, calc(#{$_o-layout-container-max-width} - #{$_o-layout-aside-max-width * 2} - #{$_o-layout-gutter * 2}));
-
-/// The URL for the default hero image.
-/// @access public
-$o-layout-hero-image: '' !default;

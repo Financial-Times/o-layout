@@ -10,12 +10,17 @@
 @import 'src/scss/grid-areas';
 @import 'src/scss/linked-heading';
 
-@mixin oLayout() {
+/// @param {Map} $opts - A map of configuration, with key "hero-image" (an image for the background of the "hero" area).
+@mixin oLayout($opts: (
+	'hero-image': ''
+)) {
+	$hero-image: map-get($opts, $key: 'hero-image');
+
 	@include oFonts();
 	@include _oLayoutBase();
 	@include _oLayoutDocsGrid();
 	@include _oLayoutLandingGrid();
-	@include _oLayoutAreas();
+	@include _oLayoutAreas($hero-image);
 	@include _oLayoutLinkedHeading();
 }
 
