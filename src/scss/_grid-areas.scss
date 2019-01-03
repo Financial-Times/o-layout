@@ -90,9 +90,6 @@
 		grid-gap: $_o-layout-gutter * 3;
 		grid-row-gap: $_o-layout-gutter;
 		margin: 0 0 oTypographySpacingSize(4);
-		.o-layout-item > p:last-child {
-			margin-bottom: 0;
-		}
 	}
 
 	.o-layout__overview--highlight {
