@@ -76,17 +76,6 @@
 			z-index: -1;
 		}
 	}
-
-	.o-layout__hero--inverse {
-		&:before {
-			background-color: oColorsGetPaletteColor('slate');
-		}
-
-		h1,
-		p {
-			color: white;
-		}
-	}
 }
 
 /// Columns for overview items, such as cards.
