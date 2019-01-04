@@ -3,19 +3,19 @@
 /// Outputs styles for the linked headings
 /// @access private
 @mixin _oLayoutLinkedHeading () {
-	.o-layout__linked-heading {
+	.o-layout__linked-heading:not(.o-layout__unstyled-element) {
 
 		// Increased specificity needed to counteract
 		// default link styles
-		& &__link,
-		& &__link:visited {
+		& .o-layout__linked-heading__link,
+		& .o-layout__linked-heading__link:visited {
 			color: inherit;
 			text-decoration: none;
 			border-bottom: 0;
 			position: relative;
 		}
 
-		&__label {
+		.o-layout__linked-heading__label {
 			@include oTypographySans($scale: 2);
 			color: oColorsGetColorFor(link, text);
 			display: none;
@@ -25,11 +25,11 @@
 			right: -0.75em; //keeps the octothorpe in line with the heading if the heading spans a whole grid-column
 		}
 
-		&__link:hover &__label {
+		.o-layout__linked-heading__link:hover .o-layout__linked-heading__label {
 			display: inline-block;
 		}
 
-		&:target &__link {
+		&:target .o-layout__linked-heading__link {
 			animation-delay: 0;
 			animation-duration: 5s;
 			animation-timing-function: $o-visual-effects-transition-fade;
