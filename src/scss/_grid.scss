@@ -148,8 +148,8 @@
 	}
 
 	.o-layout__heading {
-		grid-area: heading;
 		@include _oLayoutBody;
+		grid-area: heading;
 		margin-top: $_o-layout-gutter;
 		@include oGridRespondTo($until: M) {
 			padding: 0 1rem;
