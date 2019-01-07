@@ -161,6 +161,22 @@
 		}
 	}
 
+
+	.o-layout.o-layout--query .o-layout__heading--full {
+		grid-area: heading;
+		grid-column: heading-start / aside-sidebar-end;
+		background: blue;
+		z-index: 1;
+
+	}
+
+	.o-layout.o-layout--query .o-layout__main--full {
+		grid-area: main;
+		grid-column: main-start / aside-sidebar-end;
+		background: red;
+		z-index: 1;
+	}
+
 	.o-layout__query-sidebar,
 	.o-layout__aside-sidebar {
 		background-color: oColorsGetPaletteColor('slate-white-5');
