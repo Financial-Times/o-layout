@@ -4,8 +4,7 @@
     "mainNav": [
         {
             "name": "Landing Layout",
-            "href": "landing-layout.html",
-            "current": true
+            "href": "landing-layout.html"
         },
         {
             "name": "Documentation Layout",
@@ -13,7 +12,8 @@
         },
         {
             "name": "Query Layout",
-            "href": "query-layout.html"
+            "href": "query-layout.html",
+            "current": true
         }
     ]
 }

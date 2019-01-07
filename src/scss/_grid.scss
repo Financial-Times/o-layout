@@ -109,3 +109,87 @@
 		}
 	}
 }
+
+/// Grid for query layout.
+/// @access private
+@mixin _oLayoutQueryGrid() {
+	.o-layout.o-layout--query {
+		grid-template-rows: auto auto auto 1fr auto auto;
+		grid-template-areas:
+			"header"
+			"heading"
+			"query-sidebar"
+			"main"
+			"aside-sidebar"
+			"footer";
+
+		//sass-lint:disable mixins-before-declarations - Source order matters for media queries. Although @at-root is used anyway, which will always output the media after.
+		@include oGridRespondTo($from: M) {
+			grid-template-rows: auto auto 1fr auto;
+			grid-template-columns: minmax(auto, $_o-layout-aside-max-width) 1fr;
+			grid-template-areas:
+				"header header"
+				"query-sidebar heading"
+				"query-sidebar main"
+				"query-sidebar aside-sidebar"
+				"footer footer";
+		};
+
+		@include oGridRespondTo($from: L) {
+			grid-template-rows: auto auto 1fr auto;
+			grid-template-columns: minmax(auto, $_o-layout-aside-max-width) 1fr minmax(auto, $_o-layout-aside-max-width);
+			grid-template-areas:
+				"header header header"
+				"query-sidebar heading aside-sidebar"
+				"query-sidebar main aside-sidebar"
+				"footer footer footer";
+		};
+		//sass-lint:enable mixins-before-declarations
+	}
+
+	.o-layout__heading {
+		grid-area: heading;
+		@include _oLayoutBody;
+		margin-top: $_o-layout-gutter;
+		@include oGridRespondTo($until: M) {
+			padding: 0 1rem;
+		}
+		> :last-child {
+			@include oGridRespondTo($from: M) {
+				margin-bottom: 0;
+			}
+		}
+	}
+
+	.o-layout__query-sidebar,
+	.o-layout__aside-sidebar {
+		background-color: oColorsGetPaletteColor('slate-white-5');
+	}
+
+	.o-layout__query-sidebar {
+		grid-area: query-sidebar;
+	}
+
+	.o-layout__aside-sidebar {
+		grid-area: aside-sidebar;
+	}
+
+	.o-layout__aside-sidebar,
+	.o-layout__query-sidebar {
+		padding: $_o-layout-gutter;
+	}
+
+	//sass-lint:disable mixins-before-declarations
+	@include oGridRespondTo($from: M) {
+		.o-layout__aside-sidebar {
+			margin-left: -$_o-layout-gutter;
+		}
+	}
+
+	@include oGridRespondTo($from: L) {
+		.o-layout__aside-sidebar {
+			margin: 0;
+		}
+	}
+	//sass-lint:enable mixins-before-declarations
+}

@@ -20,6 +20,7 @@
 	@include _oLayoutBase();
 	@include _oLayoutDocsGrid();
 	@include _oLayoutLandingGrid();
+	@include _oLayoutQueryGrid();
 	@include _oLayoutAreas($hero-image);
 	@include _oLayoutLinkedHeading();
 }

@@ -118,10 +118,7 @@
 			padding: 0 1rem;
 		}
 		grid-area: main;
-
-		> :first-child {
-			margin-top: $_o-layout-gutter;
-		}
+		margin-top: $_o-layout-gutter;
 
 		> table {
 			overflow-x: scroll;

@@ -1,0 +1,53 @@
+<div class="o-layout o-layout--query" data-o-component="o-layout">
+    {{> shared/header}}
+
+    <div class="o-layout__heading">
+        <h1>Some Information</h1>
+    </div>
+
+    <div class="o-layout__query-sidebar">
+<form action="/components" method="get" class="registry__form registry__container__sticky" data-o-component="o-filter-form" data-o-filter-form-browser-history="true">
+
+	<fieldset class="o-forms">
+		<label class="o-forms__label">Types</label>
+		<div class="o-forms__additional-info">Filter components by type</div>
+		<div class="o-forms__group">
+			<input id="type-module" type="checkbox" name="module" value="true" checked="" class="o-forms__checkbox">
+			<label for="type-module" class="o-forms__label">Modules</label>
+			<input id="type-imageset" type="checkbox" name="imageset" value="true" checked="" class="o-forms__checkbox">
+			<label for="type-imageset" class="o-forms__label">Imagesets</label>
+			<input id="type-service" type="checkbox" name="service" value="true" checked="" class="o-forms__checkbox">
+			<label for="type-service" class="o-forms__label">Services</label>
+		</div>
+	</fieldset>
+
+	<fieldset class="o-forms">
+		<label class="o-forms__label">Status</label>
+		<div class="o-forms__additional-info">Filter components by status</div>
+		<div class="o-forms__group">
+			<input id="status-active" type="checkbox" name="active" value="true" checked="" class="o-forms__checkbox">
+			<label for="status-active" class="o-forms__label">Active</label>
+			<input id="status-maintained" type="checkbox" name="maintained" value="true" checked="" class="o-forms__checkbox">
+			<label for="status-maintained" class="o-forms__label">Maintained</label>
+			<input id="status-experimental" type="checkbox" name="experimental" value="true" checked="" class="o-forms__checkbox">
+			<label for="status-experimental" class="o-forms__label">Experimental</label>
+			<input id="status-deprecated" type="checkbox" name="deprecated" value="true" class="o-forms__checkbox">
+			<label for="status-deprecated" class="o-forms__label">Deprecated</label>
+			<input id="status-dead" type="checkbox" name="dead" value="true" class="o-forms__checkbox">
+			<label for="status-dead" class="o-forms__label">Dead</label>
+		</div>
+	</fieldset>
+</form>
+    </div>
+
+	<div class="o-layout__main" data-o-component="o-syntax-highlight">
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsum quam iure quas velit animi sunt aliquid quos esse ea, dolor eaque non repellendus commodi id inventore quae, dicta ducimus? Similique.</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit, sapiente.</p>
+	</div>
+
+    <div class="o-layout__aside-sidebar">
+        <p>Aside Sidebar</p>
+    </div>
+
+	{{> shared/footer}}
+</div>
