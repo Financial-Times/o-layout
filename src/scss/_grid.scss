@@ -126,23 +126,23 @@
 		//sass-lint:disable mixins-before-declarations - Source order matters for media queries. Although @at-root is used anyway, which will always output the media after.
 		@include oGridRespondTo($from: M) {
 			grid-template-rows: auto auto 1fr auto;
-			grid-template-columns: 1fr minmax(auto, $_o-layout-aside-max-width) $_o-layout-main-section-width 1fr;
+			grid-template-columns: minmax(auto, $_o-layout-aside-max-width) 1fr;
 			grid-template-areas:
-				"header header header header"
-				". query-sidebar heading ."
-				". query-sidebar main ."
-				". query-sidebar aside-sidebar ."
-				"footer footer footer footer";
+				"header header"
+				"query-sidebar heading"
+				"query-sidebar main"
+				"query-sidebar aside-sidebar"
+				"footer footer";
 		};
 
 		@include oGridRespondTo($from: L) {
 			grid-template-rows: auto auto 1fr auto;
-			grid-template-columns: 1fr minmax(auto, $_o-layout-aside-max-width) $_o-layout-main-section-width minmax(auto, $_o-layout-aside-max-width) 1fr;
+			grid-template-columns: minmax(auto, $_o-layout-aside-max-width) 1fr minmax(auto, $_o-layout-aside-max-width);
 			grid-template-areas:
-				"header header header header header"
-				". query-sidebar heading aside-sidebar ."
-				". query-sidebar main aside-sidebar ."
-				"footer footer footer footer footer";
+				"header header header"
+				"query-sidebar heading aside-sidebar"
+				"query-sidebar main aside-sidebar"
+				"footer footer footer";
 		};
 		//sass-lint:enable mixins-before-declarations
 	}
@@ -181,24 +181,14 @@
 
 	//sass-lint:disable mixins-before-declarations
 	@include oGridRespondTo($from: M) {
-		.o-layout__query-sidebar {
+		.o-layout__aside-sidebar {
 			margin-left: -$_o-layout-gutter;
 		}
 	}
 
 	@include oGridRespondTo($from: L) {
 		.o-layout__aside-sidebar {
-			margin-right: -$_o-layout-gutter;
-		}
-	}
-
-	@include oGridRespondTo($from: XL) {
-		.o-layout__aside-sidebar {
-			margin-right: 0;
-		}
-
-		.o-layout__query-sidebar {
-			margin-left: 0;
+			margin: 0;
 		}
 	}
 	//sass-lint:enable mixins-before-declarations
