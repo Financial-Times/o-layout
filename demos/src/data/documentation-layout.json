@@ -10,6 +10,10 @@
 			"name": "Documentation Layout",
 			"href": "documentation-layout.html",
 			"current": true
+		},
+		{
+			"name": "Query Layout",
+			"href": "query-layout.html"
 		}
 	]
 }
