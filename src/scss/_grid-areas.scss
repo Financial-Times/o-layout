@@ -7,6 +7,8 @@
 	@include _oLayoutAreaSidebar();
 	@include _oLayoutAreaHero($hero-image);
 	@include _oLayoutAreaOverview();
+	@include _oLayoutAreaQuerySidebar();
+	@include _oLayoutAreaAsideSidebar();
 	@include _oLayoutAreaMain();
 	@include _oLayoutAreaFooter();
 }
@@ -183,5 +185,29 @@
 				margin-right: -1em;
 			}
 		}
+	}
+}
+
+/// Query Sidebar
+/// Outputs a sidebar used for search and filter inputs.
+/// Used within the query layout at time of writing.
+/// @access private
+@mixin _oLayoutAreaQuerySidebar() {
+	.o-layout__query-sidebar {
+		@include _oLayoutBody;
+		grid-area: query-sidebar;
+		padding: $_o-layout-gutter;
+	}
+}
+
+/// Aside Sidebar
+/// Outputs a sidebar used for additional or secondary information.
+/// Used within the query layout at time of writing.
+/// @access private
+@mixin _oLayoutAreaAsideSidebar() {
+	.o-layout__aside-sidebar {
+		@include _oLayoutBody;
+		grid-area: aside-sidebar;
+		padding: $_o-layout-gutter;
 	}
 }

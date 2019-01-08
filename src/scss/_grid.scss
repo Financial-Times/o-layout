@@ -126,23 +126,23 @@
 		//sass-lint:disable mixins-before-declarations - Source order matters for media queries. Although @at-root is used anyway, which will always output the media after.
 		@include oGridRespondTo($from: M) {
 			grid-template-rows: auto auto 1fr auto;
-			grid-template-columns: minmax(auto, $_o-layout-aside-max-width) 1fr;
+			grid-template-columns: 1fr minmax(auto, $_o-layout-aside-max-width) $_o-layout-main-section-width 1fr;
 			grid-template-areas:
-				"header header"
-				"query-sidebar heading"
-				"query-sidebar main"
-				"query-sidebar aside-sidebar"
-				"footer footer";
+				"header header header header"
+				". query-sidebar heading ."
+				". query-sidebar main ."
+				". query-sidebar aside-sidebar ."
+				"footer footer footer footer";
 		};
 
 		@include oGridRespondTo($from: L) {
 			grid-template-rows: auto auto 1fr auto;
-			grid-template-columns: minmax(auto, $_o-layout-aside-max-width) 1fr minmax(auto, $_o-layout-aside-max-width);
+			grid-template-columns: 1fr minmax(auto, $_o-layout-aside-max-width) $_o-layout-main-section-width minmax(auto, $_o-layout-aside-max-width) 1fr;
 			grid-template-areas:
-				"header header header"
-				"query-sidebar heading aside-sidebar"
-				"query-sidebar main aside-sidebar"
-				"footer footer footer";
+				"header header header header header"
+				". query-sidebar heading aside-sidebar ."
+				". query-sidebar main aside-sidebar ."
+				"footer footer footer footer footer";
 		};
 		//sass-lint:enable mixins-before-declarations
 	}
@@ -161,38 +161,26 @@
 		}
 	}
 
-
+	// Enable the heading area to overlay where the aside sidebar would be.
+	// For a "full page search"
 	.o-layout.o-layout--query .o-layout__heading--full {
 		grid-area: heading;
 		grid-column: heading-start / aside-sidebar-end;
-		background: blue;
-		z-index: 1;
-
 	}
 
+	// Enable the main area to overlay where the aside sidebar would be.
+	// For a "full page search"
 	.o-layout.o-layout--query .o-layout__main--full {
 		grid-area: main;
 		grid-column: main-start / aside-sidebar-end;
-		background: red;
-		z-index: 1;
-	}
-
-	.o-layout__query-sidebar,
-	.o-layout__aside-sidebar {
-		background-color: oColorsGetPaletteColor('slate-white-5');
 	}
 
 	.o-layout__query-sidebar {
-		grid-area: query-sidebar;
+		border-right: 1px solid oColorsGetPaletteColor('slate-white-15');
 	}
 
 	.o-layout__aside-sidebar {
-		grid-area: aside-sidebar;
-	}
-
-	.o-layout__aside-sidebar,
-	.o-layout__query-sidebar {
-		padding: $_o-layout-gutter;
+		border-left: 1px solid oColorsGetPaletteColor('slate-white-15');
 	}
 
 	//sass-lint:disable mixins-before-declarations

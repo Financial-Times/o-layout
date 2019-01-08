@@ -1,16 +1,17 @@
 <div class="o-layout o-layout--query" data-o-component="o-layout">
-    {{> shared/header-bleed}}
+    {{> shared/header}}
 
-    <div class="o-layout__heading o-layout__heading--full">
-        <h1>Some Information</h1>
+    <div class="o-layout__heading">
+		<h1>Searchable Things</h1>
+		<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consequuntur ipsa illum veniam doloremque ut laborum voluptates saepe dignissimos cupiditate eos.</p>
+		<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit, sapiente.</p>
     </div>
 
     <div class="o-layout__query-sidebar">
 <form action="/components" method="get" class="registry__form registry__container__sticky" data-o-component="o-filter-form" data-o-filter-form-browser-history="true">
-
 	<fieldset class="o-forms">
 		<label class="o-forms__label">Types</label>
-		<div class="o-forms__additional-info">Filter components by type</div>
+		<div class="o-forms__additional-info">Filter results by type</div>
 		<div class="o-forms__group">
 			<input id="type-module" type="checkbox" name="module" value="true" checked="" class="o-forms__checkbox">
 			<label for="type-module" class="o-forms__label">Modules</label>
@@ -23,7 +24,7 @@
 
 	<fieldset class="o-forms">
 		<label class="o-forms__label">Status</label>
-		<div class="o-forms__additional-info">Filter components by status</div>
+		<div class="o-forms__additional-info">Filter results by status</div>
 		<div class="o-forms__group">
 			<input id="status-active" type="checkbox" name="active" value="true" checked="" class="o-forms__checkbox">
 			<label for="status-active" class="o-forms__label">Active</label>
@@ -40,13 +41,32 @@
 </form>
     </div>
 
-	<div class="o-layout__main o-layout__main--full" data-o-component="o-syntax-highlight">
-        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsum quam iure quas velit animi sunt aliquid quos esse ea, dolor eaque non repellendus commodi id inventore quae, dicta ducimus? Similique.</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit, sapiente.</p>
+	<div class="o-layout__main" data-o-component="o-syntax-highlight">
+		<h2>Results</h2>
+		<ul>
+			<li>
+				<p>Result 1</p>
+			</li>
+			<li>
+				<p>Result 2</p>
+			</li>
+			<li>
+				<p>Result 3</p>
+			</li>
+			<li>
+				<p>Result 4</p>
+			</li>
+			<li>
+				<p>Result 5</p>
+			</li>
+			<li>
+				<p>Result 6</p>
+			</li>
+		</ul>
 	</div>
 
-    <div class="o-layout__aside-sidebar">
-        <p>Aside Sidebar</p>
+    <div class="o-layout__aside-sidebar" data-o-component="o-syntax-highlight">
+		<p>Aside Sidebar: Lorem ipsum, dolor sit amet consectetur adipisicing <code class='o-syntax-highlight--html'>o-layout</code> elit. Pariatur beatae, tempora deleniti inventore impedit minus corrupti omnis esse assumenda perspiciatis?</p>
     </div>
 
 	{{> shared/footer}}
