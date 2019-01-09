@@ -1,7 +1,7 @@
 /// Base styling for the layout content
 /// @access private
-@mixin _oLayoutBody () {
-	.o-layout-body {
+@mixin _oLayoutTypography () {
+	.o-layout-typography {
 		@include oTypographySans($scale: 1, $line-height: 1.4);
 
 		p {
