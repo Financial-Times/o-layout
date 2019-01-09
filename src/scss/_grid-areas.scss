@@ -48,7 +48,6 @@
 /// @access private
 @mixin _oLayoutAreaHero($hero-image: '') {
 	.o-layout__hero {
-		@include _oLayoutBody;
 		position: relative;
 		grid-area: hero;
 		padding: $_o-layout-gutter * 2 $_o-layout-gutter;
@@ -115,7 +114,6 @@
 /// @access private
 @mixin _oLayoutAreaMain() {
 	.o-layout__main {
-		@include _oLayoutBody;
 		@include oGridRespondTo($until: M) {
 			padding: 0 1rem;
 		}
@@ -194,7 +192,6 @@
 /// @access private
 @mixin _oLayoutAreaQuerySidebar() {
 	.o-layout__query-sidebar {
-		@include _oLayoutBody;
 		grid-area: query-sidebar;
 		padding: $_o-layout-gutter;
 	}
@@ -206,7 +203,6 @@
 /// @access private
 @mixin _oLayoutAreaAsideSidebar() {
 	.o-layout__aside-sidebar {
-		@include _oLayoutBody;
 		grid-area: aside-sidebar;
 		padding: $_o-layout-gutter;
 	}

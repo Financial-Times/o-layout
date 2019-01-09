@@ -23,6 +23,7 @@
 	@include _oLayoutQueryGrid();
 	@include _oLayoutAreas($hero-image);
 	@include _oLayoutLinkedHeading();
+	@include _oLayoutTypography;
 }
 
 @if $o-layout-is-silent == false {

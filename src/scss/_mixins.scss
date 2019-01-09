@@ -1,75 +1,77 @@
 /// Base styling for the layout content
 /// @access private
-@mixin _oLayoutBody () {
-	@include oTypographySans($scale: 1, $line-height: 1.4);
+@mixin _oLayoutTypography () {
+	.o-layout-typography {
+		@include oTypographySans($scale: 1, $line-height: 1.4);
 
-	p {
-		max-width: oTypographyMaxLineWidth($scale: 1, $optimal-characters-per-line: 85);
-	}
+		p {
+			max-width: oTypographyMaxLineWidth($scale: 1, $optimal-characters-per-line: 85);
+		}
 
-	a:not(.o-layout__unstyled-element) {
-		@include oTypographyLink();
-	}
+		a:not(.o-layout__unstyled-element) {
+			@include oTypographyLink();
+		}
 
-	h1	{
-		@include oTypographyProductHeadingLevel1();
-	}
+		h1	{
+			@include oTypographyProductHeadingLevel1();
+		}
 
-	h2 {
-		@include oTypographyProductHeadingLevel2();
-	}
+		h2 {
+			@include oTypographyProductHeadingLevel2();
+		}
 
-	h3 {
-		@include oTypographyProductHeadingLevel3();
-	}
+		h3 {
+			@include oTypographyProductHeadingLevel3();
+		}
 
-	h4 {
-		@include oTypographyProductHeadingLevel4();
-	}
+		h4 {
+			@include oTypographyProductHeadingLevel4();
+		}
 
-	h5 {
-		@include oTypographyProductHeadingLevel5();
-	}
+		h5 {
+			@include oTypographyProductHeadingLevel5();
+		}
 
-	h6 {
-		@include oTypographyProductHeadingLevel6();
-	}
+		h6 {
+			@include oTypographyProductHeadingLevel6();
+		}
 
-	aside {
-		@include _oLayoutRule('left');
-		align-self: flex-start;
-	}
+		aside {
+			@include _oLayoutRule('left');
+			align-self: flex-start;
+		}
 
-	p,
-	ol,
-	ul,
-	pre,
-	aside,
-	table {
-		margin: 0 0 oTypographySpacingSize(4);
-	}
+		p,
+		ol,
+		ul,
+		pre,
+		aside,
+		table {
+			margin: 0 0 oTypographySpacingSize(4);
+		}
 
-	ul:not([data-o-component^="o-"], .o-layout__unstyled-element) {
-		list-style-type: none;
-		position: relative;
-		padding-left: 1.5rem;
+		ul:not([data-o-component^="o-"], .o-layout__unstyled-element) {
+			list-style-type: none;
+			position: relative;
+			padding-left: 1.5rem;
 
-		li {
-			margin-bottom: 0.5em;
+			li {
+				margin-bottom: 0.5em;
 
-			&:before {
-				content: '—';
-				position: absolute;
-				left: 0;
-				color: oColorsGetPaletteColor('teal');
-				font-weight: 900;
+				&:before {
+					content: '—';
+					position: absolute;
+					left: 0;
+					color: oColorsGetPaletteColor('teal');
+					font-weight: 900;
+				}
 			}
 		}
-	}
 
-	ol:not([data-o-component^="o-"], .o-layout__unstyled-element) {
-		position: relative;
-		padding-left: 1.5rem;
+		ol:not([data-o-component^="o-"], .o-layout__unstyled-element) {
+			position: relative;
+			padding-left: 1.5rem;
+		}
 	}
 }
 
