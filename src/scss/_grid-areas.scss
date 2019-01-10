@@ -1,17 +1,3 @@
-/// Layout Areas
-/// Outputs grid grid template areas
-/// @param {String} $hero-image - An image for the "hero" area background.
-/// @access private
-@mixin _oLayoutAreas($hero-image: '') {
-	@include _oLayoutAreaHeader();
-	@include _oLayoutAreaSidebar();
-	@include _oLayoutAreaHero($hero-image);
-	@include _oLayoutAreaOverview();
-	@include _oLayoutAreaQuerySidebar();
-	@include _oLayoutAreaAsideSidebar();
-	@include _oLayoutAreaMain();
-	@include _oLayoutAreaFooter();
-}
 
 /// Header Area
 /// Outputs grid header area
@@ -94,7 +80,7 @@
 		margin: 0 0 oTypographySpacingSize(4);
 	}
 
-	.o-layout__overview--highlight {
+	.o-layout__overview--actions {
 		grid-gap: $_o-layout-gutter;
 		.o-layout-item {
 			display: grid;

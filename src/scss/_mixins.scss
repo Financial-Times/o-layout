@@ -2,9 +2,12 @@
 /// @access private
 @mixin _oLayoutTypography () {
 	.o-layout-typography {
-		@include oTypographySans($scale: 1, $line-height: 1.4);
+		@include oTypographyBody;
+		line-height: 1.3; // Override default body line height.
 
-		p {
+		p:not(.o-layout__unstyled-element) {
+			@include oTypographyBody;
+			line-height: 1.3; // Override default body line height.
 			max-width: oTypographyMaxLineWidth($scale: 1, $optimal-characters-per-line: 85);
 		}
 
@@ -12,65 +15,47 @@
 			@include oTypographyLink();
 		}
 
-		h1	{
-			@include oTypographyProductHeadingLevel1();
+		h1:not(.o-layout__unstyled-element)	{
+			@include oTypographyHeadingLevel1();
 		}
 
-		h2 {
-			@include oTypographyProductHeadingLevel2();
+		h2:not(.o-layout__unstyled-element) {
+			@include oTypographyHeadingLevel2();
 		}
 
-		h3 {
-			@include oTypographyProductHeadingLevel3();
+		h3:not(.o-layout__unstyled-element) {
+			@include oTypographyHeadingLevel3();
 		}
 
-		h4 {
-			@include oTypographyProductHeadingLevel4();
+		h4:not(.o-layout__unstyled-element) {
+			@include oTypographyHeadingLevel4();
 		}
 
-		h5 {
-			@include oTypographyProductHeadingLevel5();
+		h5:not(.o-layout__unstyled-element) {
+			@include oTypographyHeadingLevel5();
 		}
 
-		h6 {
-			@include oTypographyProductHeadingLevel6();
+		h6:not(.o-layout__unstyled-element) {
+			@include oTypographyHeadingLevel6();
 		}
 
-		aside {
+		aside:not(.o-layout__unstyled-element) {
 			@include _oLayoutRule('left');
 			align-self: flex-start;
 		}
 
-		p,
-		ol,
-		ul,
-		pre,
-		aside,
+		ul:not(.o-layout__unstyled-element) {
+			@include oTypographyList;
+			@include oTypographyListUnordered;
+		}
+
+		ol:not(.o-layout__unstyled-element) {
+			@include oTypographyList;
+			@include oTypographyListOrdered;
+		}
+
 		table {
 			margin: 0 0 oTypographySpacingSize(4);
-		}
-
-		ul:not([data-o-component^="o-"], .o-layout__unstyled-element) {
-			list-style-type: none;
-			position: relative;
-			padding-left: 1.5rem;
-
-			li {
-				margin-bottom: 0.5em;
-
-				&:before {
-					content: '—';
-					position: absolute;
-					left: 0;
-					color: oColorsGetPaletteColor('teal');
-					font-weight: 900;
-				}
-			}
-		}
-
-		ol:not([data-o-component^="o-"], .o-layout__unstyled-element) {
-			position: relative;
-			padding-left: 1.5rem;
 		}
 	}
 }
