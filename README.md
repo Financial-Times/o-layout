@@ -4,17 +4,11 @@ o-layout [![Circle CI](https://circleci.com/gh/Financial-Times/o-layout/tree/mas
 ## Table of Contents
 
 - [Overview](#overview)
-- [Typography](#typography)
 - [Documentation Layout](#documentation-layout)
 - [Landing Layout](#landing-layout)
 - [Query Layout](#query-layout)
-- [Markup](#markup)
-	- [Layout Base](#layout-base)
-	- [Navigation and Content](#navigation-and-content)
-	- [Asides](#asides)
 - [Sass](#sass)
 - [JavaScript](#javascript)
-	- [Construction](#construction)
 	- [Custom Navigation](#custom-navigation)
 - [Migration Guide](#migration-guide)
 - [Contact](#contact)
@@ -29,14 +23,11 @@ o-layout [![Circle CI](https://circleci.com/gh/Financial-Times/o-layout/tree/mas
 - A landing/homepage layout.
 - A search/query page layout.
 
-
-### Typography
-
-Typography is styled automatically using the `o-layout-typography` class. Including headings, paragraphs, lists, anchor tags, etc. To opt out of typography styling for specific elements apply the `.o-layout__unstyled-element`.
+Typography is styled automatically using the `o-layout-typography` class. Including headings, paragraphs, lists, anchor tags, etc. To opt-out of typography styling for specific elements apply the `.o-layout__unstyled-element`.
 
 ## Documentation Layout
 
-The documentation layout is intended for text-heavy pages, for example technical documentation or blog posts. As well as the heading and footer, the documentation layout includes the following areas:
+The documentation layout is intended for text-heavy pages, for example technical documentation or blog posts. As well as a heading and footer, the documentation layout includes the following areas:
 
 - Main Content
 - Sidebar _(optional)_
@@ -67,11 +58,9 @@ The documentation layout is intended for text-heavy pages, for example technical
 </div>
 ```
 
-### Documentation Layout Main Content
+### Main Content
 
-On large viewports the main content area `o-layout__main` of the documentation layout is split into two columns. By default content is placed into column 1 (col 1), except for the `aside` element which is placed in column 2 (col 2), and the `table` element which spans both columns.
-
-Add the class `o-layout__main__single-span` to force elements into column 1. Use `o-layout__main__full-span` to force elements to span both columns.
+On large viewports the main content area (`o-layout__main`) is split into two columns.
 
 ```
 ┌————————————————————————————┐
@@ -86,27 +75,39 @@ Add the class `o-layout__main__single-span` to force elements into column 1. Use
 └————————————————————————————┘
 ```
 
+By default content is placed into column 1; except for the `aside` element which is placed in column 2; and the `table` element which spans both columns.
+
+Add the class `o-layout__main__single-span` to force elements into column 1. Use `o-layout__main__full-span` to force elements to span both columns.
+
+
 ```html
-	<!-- Your page content here. -->
-	<div class="o-layout__main o-layout-typography">
-		<!-- Most content is placed in column 1 -->
-		<h2>A Title</h2>
-		<p>Some content.</p>
-		<!-- Asides are placed in column 2 -->
-		<aside>An aside</aside>
-		<!-- Tables span columns 1 & 2 -->
-		<table></table>
-		<!-- The class "o-layout__main__single-span" forces elements into column 1 only -->
-		<table class="o-layout__main__single-span"></table>
-		<!-- The class "o-layout__main__full-span" forces elements to span columns 1 & 2 -->
-		<div class="o-layout__main__full-span"></div>
-	</div>
+<!-- Your page content here. -->
+<div class="o-layout__main o-layout-typography">
+	<!-- Most content is placed in column 1 -->
+	<h2>A Title</h2>
+	<p>Some content.</p>
+	<!-- Asides are placed in column 2 -->
+	<aside>An aside</aside>
+	<!-- Tables span columns 1 & 2 -->
+	<table></table>
+	<!-- The class "o-layout__main__single-span" forces elements into column 1 only -->
+	<table class="o-layout__main__single-span"></table>
+	<!-- The class "o-layout__main__full-span" forces elements to span columns 1 & 2 -->
+	<div class="o-layout__main__full-span"></div>
+</div>
 ```
 
-### Documentation Layout Sidebar
-Unless the configuration says otherwise, `o-layout` will generate a sidebar navigation, which will rely on presence of `<h2>`s and `<h3>`s with `id`s in the main content section. If this is a feature you want to use, then you don't need to add anything to the sidebar section of `o-layout`.
+### Sidebar
+For the documentation layout, `o-layout` will generate a sidebar navigation. The default sidebar links to any `<h2>` or `<h3>` element within the main content area, providing it has an `id`. If this is a feature you want to use, then you don't need to add anything to the sidebar section of `o-layout`.
 
-However, if you would like to customise your sidebar navigation, add the data attribute `data-o-layout-construct-nav="false"` to the root `o-layout` element. Then add a navigation list element with a class `o-layout__navigation` to he sidebar, and ensure that your `<a href>`s point at the `id` of the section it corresponds to. Alternatively you can customise the navigation [via JavaScript](#custom-navigation).
+If you wish to display headings other than `<h2>` and `<h3>` in the navigation, you can customise the selector that's used with the `data-o-layout-nav-heading-selector` data attribute. For example, to select only headings which have the class `nav-heading`, use the following:
+
+```diff
++ <div class="o-layout" data-o-component="o-layout" data-o-layout-nav-heading-selector=".nav-heading">
+- <div class="o-layout" data-o-component="o-layout">
+```
+
+To customise your sidebar navigation more fully, add the data attribute `data-o-layout-construct-nav="false"` to the root `o-layout` element. Then add your own `nav` element within the sidebar, with a child list which has the class `o-layout__navigation`.
 
 Altogether, a customised navigation should look like this:
 ```diff
@@ -117,25 +118,24 @@ Altogether, a customised navigation should look like this:
 
 	<div class="o-layout__sidebar">
 		<!-- this can be an <ol> or a <ul> -->
-+		<ol class="o-layout__navigation">
-+			<li>
-+				<a href="#this-is-a-title">This is a title</a>
-+			</li>
-+		</ol>
++		<nav>
++			<ol class="o-layout__navigation">
++				<li>
++					<a href="#this-is-a-title">This is a title</a>
++				</li>
++			</ol>
++		</nav>
 	</div>
 
-	<div class="o-layout__main"></div>
+	<div class="o-layout__main">
+		<h2 id="this-is-a-title">This Is A Title</h2>
+	</div>
 
 	<footer class="o-layout__footer"></footer>
 </div>
 ```
 
-If you wish to use headings other than `<h2>` and `<h3>` in the navigation, you can customise the selector that's used with the `data-o-layout-nav-heading-selector` data attribute. For example, to select only headings which have the class `nav-heading`, use the following:
-
-```diff
-+ <div class="o-layout" data-o-component="o-layout" data-o-layout-nav-heading-selector=".nav-heading">
-- <div class="o-layout" data-o-component="o-layout">
-```
+Alternatively you can customise the navigation [via JavaScript](#custom-navigation).
 
 ## Landing Layout
 
@@ -169,9 +169,9 @@ The landing layout is ideal for a homepage or other key category / directory pag
 </div>
 ```
 
-Within the main content area the landing layout provides an overview section, ideal for outlining key points of the landing page. There is also an actions overview, useful for highlighting calls to action on the landing page.
+Within the main content area the landing layout provides an overview section. The overview section is ideal for outlining key points of the landing page.
 
-Any number of overview items are allowed within an overview section, but will wrap onto a new row if there are more than 4.
+Any number of items are allowed within an overview section, but will wrap onto a new row if there are more than 4.
 
 Overview with 3 items:
 ```
@@ -201,12 +201,15 @@ Overview with 3 items:
 	</div>
 ```
 
+There is also an actions overview. These support a footer, which is useful for highlighting calls to action with links or buttons.
+
 Actions overview with 4 items with footer:
 ```
 ├———————————————————————————————————————┤
 | content | content | content | content |
 | content |         | content | content |
 | content |         | content |         |
+├———————————————————————————————————————┤
 | footer  | footer  | footer  | footer  |
 ├———————————————————————————————————————┤
 ```
@@ -348,6 +351,23 @@ $o-brand: 'internal';
 @include oLayout();
 ```
 
+If your project does not use all layouts, include them selectively with an `$opts` argument:
+
+```sass
+@mixin oLayout($opts: (
+	'layouts': ('documentation', 'landing', 'query')
+));
+```
+
+The landing layout supports an extra option, which sets a background image on the hero area:
+
+```sass
+@mixin oLayout($opts: (
+	'layouts': ('documentation', 'landing', 'query'),
+	'hero-image': 'https://example.com/image.png',
+));
+```
+
 ## JavaScript
 
 No code will run automatically unless you are using the Build Service. You must either construct an `o-layout` object manually or fire an o.DOMContentLoaded event, which `o-layout` listens for.
@@ -358,7 +378,7 @@ const oLayout = require('o-layout');
 oLayout.init();
 ```
 
-### Custom Documentation Layout Navigation
+### Custom Navigation
 The [documentation layout](#documentation-layout) uses JavaScript to construct the sidebar navigation out of headings (`h1`, `h2` and `h3`) in the content, and to highlight those items depending on the scroll position. This is its default behaviour.
 
 If you would like to define your own navigation, you will need to initialise `o-layout` like this:

@@ -25,7 +25,7 @@
 </div>
 ```
 - Removes the public variable `$o-layout-breakpoints`.(https://registry.origami.ft.com/components/o-grid@4.4.4/sassdoc#o-grid-mixin-oGridRespondTo).
-- All mixins except `_oLayout` are not private. Instead of `oLayoutBreakPoint` use [o-grid's oGridRespondTo](https://registry.origami.ft.com/components/o-grid/sassdoc#o-grid-mixin-oGridRespondTo) instead. If your project depends on other `o-layout` mixins, please contact the team.
+- All mixins except `_oLayout` are now private. Instead of `oLayoutBreakPoint` use [o-grid's oGridRespondTo](https://registry.origami.ft.com/components/o-grid/sassdoc#o-grid-mixin-oGridRespondTo) instead. If your project depends on other `o-layout` mixins, please contact the team.
 
 ## Migrating from v1 to v2
 
