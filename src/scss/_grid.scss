@@ -60,7 +60,7 @@
 				"header header header header"
 				". sidebar main ."
 				"footer footer footer footer";
-			grid-template-columns: 1fr minmax(auto, $_o-layout-sidebar-max-width) minmax(15rem, _getMainMaxWdith($_o-layout-sidebar-max-width)) 1fr;
+			grid-template-columns: 1fr minmax(auto, $_o-layout-sidebar-max-width) minmax(31rem, _getMainMaxWdith($_o-layout-sidebar-max-width)) 1fr;
 			grid-template-rows: auto 1fr auto;
 		};
 	}
