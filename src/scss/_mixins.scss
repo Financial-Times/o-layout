@@ -1,13 +1,21 @@
+/// Styles decorative rules for containers
+///
+///@param {String} $side — left or right rule to be styled
+/// @access private
+@mixin _oLayoutRule($side: 'left') {
+	border-#{$side}: 2px solid oColorsGetPaletteColor('teal');
+	padding-#{$side}: $_o-layout-gutter;
+}
+
 /// Base styling for the layout content
 /// @access private
 @mixin _oLayoutTypography () {
 	.o-layout-typography {
-		@include oTypographyBody;
-		line-height: 1.3; // Override default body line height.
+		@include oTypographySans($scale: 1, $line-height: 1.4);
 
 		p:not(.o-layout__unstyled-element) {
 			@include oTypographyBody;
-			line-height: 1.3; // Override default body line height.
+			@include oTypographySize($scale: 1, $line-height: 1.4);
 			max-width: oTypographyMaxLineWidth($scale: 1, $optimal-characters-per-line: 85);
 		}
 
@@ -60,11 +68,100 @@
 	}
 }
 
-/// Styles decorative rules for containers
-///
-///@param {String} $side — left or right rule to be styled
+/// Navigation
+/// Outputs navigation styles
 /// @access private
-@mixin _oLayoutRule($side: 'left') {
-	border-#{$side}: 2px solid oColorsGetPaletteColor('teal');
-	padding-#{$side}: $_o-layout-gutter;
+@mixin _oLayoutNavigation() {
+	.o-layout__navigation {
+		border: 0;
+		border-left: 2px solid oColorsGetPaletteColor('teal');
+		padding: 0;
+		text-align: left;
+		list-style: none;
+		margin: 0;
+
+		@include oGridRespondTo($from: M) {
+			border-left: 0;
+			position: sticky;
+			top: $_o-layout-gutter;
+			text-align: right;
+			margin-top: $_o-layout-gutter;
+		}
+
+
+		li {
+			&.o-layout__navigation-title {
+				@include oTypographyBold('sans');
+			}
+
+			&:not(.o-layout__navigation-title) {
+				[aria-current="location"] {
+					color: oColorsGetPaletteColor('teal-30');
+					background: oColorsMix('teal', 'white', 20);
+				}
+				a {
+					@include oGridRespondTo($from: M) {
+						border-right: 2px solid oColorsGetPaletteColor('teal');
+					}
+				}
+			}
+
+			a {
+				@include oTypographySans(1);
+				@include oTypographyLink();
+				border: inherit;
+				display: inline-block;
+				padding: 0.4em 1em;
+			}
+		}
+	}
+}
+
+/// Linked Heading
+/// Outputs styles for the linked headings
+/// @access private
+@mixin _oLayoutLinkedHeading () {
+	.o-layout__linked-heading:not(.o-layout__unstyled-element) {
+
+		// Increased specificity needed to counteract
+		// default link styles
+		& .o-layout__linked-heading__link,
+		& .o-layout__linked-heading__link:visited {
+			color: inherit;
+			text-decoration: none;
+			border-bottom: 0;
+			position: relative;
+		}
+
+		.o-layout__linked-heading__label {
+			@include oTypographySans($scale: 2);
+			color: oColorsGetColorFor(link, text);
+			display: none;
+			user-select: none;
+			font-weight: normal;
+			position: absolute;
+			right: -0.75em; //keeps the octothorpe in line with the heading if the heading spans a whole grid-column
+		}
+
+		.o-layout__linked-heading__link:hover .o-layout__linked-heading__label {
+			display: inline-block;
+		}
+
+		&:target .o-layout__linked-heading__link {
+			animation-delay: 0;
+			animation-duration: 5s;
+			animation-timing-function: $o-visual-effects-transition-fade;
+			animation-name: o-layout-linked-heading-fade;
+		}
+
+	}
+
+	@keyframes o-layout-linked-heading-fade {
+		0% {
+			background-color: oColorsMix('teal', 'white', 15);
+		}
+		100% {
+			background-color: transparent;
+		}
+	}
 }

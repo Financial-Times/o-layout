@@ -353,11 +353,21 @@ $o-brand: 'internal';
 @include oLayout();
 ```
 
-If your project does not use all layouts, include them selectively with an `$opts` argument:
+If your project does not use all layouts or other features provided by `o-layout`, include them selectively with an `$opts` argument.
+
+**Layout Options**
+- documentation
+- landing
+- query
+
+**Feature Options**
+- linked-headings (enables clickable / highlighted anchors on the page)
+- typography (enables body typography applied with the class `o-layout-typography`)
 
 ```sass
 @mixin oLayout($opts: (
-	'layouts': ('documentation', 'landing', 'query')
+	'layouts': ('documentation', 'landing', 'query'),
+	'features': ('linked-headings', 'typography')
 ));
 ```
 
@@ -366,6 +376,7 @@ The landing layout supports an extra option, which sets a background image on th
 ```sass
 @mixin oLayout($opts: (
 	'layouts': ('documentation', 'landing', 'query'),
+	'features': ('linked-headings', 'typography'),
 	'hero-image': 'https://example.com/image.png',
 ));
 ```
