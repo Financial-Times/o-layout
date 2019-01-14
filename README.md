@@ -25,6 +25,8 @@ o-layout [![Circle CI](https://circleci.com/gh/Financial-Times/o-layout/tree/mas
 
 Typography is styled automatically using the `o-layout-typography` class. Including headings, paragraphs, lists, anchor tags, etc. To opt-out of typography styling for specific elements apply the `.o-layout__unstyled-element`.
 
+In addition to typography styling, headings with `id`s are made linkable with a click, for sharing a direct link to that heading.
+
 ## Documentation Layout
 
 The documentation layout is intended for text-heavy pages, for example technical documentation or blog posts. As well as a heading and footer, the documentation layout includes the following areas:
@@ -379,20 +381,39 @@ oLayout.init();
 ```
 
 ### Custom Navigation
+
 The [documentation layout](#documentation-layout) uses JavaScript to construct the sidebar navigation out of headings (`h1`, `h2` and `h3`) in the content, and to highlight those items depending on the scroll position. This is its default behaviour.
 
-If you would like to define your own navigation, you will need to initialise `o-layout` like this:
+If you would like to specify a custom selector for the navigation generation, set the `navHeadingSelector` option:
+
+```js
+const oLayout = require('o-layout');
+oLayout.init(null, { navHeadingSelector: '.nav-heading' });
+```
+
+If you would like to define your own navigation, you will need to initialise `o-layout` with the `constructNav` option set to `false`:
 
 ```js
 const oLayout = require('o-layout');
 oLayout.init(null, { constructNav: false });
 ```
 
-If you would like to specify a custom selector for the navigation generation, you can do so like this:
+### Linking Headings
+
+Heading elements such as `h1`, `h2`, etc that have an `id` attribute are made linkable by default. The heading can then be clicked to update the URL with a hash, for sharing a direct link to that heading.
+
+To customise which headings can be clicked and linked to directly, set the `linkedHeadingSelector` option:
 
 ```js
 const oLayout = require('o-layout');
-oLayout.init(null, { navHeadingSelector: '.nav-heading' });
+oLayout.init(null, { linkedHeadingSelector: '.link-heading' });
+```
+
+Turn off linkable headings by setting `linkHeadings` to false:
+
+```js
+const oLayout = require('o-layout');
+oLayout.init(null, { linkHeadings: true });
 ```
 
 ## Migration Guide
