@@ -29,116 +29,64 @@
 			<li>Ordered list item 4</li>
 		</ol>
 		<h2 id="tables">Tables</h2>
-		<p>Tables span two columns automatically in the documentation layout (into the aside area).</p>
+		<p>The <code>table</code> element spans both columns automatically, but we recommend you use a responsive <a href="https://registry.origami.ft.com/components/o-table">o-table</a> and apply the <code>o-layout__main__full-span</code> class.</p>
 		<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquam rem libero inventore ab nisi pariatur!</p>
 		<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ullam doloribus eum maiores dolor ipsam expedita aut rerum animi soluta veritatis eaque quia quisquam, ratione tenetur facere iste cum quos? Repudiandae?</p>
-		<!-- `table` is temporarily wrapped in a `div` to work around a Firefox bug at time of writing: https://github.com/Financial-Times/o-layout/issues/50  -->
-		<div>
-			<table class="o-table o-table--horizontal-lines " data-o-component="o-table">
-				<thead>
-					<tr>
-						<th scope="col" role="columnheader">Fruit</th>
-						<th scope="col" role="columnheader">Genus</th>
-						<th scope="col" role="columnheader">Characteristic</th>
-						<th scope="col" role="columnheader" data-o-table-data-type="numeric" class="o-table__cell--numeric">Cost&#xA0;(GBP)</th>
-						<th scope="col" role="columnheader" data-o-table-data-type="numeric" class="o-table__cell--numeric">Cost&#xA0;(EUR)</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>Dragonfruit</td>
-						<td>Stenocereus</td>
-						<td>Juicy</td>
-						<td class="o-table__cell--numeric">3</td>
-						<td class="o-table__cell--numeric">2.72</td>
-					</tr>
-					<tr>
-						<td>Durian</td>
-						<td>Durio</td>
-						<td>Smelly</td>
-						<td class="o-table__cell--numeric">1.75</td>
-						<td class="o-table__cell--numeric">1.33</td>
-					</tr>
-					<tr>
-						<td>Naseberry</td>
-						<td>Manilkara</td>
-						<td>Chewy</td>
-						<td class="o-table__cell--numeric">2</td>
-						<td class="o-table__cell--numeric">1.85</td>
-					</tr>
-					<tr>
-						<td>Strawberry</td>
-						<td>Fragaria</td>
-						<td>Sweet</td>
-						<td class="o-table__cell--numeric">1.5</td>
-						<td class="o-table__cell--numeric">1.69</td>
-					</tr>
-					<tr>
-						<td>Apple</td>
-						<td>Malus</td>
-						<td>Crunchy</td>
-						<td class="o-table__cell--numeric">0.5</td>
-						<td class="o-table__cell--numeric">0.56</td>
-					</tr>
-				</tbody>
-			</table>
+
+		<div class="o-table-container o-layout__main__full-span">
+			<div class="o-table-overlay-wrapper">
+				<div class="o-table-scroll-wrapper">
+					<table class="o-table o-table--horizontal-lines o-table--responsive-overflow" data-o-component="o-table" data-o-table-responsive="overflow">
+						<thead>
+							<tr>
+								<th scope="col" role="columnheader">Fruit</th>
+								<th scope="col" role="columnheader">Genus</th>
+								<th scope="col" role="columnheader">Characteristic</th>
+								<th scope="col" role="columnheader" data-o-table-data-type="numeric" class="o-table__cell--numeric">Cost&#xA0;(GBP)</th>
+								<th scope="col" role="columnheader" data-o-table-data-type="numeric" class="o-table__cell--numeric">Cost&#xA0;(EUR)</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>Dragonfruit</td>
+								<td>Stenocereus</td>
+								<td>Juicy</td>
+								<td class="o-table__cell--numeric">3</td>
+								<td class="o-table__cell--numeric">2.72</td>
+							</tr>
+							<tr>
+								<td>Durian</td>
+								<td>Durio</td>
+								<td>Smelly</td>
+								<td class="o-table__cell--numeric">1.75</td>
+								<td class="o-table__cell--numeric">1.33</td>
+							</tr>
+							<tr>
+								<td>Naseberry</td>
+								<td>Manilkara</td>
+								<td>Chewy</td>
+								<td class="o-table__cell--numeric">2</td>
+								<td class="o-table__cell--numeric">1.85</td>
+							</tr>
+							<tr>
+								<td>Strawberry</td>
+								<td>Fragaria</td>
+								<td>Sweet</td>
+								<td class="o-table__cell--numeric">1.5</td>
+								<td class="o-table__cell--numeric">1.69</td>
+							</tr>
+							<tr>
+								<td>Apple</td>
+								<td>Malus</td>
+								<td>Crunchy</td>
+								<td class="o-table__cell--numeric">0.5</td>
+								<td class="o-table__cell--numeric">0.56</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
 		</div>
-
-		<p>But they may be made not to with the class <code>o-layout__main__single-span</code>:</p>
-
-		<!-- `table` is temporarily wrapped in a `div` to work around a Firefox bug at time of writing: https://github.com/Financial-Times/o-layout/issues/50  -->
-		<div>
-			<table class="o-table o-table--horizontal-lines o-layout__main__single-span" data-o-component="o-table">
-				<thead>
-					<tr>
-						<th scope="col" role="columnheader">Fruit</th>
-						<th scope="col" role="columnheader">Genus</th>
-						<th scope="col" role="columnheader">Characteristic</th>
-						<th scope="col" role="columnheader" data-o-table-data-type="numeric" class="o-table__cell--numeric">Cost&#xA0;(GBP)</th>
-						<th scope="col" role="columnheader" data-o-table-data-type="numeric" class="o-table__cell--numeric">Cost&#xA0;(EUR)</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>Dragonfruit</td>
-						<td>Stenocereus</td>
-						<td>Juicy</td>
-						<td class="o-table__cell--numeric">3</td>
-						<td class="o-table__cell--numeric">2.72</td>
-					</tr>
-					<tr>
-						<td>Durian</td>
-						<td>Durio</td>
-						<td>Smelly</td>
-						<td class="o-table__cell--numeric">1.75</td>
-						<td class="o-table__cell--numeric">1.33</td>
-					</tr>
-					<tr>
-						<td>Naseberry</td>
-						<td>Manilkara</td>
-						<td>Chewy</td>
-						<td class="o-table__cell--numeric">2</td>
-						<td class="o-table__cell--numeric">1.85</td>
-					</tr>
-					<tr>
-						<td>Strawberry</td>
-						<td>Fragaria</td>
-						<td>Sweet</td>
-						<td class="o-table__cell--numeric">1.5</td>
-						<td class="o-table__cell--numeric">1.69</td>
-					</tr>
-					<tr>
-						<td>Apple</td>
-						<td>Malus</td>
-						<td>Crunchy</td>
-						<td class="o-table__cell--numeric">0.5</td>
-						<td class="o-table__cell--numeric">0.56</td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
-
 	</div>
-
 	{{> shared/footer}}
 </div>
