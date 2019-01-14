@@ -8,7 +8,6 @@
 	}
 
 	.o-layout {
-		@include oTypographySize(1);
 		position: relative;
 		display: grid;
 		box-sizing: border-box;
@@ -56,40 +55,36 @@
 			"main"
 			"footer";
 
-		//sass-lint:disable mixins-before-declarations - Source order matters for media queries. Although @at-root is used anyway, which will always output the media after.
 		@include oGridRespondTo($from: M) {
-			grid-template-rows: auto 1fr auto;
-			grid-template-columns: 1fr minmax(auto, $_o-layout-aside-max-width) $_o-layout-main-section-width minmax(20ch, $_o-layout-aside-max-width) 1fr;
 			grid-template-areas:
-				"header header header header header"
-				". sidebar main main ."
-				"footer footer footer footer footer";
+				"header header header header"
+				". sidebar main ."
+				"footer footer footer footer";
+			grid-template-columns: 1fr minmax(auto, $_o-layout-sidebar-max-width) minmax(31rem, _getMainMaxWdith($_o-layout-sidebar-max-width)) 1fr;
+			grid-template-rows: auto 1fr auto;
 		};
-		//sass-lint:enable mixins-before-declarations
 	}
 
 	.o-layout.o-layout--docs > .o-layout__main {
-		@include oGridRespondTo($from: M) {
-			display: grid;
-			grid-column-gap: $_o-layout-gutter;
-			grid-template-columns: $_o-layout-main-section-width 1fr;
-			align-content: flex-start;
-			padding: 0;
-		}
-
-		> * {
-			grid-column: 1;
-		}
-
 		@include oGridRespondTo($from: L) {
+			> * {
+				box-sizing: border-box;
+				max-width: calc(100% - #{$_o-layout-sidebar-max-width} - #{$_o-layout-gutter});
+			}
 			> aside {
-				grid-column: 2;
-				grid-row: span 3; //hack mchack, need to look into spanning across rows irrespective of siblings
+				box-sizing: border-box;
+				max-width: $_o-layout-sidebar-max-width;
+				margin-bottom: oTypographySpacingSize(10);
+				float: right;
+				clear: right;
+				:last-child {
+					margin-bottom: 0;
+				}
 			}
 		};
 
-		> table {
-			grid-column: 1 / span 2;
+		> table:not(.o-layout__main__single-span) {
+			max-width: none;
 		}
 
 		.o-layout__rule-left {
@@ -100,12 +95,9 @@
 			@include _oLayoutRule('right');
 		}
 
-		.o-layout__main__single-span {
-			grid-column-end: 2;
-		}
-
 		.o-layout__main__full-span {
-			grid-column-end: -1;
+			display: block;
+			max-width: none;
 		}
 	}
 }
@@ -123,10 +115,9 @@
 			"aside-sidebar"
 			"footer";
 
-		//sass-lint:disable mixins-before-declarations - Source order matters for media queries. Although @at-root is used anyway, which will always output the media after.
 		@include oGridRespondTo($from: M) {
 			grid-template-rows: auto auto 1fr auto;
-			grid-template-columns: 1fr minmax(auto, $_o-layout-aside-max-width) $_o-layout-main-section-width 1fr;
+			grid-template-columns: 1fr minmax(auto, $_o-layout-sidebar-max-width) minmax(15rem, _getMainMaxWdith($_o-layout-sidebar-max-width)) 1fr;
 			grid-template-areas:
 				"header header header header"
 				". query-sidebar heading ."
@@ -137,62 +128,43 @@
 
 		@include oGridRespondTo($from: L) {
 			grid-template-rows: auto auto 1fr auto;
-			grid-template-columns: 1fr minmax(auto, $_o-layout-aside-max-width) $_o-layout-main-section-width minmax(auto, $_o-layout-aside-max-width) 1fr;
+			grid-template-columns: 1fr minmax(auto, $_o-layout-sidebar-max-width) minmax(15rem, _getMainMaxWdith($_o-layout-sidebar-max-width, $_o-layout-sidebar-max-width)) minmax(auto, $_o-layout-sidebar-max-width) 1fr;
 			grid-template-areas:
 				"header header header header header"
 				". query-sidebar heading aside-sidebar ."
 				". query-sidebar main aside-sidebar ."
 				"footer footer footer footer footer";
 		};
-		//sass-lint:enable mixins-before-declarations
-	}
 
-	.o-layout__heading {
-		grid-area: heading;
-		margin-top: $_o-layout-gutter;
-		@include oGridRespondTo($until: M) {
-			padding: 0 1rem;
+		.o-layout__main {
+			margin-top: 0;
 		}
-		> :last-child {
+
+		.o-layout__heading {
+			margin-top: $_o-layout-gutter;
+			@include oGridRespondTo($until: M) {
+				padding: 0 $_o-layout-gutter;
+			}
+		}
+
+		.o-layout__query-sidebar {
+			border-right: 1px solid oColorsGetPaletteColor('slate-white-15');
+			padding: 0 $_o-layout-gutter;
+			margin-bottom: oTypographySpacingSize(5);
 			@include oGridRespondTo($from: M) {
+				padding: $_o-layout-gutter;
 				margin-bottom: 0;
 			}
 		}
-	}
 
-	// Enable the heading area to overlay where the aside sidebar would be.
-	// For a "full page search"
-	.o-layout.o-layout--query .o-layout__heading--full {
-		grid-area: heading;
-		grid-column: heading-start / aside-sidebar-end;
-	}
-
-	// Enable the main area to overlay where the aside sidebar would be.
-	// For a "full page search"
-	.o-layout.o-layout--query .o-layout__main--full {
-		grid-area: main;
-		grid-column: main-start / aside-sidebar-end;
-	}
-
-	.o-layout__query-sidebar {
-		border-right: 1px solid oColorsGetPaletteColor('slate-white-15');
-	}
-
-	.o-layout__aside-sidebar {
-		border-left: 1px solid oColorsGetPaletteColor('slate-white-15');
-	}
-
-	//sass-lint:disable mixins-before-declarations
-	@include oGridRespondTo($from: M) {
 		.o-layout__aside-sidebar {
-			margin-left: -$_o-layout-gutter;
+			@include oGridRespondTo($from: M) {
+				margin-left: -$_o-layout-gutter;
+			}
+			@include oGridRespondTo($from: L) {
+				margin-left: 0;
+				border-left: 1px solid oColorsGetPaletteColor('slate-white-15');
+			}
 		}
 	}
-
-	@include oGridRespondTo($from: L) {
-		.o-layout__aside-sidebar {
-			margin: 0;
-		}
-	}
-	//sass-lint:enable mixins-before-declarations
 }
