@@ -142,7 +142,7 @@
 			font-weight: normal;
 			position: absolute;
 			bottom: 0;
-			right: -1.5ch; //keeps the octothorpe in line with the heading if the heading spans a whole grid-column
+			right: -1ch; //keeps the octothorpe in line with the heading if the heading spans a whole grid-column
 		}
 
 		.o-layout__linked-heading__link:hover .o-layout__linked-heading__label {
