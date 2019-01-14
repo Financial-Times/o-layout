@@ -60,7 +60,7 @@
 				"header header header header"
 				". sidebar main ."
 				"footer footer footer footer";
-			grid-template-columns: 1fr minmax(auto, $_o-layout-sidebar-max-width) minmax(31rem, _getMainMaxWdith($_o-layout-sidebar-max-width)) 1fr;
+			grid-template-columns: 1fr minmax(auto, $_o-layout-sidebar-max-width) minmax(31rem, _getMainMaxWidth($_o-layout-sidebar-max-width)) 1fr;
 			grid-template-rows: auto 1fr auto;
 		};
 	}
@@ -117,7 +117,7 @@
 
 		@include oGridRespondTo($from: M) {
 			grid-template-rows: auto auto 1fr auto;
-			grid-template-columns: 1fr minmax(auto, $_o-layout-sidebar-max-width) minmax(15rem, _getMainMaxWdith($_o-layout-sidebar-max-width)) 1fr;
+			grid-template-columns: 1fr minmax(auto, $_o-layout-sidebar-max-width) minmax(15rem, _getMainMaxWidth($_o-layout-sidebar-max-width)) 1fr;
 			grid-template-areas:
 				"header header header header"
 				". query-sidebar heading ."
@@ -128,7 +128,7 @@
 
 		@include oGridRespondTo($from: L) {
 			grid-template-rows: auto auto 1fr auto;
-			grid-template-columns: 1fr minmax(auto, $_o-layout-sidebar-max-width) minmax(15rem, _getMainMaxWdith($_o-layout-sidebar-max-width, $_o-layout-sidebar-max-width)) minmax(auto, $_o-layout-sidebar-max-width) 1fr;
+			grid-template-columns: 1fr minmax(auto, $_o-layout-sidebar-max-width) minmax(15rem, _getMainMaxWidth($_o-layout-sidebar-max-width, $_o-layout-sidebar-max-width)) minmax(auto, $_o-layout-sidebar-max-width) 1fr;
 			grid-template-areas:
 				"header header header header header"
 				". query-sidebar heading aside-sidebar ."
