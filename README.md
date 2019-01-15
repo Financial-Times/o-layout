@@ -395,11 +395,11 @@ oLayout.init();
 
 The [documentation layout](#documentation-layout) uses JavaScript to construct the sidebar navigation out of headings (`h1`, `h2` and `h3`) in the content, and to highlight those items depending on the scroll position. This is its default behaviour.
 
-If you would like to specify a custom selector for the navigation generation, set the `navHeadingSelector` option:
+If you would like to specify a custom selector for the navigation generation, set the `navHeadingSelector` option to any valid CSS selector string:
 
 ```js
 const oLayout = require('o-layout');
-oLayout.init(null, { navHeadingSelector: '.nav-heading' });
+oLayout.init(null, { navHeadingSelector: 'h1, h2, .nav-heading' });
 ```
 
 If you would like to define your own navigation, you will need to initialise `o-layout` with the `constructNav` option set to `false`:
@@ -413,11 +413,11 @@ oLayout.init(null, { constructNav: false });
 
 Heading elements such as `h1`, `h2`, etc that have an `id` attribute are made linkable by default. The heading can then be clicked to update the URL with a hash, for sharing a direct link to that heading.
 
-To customise which headings can be clicked and linked to directly, set the `linkedHeadingSelector` option:
+To customise which headings can be clicked and linked to directly, set the `linkedHeadingSelector` option to any valid CSS selector string:
 
 ```js
 const oLayout = require('o-layout');
-oLayout.init(null, { linkedHeadingSelector: '.link-heading' });
+oLayout.init(null, { linkedHeadingSelector: 'h1, h2, .link-heading' });
 ```
 
 Turn off linkable headings by setting `linkHeadings` to false:
