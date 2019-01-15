@@ -85,7 +85,9 @@
 			position: sticky;
 			top: $_o-layout-gutter;
 			text-align: right;
-			margin-top: $_o-layout-gutter;
+			margin: $_o-layout-gutter 0;
+			max-height: calc(100vh - #{$_o-layout-gutter * 2});
+			overflow-y: scroll;
 		}
 
 
