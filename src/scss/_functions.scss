@@ -4,9 +4,9 @@
 /// grid container minus the width of other columns (such as the sidebar).
 /// @param {String} $other-column-widths - Widths of other columns in the layout.
 /// @example Here we get the max width of the main content area where there are two sidebars, one to the right and one to the left.
-///     _getMainMaxWdith($_o-layout-sidebar-max-width, $_o-layout-sidebar-max-width);
+///     _getMainMaxWidth($_o-layout-sidebar-max-width, $_o-layout-sidebar-max-width);
 /// @access private
-@function _getMainMaxWdith($other-column-widths...) {
+@function _getMainMaxWidth($other-column-widths...) {
     $taken-width: length($other-column-widths) * $_o-layout-gutter;
     @each $width in $other-column-widths {
         $taken-width: $taken-width #{' - '} $width;

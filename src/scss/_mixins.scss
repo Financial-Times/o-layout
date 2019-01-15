@@ -123,6 +123,8 @@
 @mixin _oLayoutLinkedHeading () {
 	.o-layout__linked-heading:not(.o-layout__unstyled-element) {
 
+		padding-right: 1.5ch; // for the octothorpe
+
 		// Increased specificity needed to counteract
 		// default link styles
 		& .o-layout__linked-heading__link,
@@ -134,13 +136,13 @@
 		}
 
 		.o-layout__linked-heading__label {
-			@include oTypographySans($scale: 2);
 			color: oColorsGetColorFor(link, text);
 			display: none;
 			user-select: none;
 			font-weight: normal;
 			position: absolute;
-			right: -0.75em; //keeps the octothorpe in line with the heading if the heading spans a whole grid-column
+			bottom: 0;
+			right: -1ch; //keeps the octothorpe in line with the heading if the heading spans a whole grid-column
 		}
 
 		.o-layout__linked-heading__link:hover .o-layout__linked-heading__label {
