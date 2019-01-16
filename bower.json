@@ -14,7 +14,7 @@
     "tests"
   ],
   "dependencies": {
-    "o-typography": "#v5.8.0",
+    "o-typography": "^5.8.0",
     "o-fonts": "^3.2.0",
     "o-visual-effects": "^2.0.3",
     "o-grid": "^4.4.4",
