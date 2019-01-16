@@ -23,13 +23,13 @@ o-layout [![Circle CI](https://circleci.com/gh/Financial-Times/o-layout/tree/mas
 - A landing/homepage layout.
 - A search/query page layout.
 
-Typography is styled automatically using the `o-layout-typography` class. Including headings, paragraphs, lists, anchor tags, etc. To opt-out of typography styling for specific elements apply the `.o-layout__unstyled-element`.
+Typography is styled automatically using the `o-layout-typography` class. This will style headings, paragraphs, lists, anchor tags, etc. To opt-out of typography styling for specific elements apply the `.o-layout__unstyled-element`.
 
-In addition to typography styling, headings with `id`s are made linkable with a click, for sharing a direct link to that heading.
+You can share a direct link to a content section by clicking on its header. This will generate a new url in the browser that you can copy.
 
 ## Documentation Layout
 
-The documentation layout is intended for text-heavy pages, for example technical documentation or blog posts. As well as a heading and footer, the documentation layout includes the following areas:
+The documentation layout is intended for text-heavy pages, such as technical documentation or blog posts. The documentation layout includes the following areas (in addition to a heading and footer):
 
 - Main Content
 - Sidebar _(optional)_
@@ -49,14 +49,18 @@ The documentation layout is intended for text-heavy pages, for example technical
 
 ```html
 <div class="o-layout o-layout--docs" data-o-component="o-layout">
-	<!-- Your header & navigation here. -->
-	<div class="o-layout__header"></div>
-	<!-- Your sidebar here (optional). -->
-	<div class="o-layout__sidebar o-layout-typography"></div>
-	<!-- Your page content here. -->
-	<div class="o-layout__main o-layout-typography"></div>
-	<!-- Your footer & navigation here. -->
-	<footer class="o-layout__footer"></footer>
+	<div class="o-layout__header">
+	    <!-- Your header & navigation here. -->
+	</div>
+	<div class="o-layout__sidebar o-layout-typography">
+		<!-- Your sidebar here (optional). -->
+	</div>
+	<div class="o-layout__main o-layout-typography">
+		<!-- Your page content here. -->
+	</div>
+	<footer class="o-layout__footer">
+		<!-- Your footer & navigation here. -->
+	</footer>
 </div>
 ```
 
@@ -77,9 +81,9 @@ On large viewports the main content area (`o-layout__main`) is split into two co
 └————————————————————————————┘
 ```
 
-By default content is placed into column 1; except for the `aside` element which is placed in column 2; and the `table` element which spans both columns.
+Most content is placed into column 1 by default. The exceptions are the `aside` element, which is placed in column 2; and the `table` element, which spans both columns.
 
-Add the class `o-layout__main__single-span` to force elements into column 1. Use `o-layout__main__full-span` to force elements to span both columns.
+Add the class `o-layout__main__single-span` to constrain elements to column 1. Use `o-layout__main__full-span` to expand elements to span both columns.
 
 
 ```html
@@ -92,9 +96,9 @@ Add the class `o-layout__main__single-span` to force elements into column 1. Use
 	<aside>An aside</aside>
 	<!-- Tables span columns 1 & 2 -->
 	<table></table>
-	<!-- The class "o-layout__main__single-span" forces elements into column 1 only -->
+	<!-- The class "o-layout__main__single-span" constrains elements to column 1 -->
 	<table class="o-layout__main__single-span"></table>
-	<!-- The class "o-layout__main__full-span" forces elements to span columns 1 & 2 -->
+	<!-- The class "o-layout__main__full-span" expands elements to span columns 1 & 2 -->
 	<div class="o-layout__main__full-span"></div>
 </div>
 ```
@@ -109,7 +113,7 @@ If you wish to display headings other than `<h2>` and `<h3>` in the navigation, 
 - <div class="o-layout" data-o-component="o-layout">
 ```
 
-To customise your sidebar navigation more fully, add the data attribute `data-o-layout-construct-nav="false"` to the root `o-layout` element. Then add your own `nav` element within the sidebar, with a child list which has the class `o-layout__navigation`.
+To customise your sidebar navigation entirely, add the data attribute `data-o-layout-construct-nav="false"` to the root `o-layout` element. Then add your own `nav` element within the sidebar, with a child list which has the class `o-layout__navigation`.
 
 Altogether, a customised navigation should look like this:
 ```diff
@@ -119,8 +123,8 @@ Altogether, a customised navigation should look like this:
 	</div>
 
 	<div class="o-layout__sidebar">
-		<!-- this can be an <ol> or a <ul> -->
 +		<nav>
+			<!-- this can be an <ol> or a <ul> -->
 +			<ol class="o-layout__navigation">
 +				<li>
 +					<a href="#this-is-a-title">This is a title</a>
@@ -141,7 +145,7 @@ Alternatively you can customise the navigation [via JavaScript](#custom-navigati
 
 ## Landing Layout
 
-The landing layout is ideal for a homepage or other key category / directory pages. As well as the header and footer, the landing layout provides two areas:
+The landing layout is ideal for a homepage or other key category / directory pages. The landing layout provides two areas (in addition to a header and a footer):
 
 - Hero (optional)
 - Main Content
@@ -160,14 +164,18 @@ The landing layout is ideal for a homepage or other key category / directory pag
 
 ```html
 <div class="o-layout o-layout--landing" data-o-component="o-layout">
-	<!-- Your header & navigation here. -->
-	<div class="o-layout__header"></div>
-	<!-- Your hero content here (optional). -->
-	<div class="o-layout__hero o-layout-typography"></div>
-	<!-- Your landing page content here. -->
-	<div class="o-layout__main o-layout-typography"></div>
-	<!-- Your footer & navigation here. -->
-	<footer class="o-layout__footer"></footer>
+	<div class="o-layout__header">
+		<!-- Your header & navigation here. -->
+	</div>
+	<div class="o-layout__hero o-layout-typography">
+		<!-- Your hero content here (optional). -->
+	</div>
+	<div class="o-layout__main o-layout-typography">
+		<!-- Your landing page content here. -->
+	</div>
+	<footer class="o-layout__footer">
+		<!-- Your footer & navigation here. -->
+	</footer>
 </div>
 ```
 
@@ -183,8 +191,8 @@ Overview with 3 items:
 ```
 
 ```html
-	<!-- Your landing page content here. -->
 	<div class="o-layout__main o-layout-typography">
+		<!-- Your landing page content here. -->
 		<!-- Overview -->
         <div class="o-layout__overview">
             <div class="o-layout-item">
@@ -211,7 +219,7 @@ Actions overview with 4 items with footer:
 | content | content | content | content |
 | content |         | content | content |
 | content |         | content |         |
-├———————————————————————————————————————┤
+├ ——————— | ——————— | ——————— | ——————— ┤
 | footer  | footer  | footer  | footer  |
 ├———————————————————————————————————————┤
 ```
@@ -265,7 +273,7 @@ Actions overview with 4 items with footer:
 
 ## Query Layout
 
-The query layout is intended for search, filter, and result pages. As well as the header and footer, the query layout provides four areas:
+The query layout is intended for search, filter, and result pages.The query layout provides four areas (in addition to a header and a footer):
 
 - Heading
 - Query Sidebar
@@ -274,18 +282,24 @@ The query layout is intended for search, filter, and result pages. As well as th
 
 ```html
 <div class="o-layout o-layout--query" data-o-component="o-layout">
-	<!-- Your header & navigation here. -->
-    <div class="o-layout__header"></div>
-	<!-- Your title / heading content here. -->
-    <div class="o-layout__heading o-layout-typography"></div>
-	<!-- Your search or filter inputs. -->
-    <div class="o-layout__query-sidebar o-layout-typography"></div>
-	<!-- Your search results or other main content. -->
-	<div class="o-layout__main o-layout-typography"></div>
-	<!-- Your asides / additional information (optional). -->
-    <div class="o-layout__aside-sidebar o-layout-typography"></div>
-	<!-- Your footer & navigation here. -->
-    <div class="o-layout__footer"></div>
+    <div class="o-layout__header">
+    	<!-- Your header & navigation here. -->
+    </div>
+    <div class="o-layout__heading o-layout-typography">
+    	<!-- Your title / heading content here. -->
+    </div>
+    <div class="o-layout__query-sidebar o-layout-typography">
+    	<!-- Your search or filter inputs. -->
+    </div>
+	<div class="o-layout__main o-layout-typography">
+		<!-- Your search results or other main content. -->
+	</div>
+    <div class="o-layout__aside-sidebar o-layout-typography">
+    	<!-- Your asides / additional information (optional). -->
+    </div>
+    <div class="o-layout__footer">
+    	<!-- Your footer & navigation here. -->
+    </div>
 </div>
 ```
 
@@ -342,7 +356,7 @@ The query layout is intended for search, filter, and result pages. As well as th
 ```
 
 ## Sass
-As with all Origami components, o-layout has a [silent mode](http://origami.ft.com/docs/syntax/scss/#silent-styles). You can include o-layout styles with the `oLayout` mixin.
+You can include o-layout styles with the `oLayout` mixin.
 
 As `o-layout` only supports the internal brand, your project must also set its brand to internal `$o-brand: 'internal';`.
 
