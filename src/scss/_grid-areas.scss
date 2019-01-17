@@ -64,6 +64,10 @@
 		}
 	}
 
+	.o-layout__hero:not(.o-layout__hero--muted) h1:not(.o-layout__unstyled-element) {
+		@include oTypographySize($scale: 6);
+	}
+
 	.o-layout__hero.o-layout__hero--muted {
 		align-items: start;
 		align-content: start;
