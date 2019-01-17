@@ -71,6 +71,8 @@
 			> * {
 				box-sizing: border-box;
 				max-width: calc(100% - #{$_o-layout-sidebar-max-width} - #{$_o-layout-gutter});
+				float: left;
+				clear: left;
 			}
 			> aside {
 				box-sizing: border-box;
@@ -86,6 +88,7 @@
 
 		> table:not(.o-layout__main__single-span) {
 			max-width: none;
+			float: none;
 		}
 
 		.o-layout__rule-left {
@@ -99,6 +102,7 @@
 		.o-layout__main__full-span {
 			display: block;
 			max-width: none;
+			float: none;
 		}
 	}
 }
