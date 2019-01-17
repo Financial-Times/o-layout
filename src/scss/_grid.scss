@@ -33,6 +33,7 @@
 			"hero"
 			"main"
 			"footer";
+		grid-template-rows: auto auto 1fr auto;
 		@include oGridRespondTo($from: M) {
 			grid-template-areas:
 				"header header header"
