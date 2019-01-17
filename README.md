@@ -179,6 +179,28 @@ The landing layout is ideal for a homepage or other key category / directory pag
 </div>
 ```
 
+When the landing page is a sub-page of the site, the hero area may conflict with the homepage (e.g. on a category / directory page). To reduce the impact of the hero area on sub pages add the modifier class `layout__header--muted`.
+
+```diff
+ <div class="o-layout o-layout--landing" data-o-component="o-layout">
+ 	 <div class="o-layout__header">
+ 	 	 <!-- Your header & navigation here. -->
+ 	 </div>
++ 	 <div class="o-layout__hero o-layout__hero--muted o-layout-typography">
+- 	 <div class="o-layout__hero o-layout-typography">
+ 	 	 <!-- Your hero content here (optional). -->
+ 	 </div>
+ 	 <div class="o-layout__main o-layout-typography">
+ 	 	 <!-- Your landing page content here. -->
+ 	 </div>
+ 	 <footer class="o-layout__footer">
+ 	 	 <!-- Your footer & navigation here. -->
+ 	 </footer>
+ </div>
+```
+
+## Overview Sections
+
 Within the main content area the landing layout provides an overview section. The overview section is ideal for outlining key points of the landing page.
 
 Any number of items are allowed within an overview section, but will wrap onto a new row if there are more than 4.
@@ -321,21 +343,21 @@ The query layout is intended for search, filter, and result pages.The query layo
 
 ### Medium Viewports
 ```
-┌————————————————————┐
-|       HEADER       |
-├————————————————————┤
-|       |  HEADING   |
-|       ├————————————┤
-|       |            |
-| QUERY |  MAIN      |
-| SIDE  |  CONTENT   |
-| BAR   |            |
-|       ├————————————┤
-|       | ASIDE SIDE |
-|       | BAR        |
-├————————————————————┤
-|       FOOTER       |
-└————————————————————┘
+┌————————————————————————┐
+|          HEADER        |
+├————————————————————————┤
+|       |  HEADING       |
+|       ├————————————————┤
+|       |                |
+| QUERY |  MAIN          |
+| SIDE  |  CONTENT       |
+| BAR   |                |
+|       ├————————————————┤
+|       | ASIDE SIDE     |
+|       | BAR            |
+├————————————————————————┤
+|          FOOTER        |
+└————————————————————————┘
 ```
 
 ### Small Viewports

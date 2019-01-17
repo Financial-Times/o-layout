@@ -59,6 +59,17 @@
 			background-image: inherit;
 			z-index: -1;
 		}
+		> *:not(.o-layout__unstyled-element):last-child {
+			margin-bottom: 0;
+		}
+	}
+
+	.o-layout__hero.o-layout__hero--muted {
+		align-items: start;
+		align-content: start;
+		text-align: left;
+		background-image: none;
+		min-height: auto;
 	}
 }
 
