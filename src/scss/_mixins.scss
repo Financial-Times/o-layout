@@ -18,11 +18,11 @@
 			@include oTypographySize($scale: 1, $line-height: 1.4);
 			max-width: oTypographyMaxLineWidth($scale: 1, $optimal-characters-per-line: 85);
 		}
-
+    
 		a:not(.o-layout__unstyled-element) {
 			@include oTypographyLink();
 		}
-
+    
 		h1:not(.o-layout__unstyled-element)	{
 			@include oTypographyHeadingLevel1();
 		}
