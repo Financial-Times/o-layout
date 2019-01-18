@@ -156,7 +156,6 @@
 @mixin _oLayoutAreaQuerySidebar() {
 	.o-layout__query-sidebar {
 		grid-area: query-sidebar;
-		padding: $_o-layout-gutter;
 	}
 }
 
@@ -167,6 +166,5 @@
 @mixin _oLayoutAreaAsideSidebar() {
 	.o-layout__aside-sidebar {
 		grid-area: aside-sidebar;
-		padding: $_o-layout-gutter;
 	}
 }
