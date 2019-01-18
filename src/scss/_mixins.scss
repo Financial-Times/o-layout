@@ -13,10 +13,23 @@
 	.o-layout-typography {
 		@include oTypographySans($scale: 1, $line-height: 1.4);
 
+		p:not(.o-layout__unstyled-element),
+		a:not(.o-layout__unstyled-element),
+		h1:not(.o-layout__unstyled-element),
+		h2:not(.o-layout__unstyled-element),
+		h3:not(.o-layout__unstyled-element),
+		h4:not(.o-layout__unstyled-element),
+		h5:not(.o-layout__unstyled-element),
+		h6:not(.o-layout__unstyled-element),
+		aside:not(.o-layout__unstyled-element),
+		ul:not(.o-layout__unstyled-element),
+		ol:not(.o-layout__unstyled-element) {
+			max-width: 60ch;
+		}
+
 		p:not(.o-layout__unstyled-element) {
 			@include oTypographyBody;
 			@include oTypographySize($scale: 1, $line-height: 1.4);
-			max-width: oTypographyMaxLineWidth($scale: 1, $optimal-characters-per-line: 85);
 		}
 
 		a:not(.o-layout__unstyled-element) {
