@@ -179,7 +179,7 @@ The landing layout is ideal for a homepage or other key category / directory pag
 </div>
 ```
 
-When the landing page is a sub-page of the site, the hero area may create a visual conflict with the homepage (e.g. on a category / directory page). To reduce the impact of the hero area on sub pages add the modifier class `layout__header--muted`.
+When the landing page is a sub-page of the site, the hero area may create a visual conflict with the homepage (e.g. on a category / directory page). To reduce the impact of the hero area on sub pages add the modifier class `o-layout__hero--muted`.
 
 ```diff
  <div class="o-layout o-layout--landing" data-o-component="o-layout">
