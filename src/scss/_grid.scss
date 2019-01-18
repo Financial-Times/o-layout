@@ -147,27 +147,30 @@
 
 		.o-layout__heading {
 			margin-top: $_o-layout-gutter;
-			@include oGridRespondTo($until: M) {
-				padding: 0 $_o-layout-gutter;
+			padding: 0 $_o-layout-gutter;
+			@include oGridRespondTo($from: M) {
+				padding: 0;
 			}
 		}
 
 		.o-layout__query-sidebar {
 			border-right: 1px solid oColorsGetPaletteColor('slate-white-15');
 			padding: 0 $_o-layout-gutter;
-			margin-bottom: oTypographySpacingSize(5);
+			margin: 0;
 			@include oGridRespondTo($from: M) {
-				padding: $_o-layout-gutter;
-				margin-bottom: 0;
+				padding: 0 $_o-layout-gutter;
+				margin: $_o-layout-gutter 0 oTypographySpacingSize(5) 0;
 			}
 		}
 
 		.o-layout__aside-sidebar {
+			padding: 0 $_o-layout-gutter;
 			@include oGridRespondTo($from: M) {
-				margin-left: -$_o-layout-gutter;
+				padding: 0;
 			}
 			@include oGridRespondTo($from: L) {
-				margin-left: 0;
+				margin: $_o-layout-gutter 0;
+				padding: 0 0 0 $_o-layout-gutter;
 				border-left: 1px solid oColorsGetPaletteColor('slate-white-15');
 			}
 		}
