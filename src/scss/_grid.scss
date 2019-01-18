@@ -158,7 +158,7 @@
 			padding: 0 $_o-layout-gutter;
 			margin: 0;
 			@include oGridRespondTo($from: M) {
-				padding: 0 $_o-layout-gutter 0;
+				padding: 0 $_o-layout-gutter 0 0;
 				margin: $_o-layout-gutter 0 oTypographySpacingSize(5);
 			}
 		}
