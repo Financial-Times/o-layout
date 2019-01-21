@@ -74,6 +74,10 @@
 		text-align: left;
 		background-image: none;
 		min-height: auto;
+		@include oGridRespondTo($from: M) {
+			padding-left: 0;
+			padding-right: 0;
+		}
 	}
 }
 
