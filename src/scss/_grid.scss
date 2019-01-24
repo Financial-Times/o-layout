@@ -18,7 +18,7 @@
 		grid-column-gap: $_o-layout-gutter;
 		grid-template-areas:
 			"header"
-			"main"
+			"body"
 			"footer";
 	}
 }
@@ -27,42 +27,28 @@
 /// Grid for a landing page layout (e.g. homepage).
 /// @access private
 @mixin _oLayoutLandingGrid() {
-	.o-layout.o-layout--landing {
+	.o-layout.o-layout--landing .o-layout__body {
+		grid-template-rows: auto 1fr;
 		grid-template-areas:
-			"header"
 			"hero"
-			"main"
-			"footer";
-		grid-template-rows: auto auto 1fr auto;
-		@include oGridRespondTo($from: M) {
-			grid-template-areas:
-				"header header header"
-				". hero ."
-				". main ."
-				"footer footer footer";
-			grid-template-columns: 1fr minmax(auto, $_o-layout-container-max-width) 1fr;
-		};
+			"main";
 	}
 }
 
 /// Grid for document layout.
 /// @access private
 @mixin _oLayoutDocsGrid() {
-	.o-layout.o-layout--docs {
-		grid-template-rows: auto auto 1fr auto;
+	.o-layout.o-layout--docs .o-layout__body {
+		grid-template-rows: auto 1fr;
 		grid-template-areas:
-			"header"
 			"sidebar"
-			"main"
-			"footer";
+			"main";
 
 		@include oGridRespondTo($from: M) {
+			grid-template-rows: 1fr;
+			grid-template-columns: minmax(auto, $_o-layout-sidebar-max-width) minmax(31rem, 1fr);
 			grid-template-areas:
-				"header header header header"
-				". sidebar main ."
-				"footer footer footer footer";
-			grid-template-columns: 1fr minmax(auto, $_o-layout-sidebar-max-width) minmax(31rem, _getMainMaxWidth($_o-layout-sidebar-max-width)) 1fr;
-			grid-template-rows: auto 1fr auto;
+				"sidebar main";
 		};
 	}
 
@@ -110,35 +96,29 @@
 /// Grid for query layout.
 /// @access private
 @mixin _oLayoutQueryGrid() {
-	.o-layout.o-layout--query {
-		grid-template-rows: auto auto auto 1fr auto auto;
+	.o-layout.o-layout--query .o-layout__body {
+		grid-template-rows: auto auto 1fr auto;
 		grid-template-areas:
-			"header"
 			"heading"
 			"query-sidebar"
 			"main"
-			"aside-sidebar"
-			"footer";
+			"aside-sidebar";
 
 		@include oGridRespondTo($from: M) {
-			grid-template-rows: auto auto 1fr auto;
-			grid-template-columns: 1fr minmax(auto, $_o-layout-sidebar-max-width) minmax(15rem, _getMainMaxWidth($_o-layout-sidebar-max-width)) 1fr;
+			grid-template-rows: auto 1fr auto;
+			grid-template-columns: minmax(auto, $_o-layout-sidebar-max-width) minmax(15rem, 1fr);
 			grid-template-areas:
-				"header header header header"
-				". query-sidebar heading ."
-				". query-sidebar main ."
-				". query-sidebar aside-sidebar ."
-				"footer footer footer footer";
+				"query-sidebar heading"
+				"query-sidebar main"
+				"query-sidebar aside-sidebar"
 		};
 
 		@include oGridRespondTo($from: L) {
-			grid-template-rows: auto auto 1fr auto;
-			grid-template-columns: 1fr minmax(auto, $_o-layout-sidebar-max-width) minmax(15rem, _getMainMaxWidth($_o-layout-sidebar-max-width, $_o-layout-sidebar-max-width)) minmax(auto, $_o-layout-sidebar-max-width) 1fr;
+			grid-template-rows: auto 1fr;
+			grid-template-columns: minmax(auto, $_o-layout-sidebar-max-width) minmax(15rem, 1fr) fit-content($_o-layout-sidebar-max-width);
 			grid-template-areas:
-				"header header header header header"
-				". query-sidebar heading aside-sidebar ."
-				". query-sidebar main aside-sidebar ."
-				"footer footer footer footer footer";
+				"query-sidebar heading aside-sidebar"
+				"query-sidebar main aside-sidebar";
 		};
 
 		.o-layout__main {

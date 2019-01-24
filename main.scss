@@ -43,6 +43,7 @@
 
 	// Shared layout areas.
 	@include _oLayoutAreaHeader();
+	@include _oLayoutAreaBody();
 	@include _oLayoutAreaMain();
 	@include _oLayoutAreaFooter();
 
