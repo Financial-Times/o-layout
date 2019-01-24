@@ -163,6 +163,17 @@
 			}
 		}
 
+		.o-layout__main {
+			grid-area: main / main / main / aside-sidebar;
+		}
+
+		.o-layout__aside-sidebar {
+			display: none;
+		}
+
+	}
+
+	.o-layout.o-layout--query.o-layout--aside {
 		.o-layout__aside-sidebar {
 			padding: 0 $_o-layout-gutter;
 			@include oGridRespondTo($from: M) {
