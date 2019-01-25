@@ -134,7 +134,7 @@
 
 		@include oGridRespondTo($from: L) {
 			grid-template-rows: auto auto 1fr auto;
-			grid-template-columns: minmax(auto, $_o-layout-sidebar-max-width) minmax(15rem, 1fr) minmax(auto, $_o-layout-sidebar-max-width);
+			grid-template-columns: minmax(auto, $_o-layout-sidebar-max-width) minmax(15rem, 1fr) fit-content($_o-layout-sidebar-max-width);
 			grid-template-areas:
 				"header header header"
 				"query-sidebar heading aside-sidebar"
