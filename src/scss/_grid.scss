@@ -110,7 +110,7 @@
 			grid-template-areas:
 				"query-sidebar heading"
 				"query-sidebar main"
-				"query-sidebar aside-sidebar"
+				"query-sidebar aside-sidebar";
 		};
 
 		@include oGridRespondTo($from: L) {

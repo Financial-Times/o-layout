@@ -10,14 +10,17 @@
 
 - `o-layout` now supports multiple layouts, so add the class `o-layout--docs` to maintain the documentation layout.
 - Typography is now selectively applied with a class `o-layout-typography`, so you will also need to add that to your main content section.
+- Wrap the main content div with class `o-layout__main` in a div with class `o-layout__body`.
 - Replace the class `o-layout__main--full-span` with `o-layout__main__full-span` if you are using that modifier anywhere.
 
 ```diff
 -<div class="o-layout" data-o-component="o-layout">
 +<div class="o-layout o-layout--docs" data-o-component="o-layout">
    	 <div class="o-layout__header"></div>
--	 <div class="o-layout__main"></div>
-+ 	 <div class="o-layout__main o-layout-typography"></div>
++	 <div class="o-layout__body">
+-	 	<div class="o-layout__main"></div>
++ 	 	<div class="o-layout__main o-layout-typography"></div>
++	 </div>
    	 <div class="o-layout__footer"></div>
  </div>
 ```

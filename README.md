@@ -52,11 +52,13 @@ The documentation layout is intended for text-heavy pages, such as technical doc
 	<div class="o-layout__header">
 	    <!-- Your header & navigation here. -->
 	</div>
-	<div class="o-layout__sidebar o-layout-typography">
-		<!-- Your sidebar here (optional). -->
-	</div>
-	<div class="o-layout__main o-layout-typography">
-		<!-- Your page content here. -->
+	<div class="o-layout__body">
+		<div class="o-layout__sidebar o-layout-typography">
+			<!-- Your sidebar here (optional). -->
+		</div>
+		<div class="o-layout__main o-layout-typography">
+			<!-- Your page content here. -->
+		</div>
 	</div>
 	<footer class="o-layout__footer">
 		<!-- Your footer & navigation here. -->
@@ -122,19 +124,21 @@ Altogether, a customised navigation should look like this:
 		<!-- o-header-services markup goes here -->
 	</div>
 
-	<div class="o-layout__sidebar">
-+		<nav>
-			<!-- this can be an <ol> or a <ul> -->
-+			<ol class="o-layout__navigation">
-+				<li>
-+					<a href="#this-is-a-title">This is a title</a>
-+				</li>
-+			</ol>
-+		</nav>
-	</div>
+	<div class="o-layout__body">
+		<div class="o-layout__sidebar">
++			<nav>
++				<!-- this can be an <ol> or a <ul> -->
++				<ol class="o-layout__navigation">
++					<li>
++						<a href="#this-is-a-title">This is a title</a>
++					</li>
++				</ol>
++			</nav>
+		</div>
 
-	<div class="o-layout__main">
-		<h2 id="this-is-a-title">This Is A Title</h2>
+		<div class="o-layout__main">
+			<h2 id="this-is-a-title">This Is A Title</h2>
+		</div>
 	</div>
 
 	<footer class="o-layout__footer"></footer>
@@ -167,11 +171,13 @@ The landing layout is ideal for a homepage or other key category / directory pag
 	<div class="o-layout__header">
 		<!-- Your header & navigation here. -->
 	</div>
-	<div class="o-layout__hero o-layout-typography">
-		<!-- Your hero content here (optional). -->
-	</div>
-	<div class="o-layout__main o-layout-typography">
-		<!-- Your landing page content here. -->
+	<div class="o-layout__body">
+		<div class="o-layout__hero o-layout-typography">
+			<!-- Your hero content here (optional). -->
+		</div>
+		<div class="o-layout__main o-layout-typography">
+			<!-- Your landing page content here. -->
+		</div>
 	</div>
 	<footer class="o-layout__footer">
 		<!-- Your footer & navigation here. -->
@@ -186,12 +192,14 @@ When the landing page is a sub-page of the site, the hero area may create a visu
  	 <div class="o-layout__header">
  	 	 <!-- Your header & navigation here. -->
  	 </div>
-+ 	 <div class="o-layout__hero o-layout__hero--muted o-layout-typography">
-- 	 <div class="o-layout__hero o-layout-typography">
- 	 	 <!-- Your hero content here (optional). -->
- 	 </div>
- 	 <div class="o-layout__main o-layout-typography">
- 	 	 <!-- Your landing page content here. -->
+	  <div class="o-layout__body">
++    	<div class="o-layout__hero o-layout__hero--muted o-layout-typography">
+-    	<div class="o-layout__hero o-layout-typography">
+			<!-- Your hero content here (optional). -->
+		</div>
+		<div class="o-layout__main o-layout-typography">
+			<!-- Your landing page content here. -->
+		</div>
  	 </div>
  	 <footer class="o-layout__footer">
  	 	 <!-- Your footer & navigation here. -->
@@ -306,18 +314,20 @@ The query layout is intended for search, filter, and result pages.The query layo
 <div class="o-layout o-layout--query" data-o-component="o-layout">
     <div class="o-layout__header">
     	<!-- Your header & navigation here. -->
-    </div>
-    <div class="o-layout__heading o-layout-typography">
-    	<!-- Your title / heading content here. -->
-    </div>
-    <div class="o-layout__query-sidebar o-layout-typography">
-    	<!-- Your search or filter inputs. -->
-    </div>
-	<div class="o-layout__main o-layout-typography">
-		<!-- Your search results or other main content. -->
 	</div>
-    <div class="o-layout__aside-sidebar o-layout-typography">
-    	<!-- Your asides / additional information (optional). -->
+	<div class="o-layout__body">
+		<div class="o-layout__heading o-layout-typography">
+			<!-- Your title / heading content here. -->
+		</div>
+		<div class="o-layout__query-sidebar o-layout-typography">
+			<!-- Your search or filter inputs. -->
+		</div>
+		<div class="o-layout__main o-layout-typography">
+			<!-- Your search results or other main content. -->
+		</div>
+		<div class="o-layout__aside-sidebar o-layout-typography">
+			<!-- Your asides / additional information (optional). -->
+		</div>
     </div>
     <div class="o-layout__footer">
     	<!-- Your footer & navigation here. -->
