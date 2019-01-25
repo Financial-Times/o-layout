@@ -12,14 +12,23 @@
 		display: grid;
 		box-sizing: border-box;
 		min-height: 100vh;
-		min-width: 100%;
+		max-width: $_o-layout-container-max-width;
+		margin: auto;
 		grid-template-columns: 100%;
 		grid-template-rows: auto 1fr auto;
 		grid-column-gap: $_o-layout-gutter;
+		padding: 0 (oGridGutter() * 2);
 		grid-template-areas:
 			"header"
 			"main"
 			"footer";
+	}
+
+	.o-layout__footer,
+	.o-layout__header {
+		position: relative;
+		width: 100vw;
+		left: #{calc((100vw - 100%) * -0.5)};
 	}
 }
 
@@ -34,14 +43,6 @@
 			"main"
 			"footer";
 		grid-template-rows: auto auto 1fr auto;
-		@include oGridRespondTo($from: M) {
-			grid-template-areas:
-				"header header header"
-				". hero ."
-				". main ."
-				"footer footer footer";
-			grid-template-columns: 1fr minmax(auto, $_o-layout-container-max-width) 1fr;
-		};
 	}
 }
 
@@ -58,10 +59,10 @@
 
 		@include oGridRespondTo($from: M) {
 			grid-template-areas:
-				"header header header header"
-				". sidebar main ."
-				"footer footer footer footer";
-			grid-template-columns: 1fr minmax(auto, $_o-layout-sidebar-max-width) minmax(31rem, _getMainMaxWidth($_o-layout-sidebar-max-width)) 1fr;
+				"header header"
+				"sidebar main"
+				"footer footer";
+			grid-template-columns: minmax(auto, $_o-layout-sidebar-max-width) minmax(31rem, 1fr);
 			grid-template-rows: auto 1fr auto;
 		};
 	}
@@ -122,23 +123,23 @@
 
 		@include oGridRespondTo($from: M) {
 			grid-template-rows: auto auto 1fr auto;
-			grid-template-columns: 1fr minmax(auto, $_o-layout-sidebar-max-width) minmax(15rem, _getMainMaxWidth($_o-layout-sidebar-max-width)) 1fr;
+			grid-template-columns: minmax(auto, $_o-layout-sidebar-max-width) minmax(15rem, 1fr);
 			grid-template-areas:
-				"header header header header"
-				". query-sidebar heading ."
-				". query-sidebar main ."
-				". query-sidebar aside-sidebar ."
-				"footer footer footer footer";
+				"header header"
+				"query-sidebar heading"
+				"query-sidebar main"
+				"query-sidebar aside-sidebar"
+				"footer footer";
 		};
 
 		@include oGridRespondTo($from: L) {
 			grid-template-rows: auto auto 1fr auto;
-			grid-template-columns: 1fr minmax(auto, $_o-layout-sidebar-max-width) minmax(15rem, _getMainMaxWidth($_o-layout-sidebar-max-width, $_o-layout-sidebar-max-width)) minmax(auto, $_o-layout-sidebar-max-width) 1fr;
+			grid-template-columns: minmax(auto, $_o-layout-sidebar-max-width) minmax(15rem, 1fr) minmax(auto, $_o-layout-sidebar-max-width);
 			grid-template-areas:
-				"header header header header header"
-				". query-sidebar heading aside-sidebar ."
-				". query-sidebar main aside-sidebar ."
-				"footer footer footer footer footer";
+				"header header header"
+				"query-sidebar heading aside-sidebar"
+				"query-sidebar main aside-sidebar"
+				"footer footer footer";
 		};
 
 		.o-layout__main {
@@ -147,30 +148,21 @@
 
 		.o-layout__heading {
 			margin-top: $_o-layout-gutter;
-			padding: 0 $_o-layout-gutter;
-			@include oGridRespondTo($from: M) {
-				padding: 0;
-			}
 		}
 
 		.o-layout__query-sidebar {
 			border-right: 1px solid oColorsGetPaletteColor('slate-white-15');
-			padding: 0 $_o-layout-gutter;
 			margin: 0;
 			@include oGridRespondTo($from: M) {
-				padding: 0 $_o-layout-gutter 0 0;
+				padding-right: $_o-layout-gutter;
 				margin: $_o-layout-gutter 0 oTypographySpacingSize(5);
 			}
 		}
 
 		.o-layout__aside-sidebar {
-			padding: 0 $_o-layout-gutter;
-			@include oGridRespondTo($from: M) {
-				padding: 0;
-			}
 			@include oGridRespondTo($from: L) {
 				margin: $_o-layout-gutter 0;
-				padding: 0 0 0 $_o-layout-gutter;
+				padding-left: $_o-layout-gutter;
 				border-left: 1px solid oColorsGetPaletteColor('slate-white-15');
 			}
 		}
