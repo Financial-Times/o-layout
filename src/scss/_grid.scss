@@ -17,7 +17,7 @@
 		grid-template-columns: 100%;
 		grid-template-rows: auto 1fr auto;
 		grid-column-gap: $_o-layout-gutter;
-		padding: 0 (oGridGutter() * 2);
+		padding: 0 (oGridGutter() * 2); // To align with o-header-services.
 		grid-template-areas:
 			"header"
 			"main"
