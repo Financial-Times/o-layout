@@ -295,7 +295,7 @@ Actions overview with 4 items with footer:
 
 ## Query Layout
 
-The query layout is intended for search, filter, and result pages.The query layout provides four areas (in addition to a header and a footer):
+The query layout is intended for search, filter, and result pages. The query layout provides four areas (in addition to a header and a footer):
 
 - Heading
 - Query Sidebar
@@ -336,6 +336,22 @@ The query layout is intended for search, filter, and result pages.The query layo
 | SIDE  |  CONTENT   | SIDE  |
 | BAR   |            | BAR   |
 |       |            |       |
+├————————————————————————————┤
+|           FOOTER           |
+└————————————————————————————┘
+```
+
+To make the main content and heading area larger on desktop, delete the aside sidebar element `o-layout__aside-sidebar`.
+```
+┌————————————————————————————┐
+|           HEADER           |
+├————————————————————————————┤
+|       |  HEADING           |
+|       ├————————————————————|
+| QUERY |  MAIN              |
+| SIDE  |  CONTENT           |
+| BAR   |                    |
+|       |                    |
 ├————————————————————————————┤
 |           FOOTER           |
 └————————————————————————————┘

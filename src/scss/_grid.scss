@@ -26,6 +26,8 @@
 
 	.o-layout__footer,
 	.o-layout__header {
+		// Position to the left of the viewport.
+		// Relative to the center aligned grid.
 		position: relative;
 		width: 100vw;
 		left: #{calc((100vw - 100%) * -0.5)};
@@ -62,7 +64,7 @@
 				"header header"
 				"sidebar main"
 				"footer footer";
-			grid-template-columns: minmax(auto, $_o-layout-sidebar-max-width) minmax(31rem, 1fr);
+			grid-template-columns: $_o-layout-sidebar minmax($_o-layout-main-min-width + $_o-layout-sidebar-max-width + $_o-layout-gutter, 1fr);
 			grid-template-rows: auto 1fr auto;
 		};
 	}
@@ -123,7 +125,7 @@
 
 		@include oGridRespondTo($from: M) {
 			grid-template-rows: auto auto 1fr auto;
-			grid-template-columns: minmax(auto, $_o-layout-sidebar-max-width) minmax(15rem, 1fr);
+			grid-template-columns: $_o-layout-sidebar $_o-layout-main;
 			grid-template-areas:
 				"header header"
 				"query-sidebar heading"
@@ -134,7 +136,7 @@
 
 		@include oGridRespondTo($from: L) {
 			grid-template-rows: auto auto 1fr auto;
-			grid-template-columns: minmax(auto, $_o-layout-sidebar-max-width) minmax(15rem, 1fr) fit-content($_o-layout-sidebar-max-width);
+			grid-template-columns: $_o-layout-sidebar $_o-layout-main fit-content($_o-layout-sidebar-max-width); // fit-content makes the aside collapse with no content (optional)
 			grid-template-areas:
 				"header header header"
 				"query-sidebar heading aside-sidebar"
