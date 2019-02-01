@@ -57,7 +57,6 @@ describe('Layout', () => {
 				constructNav: true
 			});
 			setTimeout(() => {
-				console.log(queryLayoutElement.querySelector('.o-layout__query-sidebar').innerHTML);
 				assert.ok(queryLayoutElement.querySelector('.o-layout__query-sidebar').innerHTML, 'Expected to find navigation HTML within the query layout sidebar.');
 				done();
 			}, 100);
