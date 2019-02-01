@@ -295,7 +295,7 @@ Actions overview with 4 items with footer:
 
 ## Query Layout
 
-The query layout is intended for search, filter, and result pages. The query layout provides four areas (in addition to a header and a footer):
+The query layout is intended for search, filter, and result pages. It provides four areas (in addition to a header and a footer):
 
 - Heading
 - Query Sidebar
