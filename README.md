@@ -341,7 +341,7 @@ The query layout is intended for search, filter, and result pages. It provides f
 └————————————————————————————┘
 ```
 
-To make the main content and heading area larger on desktop, delete the aside sidebar element `o-layout__aside-sidebar`.
+This layout may be used without a right-hand side bar. To remove it, delete the aside sidebar element `o-layout__aside-sidebar`.
 ```
 ┌————————————————————————————┐
 |           HEADER           |
