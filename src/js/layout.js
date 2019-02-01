@@ -63,15 +63,17 @@ class Layout {
 	 * Construct the sidebar navigation from headings within the DOM.
 	 */
 	constructNavFromDOM () {
-		// Get array of headings. If there are h2 headings followed by h3 headings,
-		// Add a property `subItems` to h2 headings which contains an array of the following h3 headings.
+		// Get an array of headings. If there are h2 headings followed by h3 headings (or lower),
+		// add a property `subItems` to the parent h2 which contains an array of the following smaller headings.
 		const headingsWithHierarchy = Array.from(this.navHeadings).reduce((headings, heading) => {
-			const lastHeading = headings.length ? headings[headings.length - 1] : null;
-			if (!lastHeading) {
+			const supportedHeadings = ['H3', 'H4', 'H5', 'H6'];
+			const parents = headings.filter(heading => heading.nodeName === 'H2');
+			const parent = parents ? parents[parents.length - 1] : null;
+			if (!headings.length) {
 				return [heading];
 			}
-			if(lastHeading.nodeName === 'H2' && heading.nodeName === 'H3') {
-				lastHeading.subItems = lastHeading.subItems ? [...lastHeading.subItems, heading] : [heading];
+			if (parent && supportedHeadings.includes(heading.nodeName)) {
+				parent.subItems = parent.subItems ? [...parent.subItems, heading] : [heading];
 				return headings;
 			}
 			headings.push(heading);

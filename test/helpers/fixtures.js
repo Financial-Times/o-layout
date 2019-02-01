@@ -26,6 +26,7 @@ const docsWithSubHeading = `
 		<h1 id="this-is-a-h1">This is a heading level 1</h2>
 		<h2 id="this-is-a-h2">This is a heading level 2</h2>
 		<h3 id="sub-heading-1">Sub heading 1</h3>
+		<h5 id="sub-heading-1b">Sub heading 1b</h5>
 		<h3 id="sub-heading-2">Sub heading 2</h3>
 		<p>This is some content.</p>
 		<p>This is more content</p>
