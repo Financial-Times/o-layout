@@ -25,7 +25,7 @@
 ### Header And Footer Changes
 
 - `o-layout` no longer includes CSS and JS for `o-header-services` and `o-footer-services` by default. You'll need to include CSS and JS for `o-header-services` and `o-footer-services` separately if they are used within your project.
-- Previously `o-header-services` markup was modified by adding a `o-layout__header` class. This markup has been changed, and `o-header-services` markup should now be placed _inside_ a `div` with the `o-layout__header` class.
+- Previously `o-header-services` markup was modified by adding a `o-layout__header` class. This markup has been changed, and `o-header-services` markup should now be placed _inside_ a `div` with the `o-layout__header` class. The same is true for `o-footer-services` markup, which is now placed _inside_ a div with the `o-layout__footer` class.
 
 ```diff
 <div class="o-layout" data-o-component="o-layout" data-o-layout-construct-nav="false">
@@ -38,6 +38,12 @@
 +	</div>
 
 	<!-- ... -->
+
++	<div class="o-layout__footer">
+		<footer class="o-footer-services">
+			<!-- more o-footer-services markup -->
+		</footer>
++	</div>
 
 </div>
 ```
