@@ -41,7 +41,7 @@ class Layout {
 
 		// Or highlight a custom navigation.
 		if ((isDocsLayout || isQueryLayout) && !this.options.constructNav) {
-			const navigation = document.querySelector(`.o-layout__navigation`);
+			const navigation = this.layoutEl.querySelector(`.o-layout__navigation`);
 			if (navigation) {
 				this.highlightNavItems(navigation);
 			}
@@ -66,7 +66,7 @@ class Layout {
 		list.innerHTML = listItems.join('');
 		nav.appendChild(list);
 
-		const sidebar = document.querySelector(`.o-layout__sidebar`) || document.querySelector(`.o-layout__query-sidebar`);
+		const sidebar = this.layoutEl.querySelector(`.o-layout__sidebar`) || this.layoutEl.querySelector(`.o-layout__query-sidebar`);
 		window.requestAnimationFrame(() => {
 			sidebar.append(nav);
 		});

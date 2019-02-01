@@ -1,7 +1,7 @@
 /* eslint-env mocha, sinon, proclaim */
 
 import Layout from '../src/js/layout';
-import fixtures from './helpers/fixtures';
+import { docs, query } from './helpers/fixtures';
 import * as assert from 'proclaim';
 import sinon from 'sinon/pkg/sinon';
 
@@ -11,11 +11,13 @@ sinon.assert.expose(assert, {
 });
 
 describe('Layout', () => {
-	let layoutElement;
+	let documentationLayoutElement;
+	let queryLayoutElement;
 
 	beforeEach(() => {
-		document.body.innerHTML = fixtures;
-		layoutElement = document.querySelector('[data-o-component=o-layout]');
+		document.body.innerHTML = docs + query;
+		documentationLayoutElement = document.querySelector('.o-layout--docs');
+		queryLayoutElement = document.querySelector('.o-layout--query');
 	});
 
 	afterEach(() => {
@@ -24,13 +26,13 @@ describe('Layout', () => {
 
 	describe('.init()', () => {
 
-		it('stores `layoutElement` in a `layoutEl` property', () => {
-			const layout = new Layout(layoutElement);
-			assert.strictEqual(layout.layoutEl, layoutElement);
+		it('stores `documentationLayoutElement` in a `layoutEl` property', () => {
+			const layout = new Layout(documentationLayoutElement);
+			assert.strictEqual(layout.layoutEl, documentationLayoutElement);
 		});
 
 		it('has default options and stores them in an `options` property', () => {
-			const layout = new Layout(layoutElement);
+			const layout = new Layout(documentationLayoutElement);
 			assert.isObject(layout.options);
 			assert.deepEqual(layout.options, {
 				constructNav: true,
@@ -40,13 +42,29 @@ describe('Layout', () => {
 			});
 		});
 
-		it('constructs the navigation by default', () => {
-			const layout = new Layout(layoutElement);
-			assert.strictEqual(layout.navHeadings.length, 2, 'Expected to find two navigation headings.');
+		it('constructs the documentation layout navigation by default', () => {
+			const layout = new Layout(documentationLayoutElement);
+			assert.strictEqual(layout.navHeadings.length, 2, `Expected to find two navigation headings but found ${layout.navHeadings.length}.`);
+		});
+
+		it('does not construct the navigation by default for the query layout', () => {
+			new Layout(queryLayoutElement);
+			assert.strictEqual(queryLayoutElement.querySelector('.o-layout__query-sidebar').innerHTML, '', 'Expected to find no navigation HTML within the query layout sidebar.');
+		});
+
+		it('constructs the navigation for the query layout when "constructNav" is explicit', (done) => {
+			new Layout(queryLayoutElement, {
+				constructNav: true
+			});
+			setTimeout(() => {
+				console.log(queryLayoutElement.querySelector('.o-layout__query-sidebar').innerHTML);
+				assert.ok(queryLayoutElement.querySelector('.o-layout__query-sidebar').innerHTML, 'Expected to find navigation HTML within the query layout sidebar.');
+				done();
+			}, 100);
 		});
 
 		it('constructs the navigation headings with a custom selector set by the "navHeadingSelector" option', (done) => {
-			new Layout(layoutElement, { navHeadingSelector: 'h1' });
+			new Layout(documentationLayoutElement, { navHeadingSelector: 'h1' });
 			// allow for request animation frame
 			setTimeout(() => {
 				assert.ok(document.querySelector('.o-layout__navigation'), 'Expected to find a navigation element.');
@@ -55,7 +73,7 @@ describe('Layout', () => {
 		});
 
 		it('does not construct navigation when "constructNav" is set to false', (done) => {
-			new Layout(layoutElement, { constructNav: false });
+			new Layout(documentationLayoutElement, { constructNav: false });
 			// allow for request animation frame
 			setTimeout(() => {
 				assert.notOk(document.querySelector('.o-layout__navigation'), null, 'Did not expect to find a navigation element.');
@@ -64,29 +82,29 @@ describe('Layout', () => {
 		});
 
 		it('constructs linkable headings by default', () => {
-			const layout = new Layout(layoutElement);
+			const layout = new Layout(documentationLayoutElement);
 			assert.strictEqual(layout.linkedHeadings.length, 2, 'Expected to find two linked heading.');
 		});
 
 		it('does not construct linkable headings when "linkHeadings" is set to false', () => {
-			const layout = new Layout(layoutElement, { linkHeadings: false });
+			const layout = new Layout(documentationLayoutElement, { linkHeadings: false });
 			assert.strictEqual(layout.linkedHeadings.length, 0, 'Expected to find no linked headings.');
 		});
 
 		it('constructs linkable headings with a custom selector set by the "linkedHeadingSelector" option', () => {
-			const layout = new Layout(layoutElement, { linkedHeadingSelector: 'h1' });
+			const layout = new Layout(documentationLayoutElement, { linkedHeadingSelector: 'h1' });
 			assert.strictEqual(layout.linkedHeadings.length, 1, 'Expected to find one "h1" linked heading.');
 		});
 
 		it('constructs the navigation independently of linked headings', () => {
-			const layout = new Layout(layoutElement, { navHeadingSelector: 'h1', linkedHeadingSelector: 'h2' });
+			const layout = new Layout(documentationLayoutElement, { navHeadingSelector: 'h1', linkedHeadingSelector: 'h2' });
 			assert.strictEqual(layout.linkedHeadings.length, 1, 'Expected to find only one "h2" linked heading.');
 			assert.strictEqual(layout.navHeadings.length, 1, 'Expected to find only one "h1" nav heading.');
 		});
 
 		it('extracts options from the DOM', () => {
 			const getDataAttributesSpie = sinon.stub(Layout, 'getDataAttributes');
-			new Layout(layoutElement);
+			new Layout(documentationLayoutElement);
 			assert.calledOnce(getDataAttributesSpie);
 			Layout.getDataAttributes.restore();
 		});
@@ -94,7 +112,7 @@ describe('Layout', () => {
 
 	describe('.constructNavFromDOM()', () => {
 		it('extracts headings from main content to construct sidebar navigation', (done) => {
-			const layout = new Layout(layoutElement, { constructNav: false });
+			const layout = new Layout(documentationLayoutElement, { constructNav: false });
 			const headingOneId = document.body.querySelector('h1').id;
 			const headingTwoId = document.body.querySelector('h2').id;
 			layout.constructNavFromDOM();
