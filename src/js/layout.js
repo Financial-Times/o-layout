@@ -40,7 +40,7 @@ class Layout {
 		}
 
 		// Or highlight a custom navigation.
-		if (isDocsLayout && !this.options.constructNav) {
+		if ((isDocsLayout || isQueryLayout) && !this.options.constructNav) {
 			const navigation = document.querySelector(`.o-layout__navigation`);
 			if (navigation) {
 				this.highlightNavItems(navigation);
