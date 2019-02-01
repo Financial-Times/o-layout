@@ -30,11 +30,11 @@
 			@include oTypographyBody;
 			@include oTypographySize($scale: 1, $line-height: 1.4);
 		}
-    
+
 		a:not(.o-layout__unstyled-element) {
 			@include oTypographyLink();
 		}
-    
+
 		h1:not(.o-layout__unstyled-element)	{
 			@include oTypographyHeadingLevel1();
 		}
@@ -82,20 +82,26 @@
 
 /// Navigation
 /// Outputs navigation styles
+/// @param {boolean} $query-layout - Should the query layout be supported?
 /// @access private
-@mixin _oLayoutNavigation() {
+@mixin _oLayoutNavigation($query-layout) {
 	.o-layout__navigation {
+		@include oGridRespondTo($from: M) {
+			position: sticky;
+			top: $_o-layout-gutter;
+		}
+	}
+	.o-layout__navigation ul,
+	.o-layout__navigation ol {
 		border: 0;
 		border-left: 2px solid oColorsGetPaletteColor('teal');
 		padding: 0;
 		text-align: left;
 		list-style: none;
-		margin: 0;
+		margin: 0 0 oTypographySpacingSize(7);
 
 		@include oGridRespondTo($from: M) {
 			border-left: 0;
-			position: sticky;
-			top: $_o-layout-gutter;
 			text-align: right;
 			margin-top: $_o-layout-gutter;
 		}
@@ -125,6 +131,13 @@
 				display: inline-block;
 				padding: 0.4em 1em;
 			}
+		}
+	}
+	@if $query-layout {
+		.o-layout--query .o-layout__navigation ul,
+		.o-layout--query .o-layout__navigation ol {
+			margin-right: calc(-#{$_o-layout-gutter} - 1px);
+			margin-top: 0;
 		}
 	}
 }

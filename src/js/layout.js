@@ -10,8 +10,11 @@ class Layout {
 	constructor (layoutEl, options) {
 		this.layoutEl = layoutEl;
 
+		const isDocsLayout = this.layoutEl.classList.contains('o-layout--docs');
+		const isQueryLayout = this.layoutEl.classList.contains('o-layout--query');
+
 		this.options = Object.assign({}, {
-			constructNav: true,
+			constructNav: (isDocsLayout ? true : false),
 			navHeadingSelector: 'h1, h2, h3',
 			linkHeadings: true,
 			linkedHeadingSelector: 'h1, h2, h3, h4, h5, h6',
@@ -32,8 +35,7 @@ class Layout {
 			.filter(heading => heading.getAttribute('id'));
 
 		// Construct the default navigation.
-		const isDocsLayout = this.layoutEl.classList.contains('o-layout--docs');
-		if (isDocsLayout && this.options.constructNav) {
+		if ((isDocsLayout || isQueryLayout) && this.options.constructNav) {
 			this.constructNavFromDOM();
 		}
 
@@ -53,20 +55,23 @@ class Layout {
 		let listItems = Array.from(this.navHeadings, (heading) => {
 			const contentElement = heading.querySelector(`.o-layout__linked-heading__content`);
 			const headingText = (contentElement ? contentElement.textContent : heading.textContent);
-			const pageTitleClass = heading.nodeName === 'H1' ? 'class="o-layout__navigation-title"' : '';
-			return `<li ${pageTitleClass}><a href='#${heading.id}'>${headingText}</a></li>`;
+			const pageTitleClass = heading.nodeName === 'H1' ? 'o-layout__navigation-title' : '';
+			return `<li class="o-layout__unstyled-element ${pageTitleClass}"><a class="o-layout__unstyled-element" href='#${heading.id}'>${headingText}</a></li>`;
 		});
 
+		let nav = document.createElement('nav');
+		nav.classList.add(`o-layout__navigation`);
 		let list = document.createElement('ol');
-		list.classList.add(`o-layout__navigation`);
+		list.classList.add(`o-layout__unstyled-element`);
 		list.innerHTML = listItems.join('');
+		nav.appendChild(list);
 
-		const sidebar = document.querySelector(`.o-layout__sidebar`);
+		const sidebar = document.querySelector(`.o-layout__sidebar`) || document.querySelector(`.o-layout__query-sidebar`);
 		window.requestAnimationFrame(() => {
-			sidebar.append(list);
+			sidebar.append(nav);
 		});
 
-		this.highlightNavItems(list);
+		this.highlightNavItems(nav);
 	}
 
 	/**

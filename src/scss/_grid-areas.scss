@@ -13,7 +13,6 @@
 /// @access private
 @mixin _oLayoutAreaSidebar() {
 	.o-layout__sidebar {
-		@include _oLayoutNavigation();
 		@include oGridRespondTo($until: M) {
 			margin-top: $_o-layout-gutter;
 		}
