@@ -49,23 +49,58 @@ class Layout {
 	}
 
 	/**
+	 * Get the heading content.
+	 * @param {Element} heading
+	 * @access private
+	 */
+	static _getContentFromHeading(heading) {
+		const contentElement = heading.querySelector(`.o-layout__linked-heading__content`);
+		const headingText = (contentElement ? contentElement.textContent : heading.textContent);
+		return headingText;
+	}
+
+	/**
 	 * Construct the sidebar navigation from headings within the DOM.
 	 */
 	constructNavFromDOM () {
-		let listItems = Array.from(this.navHeadings, (heading) => {
-			const contentElement = heading.querySelector(`.o-layout__linked-heading__content`);
-			const headingText = (contentElement ? contentElement.textContent : heading.textContent);
-			const pageTitleClass = heading.nodeName === 'H1' ? 'o-layout__navigation-title' : '';
-			return `<li class="o-layout__unstyled-element ${pageTitleClass}"><a class="o-layout__unstyled-element" href='#${heading.id}'>${headingText}</a></li>`;
-		});
+		// Get array of headings. If there are h2 headings followed by h3 headings,
+		// Add a property `subItems` to h2 headings which contains an array of the following h3 headings.
+		const headingsWithHierarchy = Array.from(this.navHeadings).reduce((headings, heading) => {
+			const lastHeading = headings.length ? headings[headings.length - 1] : null;
+			if (!lastHeading) {
+				return [heading];
+			}
+			if(lastHeading.nodeName === 'H2' && heading.nodeName === 'H3') {
+				lastHeading.subItems = lastHeading.subItems ? [...lastHeading.subItems, heading] : [heading];
+				return headings;
+			}
+			headings.push(heading);
+			return headings;
+		}, []);
 
+		// Create the nav markup.
 		let nav = document.createElement('nav');
 		nav.classList.add(`o-layout__navigation`);
 		let list = document.createElement('ol');
 		list.classList.add(`o-layout__unstyled-element`);
-		list.innerHTML = listItems.join('');
+		const listInnerHTML = Array.from(headingsWithHierarchy).reduce((html, heading) => {
+			const pageTitleClass = heading.nodeName === 'H1' ? 'o-layout__navigation-title' : '';
+			return html + `
+<li class="o-layout__unstyled-element ${pageTitleClass}">
+	<a class="o-layout__unstyled-element" href='#${heading.id}'>${Layout._getContentFromHeading(heading)}</a>
+	${heading.subItems ? `
+	<ol>
+	${heading.subItems.reduce((html, heading) => {
+		return html + `<li><a class="o-layout__unstyled-element" href="#${heading.id}">${Layout._getContentFromHeading(heading)}</a></li>`;
+	}, '')}
+	</ol>
+	` : ''}
+</li>`;
+		}, '');
+		list.innerHTML = listInnerHTML;
 		nav.appendChild(list);
 
+		// Add the nav to the page.
 		const sidebar = this.layoutEl.querySelector(`.o-layout__sidebar`) || this.layoutEl.querySelector(`.o-layout__query-sidebar`);
 		window.requestAnimationFrame(() => {
 			sidebar.append(nav);
