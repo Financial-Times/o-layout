@@ -22,7 +22,9 @@
  </div>
 ```
 
-- Move the `o-layout__navigation` class from the list (`ul` or `ol`) to the containing `nav` element. This only applies if you have added navigation manually. If your project relies on `o-layout` JavaScript to generate a nav no action is required.
+- If you have added navigation manually, you'll need to move the `o-layout__navigation` class from the list (`ul` or `ol`) to the containing `nav` element. 
+
+If your project relies on `o-layout` JavaScript to generate a nav, no action is required.
 
 ```diff
 	<div class="o-layout__sidebar">
