@@ -1,7 +1,7 @@
 /* eslint-env mocha, sinon, proclaim */
 
 import Layout from '../src/js/layout';
-import { docs, query } from './helpers/fixtures';
+import { docs, docsWithSubHeading, query } from './helpers/fixtures';
 import * as assert from 'proclaim';
 import sinon from 'sinon/pkg/sinon';
 
@@ -45,6 +45,22 @@ describe('Layout', () => {
 		it('constructs the documentation layout navigation by default', () => {
 			const layout = new Layout(documentationLayoutElement);
 			assert.strictEqual(layout.navHeadings.length, 2, `Expected to find two navigation headings but found ${layout.navHeadings.length}.`);
+		});
+
+		it('constructs a nested navigation when a h3 (or lower) follows a h2', (done) => {
+			document.body.innerHTML = docsWithSubHeading;
+			documentationLayoutElement = document.querySelector('.o-layout--docs');
+			new Layout(documentationLayoutElement, {
+				navHeadingSelector: 'h1, h2, h3, h4, h5, h6'
+			});
+			setTimeout(() => {
+
+				assert.strictEqual(
+					documentationLayoutElement.querySelector('.o-layout__sidebar').innerHTML.replace(/[\n\t]/g, ''),
+					'<nav class="o-layout__navigation"><ol class="o-layout__unstyled-element"><li class="o-layout__unstyled-element o-layout__navigation-title"><a class="o-layout__unstyled-element" href="#this-is-a-h1" aria-current="location">This is a heading level 1</a></li><li class="o-layout__unstyled-element "><a class="o-layout__unstyled-element" href="#this-is-a-h2">This is a heading level 2</a><ol><li><a class="o-layout__unstyled-element" href="#sub-heading-1">Sub heading 1</a></li><li><a class="o-layout__unstyled-element" href="#sub-heading-1b">Sub heading 1b</a></li><li><a class="o-layout__unstyled-element" href="#sub-heading-2">Sub heading 2</a></li></ol></li><li class="o-layout__unstyled-element "><a class="o-layout__unstyled-element" href="#this-is-a-second-h2">This is a second heading level 2</a><ol><li><a class="o-layout__unstyled-element" href="#sub-heading-a">Sub heading a</a></li></ol></li></ol></nav>'
+				);
+				done();
+			}, 100);
 		});
 
 		it('does not construct the navigation by default for the query layout', () => {
