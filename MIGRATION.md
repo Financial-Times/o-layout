@@ -22,6 +22,25 @@
  </div>
 ```
 
+- If you have added navigation manually, you'll need to move the `o-layout__navigation` class from the list (`ul` or `ol`) to the containing `nav` element. 
+
+If your project relies on `o-layout` JavaScript to generate a nav, no action is required.
+
+```diff
+	<div class="o-layout__sidebar">
+-		<nav>
++		<nav class="o-layout__navigation">
+			<!-- this can be an <ol> or a <ul> -->
+-			<ol class="o-layout__navigation">
++			<ol>
+				<li>
+					<a href="#this-is-a-title">This is a title</a>
+				</li>
+			</ol>
+		</nav>
+	</div>
+```
+
 ### Header And Footer Changes
 
 - `o-layout` no longer includes CSS and JS for `o-header-services` and `o-footer-services` by default. You'll need to include CSS and JS for `o-header-services` and `o-footer-services` separately if they are used within your project.

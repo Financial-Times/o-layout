@@ -10,8 +10,11 @@ class Layout {
 	constructor (layoutEl, options) {
 		this.layoutEl = layoutEl;
 
+		const isDocsLayout = this.layoutEl.classList.contains('o-layout--docs');
+		const isQueryLayout = this.layoutEl.classList.contains('o-layout--query');
+
 		this.options = Object.assign({}, {
-			constructNav: true,
+			constructNav: (isDocsLayout ? true : false),
 			navHeadingSelector: 'h1, h2, h3',
 			linkHeadings: true,
 			linkedHeadingSelector: 'h1, h2, h3, h4, h5, h6',
@@ -32,14 +35,13 @@ class Layout {
 			.filter(heading => heading.getAttribute('id'));
 
 		// Construct the default navigation.
-		const isDocsLayout = this.layoutEl.classList.contains('o-layout--docs');
-		if (isDocsLayout && this.options.constructNav) {
+		if ((isDocsLayout || isQueryLayout) && this.options.constructNav) {
 			this.constructNavFromDOM();
 		}
 
 		// Or highlight a custom navigation.
-		if (isDocsLayout && !this.options.constructNav) {
-			const navigation = document.querySelector(`.o-layout__navigation`);
+		if ((isDocsLayout || isQueryLayout) && !this.options.constructNav) {
+			const navigation = this.layoutEl.querySelector(`.o-layout__navigation`);
 			if (navigation) {
 				this.highlightNavItems(navigation);
 			}
@@ -47,26 +49,66 @@ class Layout {
 	}
 
 	/**
+	 * Get the heading content.
+	 * @param {Element} heading
+	 * @access private
+	 */
+	static _getContentFromHeading(heading) {
+		const contentElement = heading.querySelector(`.o-layout__linked-heading__content`);
+		const headingText = (contentElement ? contentElement.textContent : heading.textContent);
+		return headingText;
+	}
+
+	/**
 	 * Construct the sidebar navigation from headings within the DOM.
 	 */
 	constructNavFromDOM () {
-		let listItems = Array.from(this.navHeadings, (heading) => {
-			const contentElement = heading.querySelector(`.o-layout__linked-heading__content`);
-			const headingText = (contentElement ? contentElement.textContent : heading.textContent);
-			const pageTitleClass = heading.nodeName === 'H1' ? 'class="o-layout__navigation-title"' : '';
-			return `<li ${pageTitleClass}><a href='#${heading.id}'>${headingText}</a></li>`;
-		});
+		// Get an array of headings. If there are h2 headings followed by h3 headings (or lower),
+		// add a property `subItems` to the parent h2 which contains an array of the following smaller headings.
+		const headingsWithHierarchy = Array.from(this.navHeadings).reduce((headings, heading) => {
+			const supportedHeadings = ['H3', 'H4', 'H5', 'H6'];
+			const parents = headings.filter(heading => heading.nodeName === 'H2');
+			const parent = parents ? parents[parents.length - 1] : null;
+			if (!headings.length) {
+				return [heading];
+			}
+			if (parent && supportedHeadings.includes(heading.nodeName)) {
+				parent.subItems = parent.subItems ? [...parent.subItems, heading] : [heading];
+				return headings;
+			}
+			headings.push(heading);
+			return headings;
+		}, []);
 
+		// Create the nav markup.
+		let nav = document.createElement('nav');
+		nav.classList.add(`o-layout__navigation`);
 		let list = document.createElement('ol');
-		list.classList.add(`o-layout__navigation`);
-		list.innerHTML = listItems.join('');
+		list.classList.add(`o-layout__unstyled-element`);
+		const listInnerHTML = Array.from(headingsWithHierarchy).reduce((html, heading) => {
+			const pageTitleClass = heading.nodeName === 'H1' ? 'o-layout__navigation-title' : '';
+			return html + `
+<li class="o-layout__unstyled-element ${pageTitleClass}">
+	<a class="o-layout__unstyled-element" href='#${heading.id}'>${Layout._getContentFromHeading(heading)}</a>
+	${heading.subItems ? `
+	<ol>
+	${heading.subItems.reduce((html, heading) => {
+		return html + `<li><a class="o-layout__unstyled-element" href="#${heading.id}">${Layout._getContentFromHeading(heading)}</a></li>`;
+	}, '')}
+	</ol>
+	` : ''}
+</li>`;
+		}, '');
+		list.innerHTML = listInnerHTML;
+		nav.appendChild(list);
 
-		const sidebar = document.querySelector(`.o-layout__sidebar`);
+		// Add the nav to the page.
+		const sidebar = this.layoutEl.querySelector(`.o-layout__sidebar`) || this.layoutEl.querySelector(`.o-layout__query-sidebar`);
 		window.requestAnimationFrame(() => {
-			sidebar.append(list);
+			sidebar.append(nav);
 		});
 
-		this.highlightNavItems(list);
+		this.highlightNavItems(nav);
 	}
 
 	/**

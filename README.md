@@ -104,7 +104,7 @@ Add the class `o-layout__main__single-span` to constrain elements to column 1. U
 ```
 
 ### Sidebar
-For the documentation layout, `o-layout` will generate a sidebar navigation. The default sidebar links to any `<h2>` or `<h3>` element within the main content area, providing it has an `id`. If this is a feature you want to use, then you don't need to add anything to the sidebar section of `o-layout`.
+By default `o-layout` will generate a sidebar navigation for the documentation layout. This feature is also supported by the query layout but is disabled by default. The sidebar links to any `<h2>` or `<h3>` element within the main content area, providing it has an `id`.
 
 If you wish to display headings other than `<h2>` and `<h3>` in the navigation, you can customise the selector that's used with the `data-o-layout-nav-heading-selector` data attribute. For example, to select only headings which have the class `nav-heading`, use the following:
 
@@ -113,7 +113,7 @@ If you wish to display headings other than `<h2>` and `<h3>` in the navigation, 
 - <div class="o-layout" data-o-component="o-layout">
 ```
 
-To customise your sidebar navigation entirely, add the data attribute `data-o-layout-construct-nav="false"` to the root `o-layout` element. Then add your own `nav` element within the sidebar, with a child list which has the class `o-layout__navigation`.
+To customise your sidebar navigation entirely, add the data attribute `data-o-layout-construct-nav="false"` to the root `o-layout` element. Then add your own `nav` element within the sidebar, with the class `o-layout__navigation` and a child list.
 
 Altogether, a customised navigation should look like this:
 ```diff
@@ -123,9 +123,9 @@ Altogether, a customised navigation should look like this:
 	</div>
 
 	<div class="o-layout__sidebar">
-+		<nav>
++		<nav class="o-layout__navigation">
 			<!-- this can be an <ol> or a <ul> -->
-+			<ol class="o-layout__navigation">
++			<ol>
 +				<li>
 +					<a href="#this-is-a-title">This is a title</a>
 +				</li>
@@ -138,6 +138,13 @@ Altogether, a customised navigation should look like this:
 	</div>
 
 	<footer class="o-layout__footer"></footer>
+</div>
+```
+
+The query layout also supports a generated navigation but it is disabled by default and must be turned on with `data-o-layout-construct-nav="true"`:
+```html
+<div class="o-layout o-layout--query" data-o-component="o-layout" data-o-layout-construct-nav="true">
+	<!-- query layout -->
 </div>
 ```
 
@@ -413,13 +420,14 @@ If your project does not use all layouts or other features provided by `o-layout
 - query
 
 **Feature Options**
+- sidebar-nav (enables the [generated sidebar navigation](#custom-navigation) for the query layout. _Styles for the sidebar navigation are included by default with the documentation layout._)
 - linked-headings (enables clickable / highlighted anchors on the page)
 - typography (enables body typography applied with the class `o-layout-typography`)
 
 ```sass
 @mixin oLayout($opts: (
 	'layouts': ('documentation', 'landing', 'query'),
-	'features': ('linked-headings', 'typography')
+	'features': ('sidebar-nav', 'linked-headings', 'typography')
 ));
 ```
 
@@ -445,7 +453,14 @@ oLayout.init();
 
 ### Custom Navigation
 
-The [documentation layout](#documentation-layout) uses JavaScript to construct the sidebar navigation out of headings (`h1`, `h2` and `h3`) in the content, and to highlight those items depending on the scroll position. This is its default behaviour.
+The [documentation layout](#documentation-layout) uses JavaScript to construct a sidebar navigation out of headings (`h1`, `h2` and `h3`) in the content, and to highlight those items depending on the scroll position. This is its default behaviour. The [query layout](#query-layout) also supports a generated nav but by default it is disabled.
+
+To generate a nav for the query layout, explicitly set `constructNav` to `true`:
+
+```js
+const oLayout = require('o-layout');
+oLayout.init(null, { constructNav: true });
+```
 
 If you would like to specify a custom selector for the navigation generation, set the `navHeadingSelector` option to any valid CSS selector string:
 

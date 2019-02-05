@@ -13,13 +13,14 @@
 /// @param {Map} $opts - A map of configuration, with "layouts" ('documentation', 'landing', 'query'), "features" ('linked-headings', 'typography'), and  "hero-image" (an image for the background of the "hero" area).
 @mixin oLayout($opts: (
 	'layouts': ('documentation', 'landing', 'query'),
-	'features': ('linked-headings', 'typography'),
+	'features': ('sidebar-nav', 'linked-headings', 'typography'),
 	'hero-image': '',
 )) {
 	$layouts: map-get($opts, $key: 'layouts');
 	$features: map-get($opts, $key: 'features');
 	$linked-headings: index($features, 'linked-headings');
 	$typography: index($features, 'typography');
+	$nav: index($features, 'sidebar-nav');
 	$docs-layout: index($layouts, 'documentation');
 	$landing-layout: index($layouts, 'landing');
 	$query-layout: index($layouts, 'query');
@@ -45,6 +46,11 @@
 	@include _oLayoutAreaHeader();
 	@include _oLayoutAreaMain();
 	@include _oLayoutAreaFooter();
+
+	// Always include the sidebar nav for the docs layout.
+	@if($docs-layout or $nav) {
+		@include _oLayoutNavigation($query-layout);
+	}
 
 	// 	Layouts.
 	@if($docs-layout) {

@@ -30,11 +30,11 @@
 			@include oTypographyBody;
 			@include oTypographySize($scale: 1, $line-height: 1.4);
 		}
-    
+
 		a:not(.o-layout__unstyled-element) {
 			@include oTypographyLink();
 		}
-    
+
 		h1:not(.o-layout__unstyled-element)	{
 			@include oTypographyHeadingLevel1();
 		}
@@ -82,40 +82,40 @@
 
 /// Navigation
 /// Outputs navigation styles
+/// @param {boolean} $query-layout - Should the query layout be supported?
 /// @access private
-@mixin _oLayoutNavigation() {
+@mixin _oLayoutNavigation($query-layout) {
 	.o-layout__navigation {
-		border: 0;
-		border-left: 2px solid oColorsGetPaletteColor('teal');
-		padding: 0;
-		text-align: left;
-		list-style: none;
-		margin: 0;
-
 		@include oGridRespondTo($from: M) {
-			border-left: 0;
 			position: sticky;
 			top: $_o-layout-gutter;
+		}
+	}
+
+	.o-layout__navigation li {
+		list-style: none;
+	}
+
+	.o-layout__navigation ul,
+	.o-layout__navigation ol {
+		padding: 0;
+	}
+
+	.o-layout__navigation > ul,
+	.o-layout__navigation > ol {
+		border: 0;
+		text-align: left;
+		margin: 0 0 oTypographySpacingSize(7);
+
+		@include oGridRespondTo($from: M) {
 			text-align: right;
 			margin-top: $_o-layout-gutter;
 		}
 
-
 		li {
-			&.o-layout__navigation-title {
-				@include oTypographyBold('sans');
-			}
-
-			&:not(.o-layout__navigation-title) {
-				[aria-current="location"] {
-					color: oColorsGetPaletteColor('teal-30');
-					background: oColorsMix('teal', 'white', 20);
-				}
-				a {
-					@include oGridRespondTo($from: M) {
-						border-right: 2px solid oColorsGetPaletteColor('teal');
-					}
-				}
+			&:not(.o-layout__navigation-title) [aria-current="location"] {
+				color: oColorsGetPaletteColor('teal-30');
+				background: oColorsMix('teal', 'white', 20);
 			}
 
 			a {
@@ -124,7 +124,43 @@
 				border: inherit;
 				display: inline-block;
 				padding: 0.4em 1em;
+				word-wrap: anywhere;
+				overflow-wrap: anywhere;
+				border-color: oColorsGetPaletteColor('teal');
+				border-left: 2px solid;
+				@include oGridRespondTo($from: M) {
+					border-left: 0 solid;
+					border-right: 2px solid;
+				}
 			}
+
+			&.o-layout__navigation-title a {
+				@include oTypographyBold('sans');
+				@include oGridRespondTo($from: M) {
+					border: 0;
+				}
+			}
+
+			// For sub-nav headings, where there is no parent anchor.
+			span {
+				@include oTypographySans(1);
+				display: inline-block;
+				padding: 0.4em 1em;
+			}
+		}
+	}
+
+	// Style sub-nav items.
+	.o-layout__navigation ul li:not(.o-layout__navigation-title) ul a,
+	.o-layout__navigation ol li:not(.o-layout__navigation-title) ol a {
+		border-color: rgba(oColorsGetPaletteColor('teal'), 0.4);
+	}
+
+	@if $query-layout {
+		.o-layout--query .o-layout__navigation > ul,
+		.o-layout--query .o-layout__navigation > ol {
+			margin-right: calc(-#{$_o-layout-gutter} - 1px);
+			margin-top: 0;
 		}
 	}
 }
