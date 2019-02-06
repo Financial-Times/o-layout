@@ -166,7 +166,7 @@
 
 		.o-layout__aside-sidebar {
 			@include oGridRespondTo($from: L) {
-				min-width: $_o-layout-sidebar-max-width; // So the sidebar can be deleted, the query area fits to content width.
+				width: $_o-layout-sidebar-max-width; // So the sidebar can be deleted, the query area fits to content width.
 				margin: $_o-layout-gutter 0;
 				padding-left: $_o-layout-gutter;
 				border-left: 1px solid oColorsGetPaletteColor('slate-white-15');
