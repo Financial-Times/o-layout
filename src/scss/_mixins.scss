@@ -89,6 +89,8 @@
 		@include oGridRespondTo($from: M) {
 			position: sticky;
 			top: $_o-layout-gutter;
+			max-height: 100vh;
+			overflow-y: scroll;
 		}
 	}
 
@@ -157,10 +159,16 @@
 	}
 
 	@if $query-layout {
-		.o-layout--query .o-layout__navigation > ul,
-		.o-layout--query .o-layout__navigation > ol {
+		// To align the nav with the edge of the query sidebar.
+		// Whilst supporting a scrollable navigation.
+		.o-layout--query .o-layout__navigation,
+		.o-layout--query .o-layout__navigation {
 			margin-right: calc(-#{$_o-layout-gutter} - 1px);
-			margin-top: 0;
+		}
+		// Undo the negative margin for any element in the nav which is not the nav list.
+		// E.g. an input to filter the nav.
+		.o-layout--query .o-layout__navigation > *:not(ul):not(ol) {
+			margin-right: calc(#{$_o-layout-gutter} + 1px);
 		}
 	}
 }
