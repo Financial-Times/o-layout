@@ -126,7 +126,7 @@
 				border: inherit;
 				display: inline-block;
 				padding: 0.4em 1em;
-				// Where supposed `overflow-wrap: anywhere` is better than
+				// Where supported `overflow-wrap: anywhere` is better than
 				// `word-break: break-all` as it only breaks a word where
 				// no otherwise-acceptable break points exist.
 				overflow-wrap: anywhere;
