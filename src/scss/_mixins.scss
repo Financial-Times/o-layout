@@ -131,7 +131,7 @@
 				// no otherwise-acceptable break points exist.
 				overflow-wrap: anywhere;
 				word-break: break-all; // For browsers which do not support break-word, or overflow-wrap: anywhere.
-				word-break: break-word;
+				word-break: break-word; // sass-lint:disable-line no-duplicate-properties
 				@supports (overflow-wrap: anywhere) {
 					word-break: normal;
 				}
