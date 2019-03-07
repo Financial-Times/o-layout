@@ -1,8 +1,8 @@
 /* eslint-env mocha */
 
-import LinkedHeading from '../src/js/linked-heading';
-import * as assert from 'proclaim';
-import sinon from 'sinon/pkg/sinon';
+const LinkedHeading = require('../src/js/linked-heading');
+const assert = require('proclaim');
+const sinon = require('sinon/pkg/sinon');
 
 sinon.assert.expose(assert, {
 	includeFail: false,

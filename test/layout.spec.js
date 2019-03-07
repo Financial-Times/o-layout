@@ -1,9 +1,9 @@
 /* eslint-env mocha, sinon, proclaim */
 
-import Layout from '../src/js/layout';
-import { docs, docsWithSubHeading, query } from './helpers/fixtures';
-import * as assert from 'proclaim';
-import sinon from 'sinon/pkg/sinon';
+const Layout = require('../src/js/layout');
+const { docs, docsWithSubHeading, query } = require('./helpers/fixtures');
+const assert = require('proclaim');
+const sinon = require('sinon/pkg/sinon');
 
 sinon.assert.expose(assert, {
 	includeFail: false,
