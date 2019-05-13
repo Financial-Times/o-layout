@@ -1,5 +1,5 @@
 {
-	"description": "Provides page layouts and typography as a starting point to create internal tools or products. Currently offers three layout types.",
+	"description": "Provides page layouts and typography as a starting point to create internal tools or products.",
 	"keywords": [ "layout", "documentation", "grid", "page"],
 	"origamiType": "module",
 	"origamiCategory": "components",
