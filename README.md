@@ -291,7 +291,7 @@ Actions overview with 4 items with footer:
 	</div>
 ```
 
-Sometimes a page may have multiple overview sections. In this case it can appear odd to have three overview items followed by a seperate section with four more narrow items. To enforce that the items in each overview section have the same width apply the `o-layout__overview--consistent-columns` modifier class.
+Sometimes a page may have multiple overview sections. In this case it can appear odd to have three overview items followed by a separate section with four more narrow items. To enforce that the items in each overview section have the same width apply the `o-layout__overview--consistent-columns` modifier class.
 
 ```html
 	<!-- Your landing page content here. -->
