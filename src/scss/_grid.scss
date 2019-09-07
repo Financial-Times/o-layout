@@ -54,7 +54,7 @@
 /// Grid for document layout.
 /// @access private
 @mixin _oLayoutDocsGrid() {
-	.o-layout.o-layout--docs {
+	.o-layout--docs {
 		grid-template-rows: auto auto 1fr auto;
 		grid-template-areas:
 			"header"
@@ -72,34 +72,35 @@
 		};
 	}
 
-	.o-layout.o-layout--docs > .o-layout__main {
-		@include oGridRespondTo($until: M) {
-			margin-top: 0;
-		}
-		@include oGridRespondTo($from: L) {
-			> * {
-				box-sizing: border-box;
-				max-width: calc(100% - #{$_o-layout-sidebar-max-width} - #{$_o-layout-gutter});
-				float: left;
-				clear: left;
+	.o-layout--docs {
+		> .o-layout__main {
+			@include oGridRespondTo($until: M) {
+				margin-top: 0;
 			}
-			> aside {
-				box-sizing: border-box;
-				width: $_o-layout-sidebar-max-width;
-				margin-bottom: oSpacingByName('m12');
-				float: right;
-				clear: right;
-				:last-child {
-					margin-bottom: 0;
+			@include oGridRespondTo($from: L) {
+				> * {
+					box-sizing: border-box;
+					max-width: calc(100% - #{$_o-layout-sidebar-max-width} - #{$_o-layout-gutter});
+					float: left;
+					clear: left;
 				}
+				> aside {
+					box-sizing: border-box;
+					width: $_o-layout-sidebar-max-width;
+					margin-bottom: oSpacingByName('m12');
+					float: right;
+					clear: right;
+					:last-child {
+						margin-bottom: 0;
+					}
+				}
+			};
+
+			> table:not(.o-layout__main__single-span) {
+				max-width: none;
+				float: none;
 			}
-		};
-
-		> table:not(.o-layout__main__single-span) {
-			max-width: none;
-			float: none;
 		}
-
 		.o-layout__rule-left {
 			@include _oLayoutRule('left');
 		}
@@ -119,7 +120,7 @@
 /// Grid for query layout.
 /// @access private
 @mixin _oLayoutQueryGrid() {
-	.o-layout.o-layout--query {
+	.o-layout--query {
 		grid-template-rows: auto auto auto 1fr auto auto;
 		grid-template-areas:
 			"header"
