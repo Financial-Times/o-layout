@@ -129,7 +129,9 @@
 	.o-layout__main {
 		grid-area: main;
 		margin-top: $_o-layout-gutter;
-		overflow: hidden; // overflowing content can break the o-layout position
+		// overflowing content can break the o-layout position
+		// trust users to handle overflow content according to their project
+		overflow: hidden;
 
 		> table {
 			box-sizing: border-box;
