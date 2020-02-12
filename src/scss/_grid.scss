@@ -55,7 +55,6 @@
 			". main ."
 			"footer footer footer";
 		grid-template-rows: auto auto 1fr auto;
-		// 0 column width ro create a grid gap the header and footer can span
 		grid-template-columns: 1fr minmax(auto, calc(#{$_o-layout-container-max-width} - #{$column-gap-count * $_o-layout-gutter})) 1fr;
 	}
 }
