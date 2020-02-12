@@ -3,8 +3,8 @@
 ///@param {String} $side — left or right rule to be styled
 /// @access private
 @mixin _oLayoutRule($side: 'left') {
-	border-#{$side}: 2px solid oColorsGetPaletteColor('teal');
-	padding-#{$side}: $_o-layout-gutter;
+	border-#{$side}: 2px solid oColorsByName('teal');
+	padding-#{$side}: oSpacingByName('s3');
 }
 
 /// Base styling for the layout content
