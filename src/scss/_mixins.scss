@@ -35,7 +35,7 @@
 			@include oTypographyLink();
 		}
 
-		h1:not(.o-layout__unstyled-element)	{
+		h1:not(.o-layout__unstyled-element) {
 			@include oTypographyHeading($level: 1);
 		}
 
@@ -118,14 +118,14 @@
 
 	.o-layout__navigation > ul,
 	.o-layout__navigation > ol {
-		border: 0;
-		text-align: left;
-		margin: 0 0 oSpacingByIncrement(7); // matches `oTypographyBody`
 
 		@include oGridRespondTo($from: M) {
 			text-align: right;
 			margin-top: $_o-layout-gutter;
 		}
+		border: 0;
+		text-align: left;
+		margin: 0 0 oSpacingByIncrement(7); // matches `oTypographyBody`
 
 		li {
 			&:not(.o-layout__navigation-title) [aria-current="location"] {
@@ -136,6 +136,10 @@
 			a {
 				@include oTypographySans(1);
 				@include oTypographyLink();
+				@include oGridRespondTo($from: M) {
+					border-left: 0 solid;
+					border-right: 2px solid;
+				}
 				display: inline-block;
 				padding: 0.4em 1em;
 				// Where supported `overflow-wrap: anywhere` is better than
@@ -144,14 +148,10 @@
 				overflow-wrap: anywhere;
 				word-break: break-all; // For browsers which do not support break-word, or overflow-wrap: anywhere.
 				word-break: break-word; // sass-lint:disable-line no-duplicate-properties
-				@supports (overflow-wrap: anywhere) {
-					word-break: normal;
-				}
 				border-color: oColorsByName('teal');
 				border-left: 2px solid;
-				@include oGridRespondTo($from: M) {
-					border-left: 0 solid;
-					border-right: 2px solid;
+				@supports (overflow-wrap: anywhere) {
+					word-break: normal;
 				}
 			}
 
