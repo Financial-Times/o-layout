@@ -38,12 +38,12 @@
 		align-content: center;
 		justify-items: center;
 		justify-content: center;
-		background-size: 0 0;
 		// The background image is inherited by the pseudo element.
 		// This is to make it easier for a build service users to modify the background image.
 		@if type-of($hero-image) == 'string' and str-length($hero-image) > 0 {
 			background-image: url($hero-image);
 		}
+		background-size: 0 0;
 		&::before {
 			position: absolute;
 			content: '';
@@ -67,15 +67,15 @@
 	}
 
 	.o-layout__hero.o-layout__hero--muted {
-		@include oGridRespondTo($from: M) {
-			padding-left: 0;
-			padding-right: 0;
-		}
 		align-items: start;
 		align-content: start;
 		text-align: left;
 		background-image: none;
 		min-height: auto;
+		@include oGridRespondTo($from: M) {
+			padding-left: 0;
+			padding-right: 0;
+		}
 	}
 }
 
