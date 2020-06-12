@@ -10,7 +10,7 @@
 	.o-layout {
 		$column-gap-count: 2;
 		position: relative;
-		/* autoprefixer: off */
+		/*! autoprefixer: ignore next */
 		// o-layout does not cater for older `-ms-` versions of the grid spec.
 		display: grid;
 		// make the main area have a max width equal to the o-layout container

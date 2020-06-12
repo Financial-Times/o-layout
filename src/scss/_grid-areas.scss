@@ -84,7 +84,7 @@
 /// @access private
 @mixin _oLayoutAreaOverview() {
 	.o-layout__overview {
-		/* autoprefixer: off */
+		/*! autoprefixer: ignore next */
 		// o-layout does not cater for older `-ms-` versions of the grid spec.
 		display: grid;
 		grid-template-columns: repeat(var(--_o-layout-overview-columns, auto-fit), minmax(250px, 1fr));
@@ -102,7 +102,7 @@
 		margin-bottom: oSpacingByIncrement(7); // Aligns with <p> margin set by oTypographyBody
 
 		.o-layout-item {
-			/* autoprefixer: off */
+			/*! autoprefixer: ignore next */
 			// o-layout does not cater for older `-ms-` versions of the grid spec.
 			display: grid;
 			grid-template-rows: 1fr min-content;
