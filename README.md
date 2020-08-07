@@ -2,8 +2,13 @@
 
 Page layouts and typography for internal tools and products.
 
+## Usage
+
+Check out [how to include Origami components in your project](https://origami.ft.com/docs/components/#including-origami-components-in-your-project) to get started with `o-layout`.
+
 ## Table of Contents
 
+- [Usage](#usage)
 - [Overview](#overview)
 - [Default and Bleed Layout](#default-and-bleed-layout)
 - [Documentation Layout](#documentation-layout)
