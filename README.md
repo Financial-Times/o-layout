@@ -552,7 +552,7 @@ No code will run automatically unless you are using the Build Service. You must 
 
 Use the following to initialise your layout manually:
 ```js
-import oLayout from 'o-layout';
+import oLayout from '@financial-times/o-layout';
 oLayout.init();
 ```
 
@@ -569,7 +569,7 @@ To generate a nav for the query layout, or turn it off for the documentation lay
 
 Or imperatively with JavaScript, by setting the `constructNav` option:
 ```js
-import oLayout from 'o-layout';
+import oLayout from '@financial-times/o-layout';
 oLayout.init(null, { constructNav: true });
 ```
 
@@ -583,7 +583,7 @@ If you would like to change what items show in the generated navigation, set the
 Or imperatively with JavaScript, by setting the `navHeadingSelector` option:
 
 ```js
-import oLayout from 'o-layout';
+import oLayout from '@financial-times/o-layout';
 oLayout.init(null, { navHeadingSelector: 'h1, h2, .nav-heading' });
 ```
 
@@ -594,14 +594,14 @@ Heading elements such as `h1`, `h2`, etc that have an `id` attribute are made li
 To customise which headings can be clicked and linked to directly, set the `linkedHeadingSelector` option to any valid CSS selector string:
 
 ```js
-import oLayout from 'o-layout';
+import oLayout from '@financial-times/o-layout';
 oLayout.init(null, { linkedHeadingSelector: 'h1, h2, .link-heading' });
 ```
 
 Turn off linkable headings by setting `linkHeadings` to false:
 
 ```js
-import oLayout from 'o-layout';
+import oLayout from '@financial-times/o-layout';
 oLayout.init(null, { linkHeadings: true });
 ```
 
