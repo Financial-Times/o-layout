@@ -12,19 +12,19 @@
     },
     "main": "main.js",
     "peerDependencies": {
-        "@financial-times/o-colors": "^100.0.0-3",
-        "@financial-times/o-fonts": "^100.0.0-3",
-        "@financial-times/o-grid": "^100.0.0-3",
-        "@financial-times/o-normalise": "^100.0.0-3",
-        "@financial-times/o-quote": "^100.0.0-3",
-        "@financial-times/o-spacing": "^100.0.0-3",
-        "@financial-times/o-typography": "^100.0.0-3",
-        "@financial-times/o-utils": "^100.0.0-3",
-        "@financial-times/o-visual-effects": "^100.0.0-3"
+        "@financial-times/o-colors": "^100.0.0-4",
+        "@financial-times/o-fonts": "^100.0.0-4",
+        "@financial-times/o-grid": "^100.0.0-4",
+        "@financial-times/o-normalise": "^100.0.0-4",
+        "@financial-times/o-quote": "^100.0.0-4",
+        "@financial-times/o-spacing": "^100.0.0-4",
+        "@financial-times/o-typography": "^100.0.0-4",
+        "@financial-times/o-utils": "^100.0.0-4",
+        "@financial-times/o-visual-effects": "^100.0.0-4"
     },
     "description": "Provides page layouts and typography as a starting point to create internal tools or products.",
     "publishConfig": {
         "registry": "http://localhost:4873"
     },
-    "version": "100.0.0-3"
+    "version": "100.0.0-4"
 }
