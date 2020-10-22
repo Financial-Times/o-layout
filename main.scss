@@ -1,10 +1,10 @@
-@import 'o-spacing/main';
-@import 'o-fonts/main';
-@import 'o-colors/main';
-@import 'o-normalise/main';
-@import 'o-typography/main';
-@import 'o-visual-effects/main';
-@import 'o-quote/main';
+@import '@financial-times/o-spacing/main';
+@import '@financial-times/o-fonts/main';
+@import '@financial-times/o-colors/main';
+@import '@financial-times/o-normalise/main';
+@import '@financial-times/o-typography/main';
+@import '@financial-times/o-visual-effects/main';
+@import '@financial-times/o-quote/main';
 
 @import 'src/scss/variables';
 @import 'src/scss/functions';

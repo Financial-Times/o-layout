@@ -510,7 +510,7 @@ As `o-layout` only supports the internal brand, your project must also set its b
 
 ```scss
 $o-brand: 'internal';
-@import 'o-layout/main';
+@import '@financial-times/o-layout/main';
 
 @include oLayout();
 ```
