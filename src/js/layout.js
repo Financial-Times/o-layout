@@ -170,8 +170,8 @@ class Layout {
 		}
 		return Object.keys(layoutElement.dataset).reduce((options, key) => {
 
-			// Ignore data-o-component
-			if (key === 'oComponent') {
+			// Ignore keys which are not in the component's namespace
+			if (!key.match(/^oLayout(\w)(\w+)$/)) {
 				return options;
 			}
 
