@@ -6,6 +6,8 @@ Whole page layouts including typography.
 
 - [Overview](#overview)
 - [Usage](#usage)
+- [Typography](#typography)
+- [Messages](#messages)
 - [Default and Bleed Layout](#default-and-bleed-layout)
 - [Documentation Layout](#documentation-layout)
 - [Landing Layout](#landing-layout)
