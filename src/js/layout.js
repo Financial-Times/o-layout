@@ -168,16 +168,20 @@ class Layout {
 			});
 		});
 
-		const observer = new IntersectionObserver((elements) => {
+		function getY(domRect) {
+			return Object.prototype.hasOwnProperty.call(domRect, 'y') ? domRect.y : domRect.top;
+		}
+
+		const observer = new IntersectionObserver((entries) => {
 			if (isScrollingHighlightingEnabled) {
 				let localActiveIndex = activeIndex;
 
 				// Record index of which headings are above or below the intersection target
 				const above = [];
 				const below = [];
-				elements.forEach(element => {
-					const intersectingElemIdx = this.navHeadings.findIndex(navheading => navheading === element.target);
-					const isAbove = element.boundingClientRect.y < element.rootBounds.y;
+				entries.forEach(entry => {
+					const intersectingElemIdx = this.navHeadings.findIndex(navheading => navheading === entry.target);
+					const isAbove = getY(entry.boundingClientRect) < getY(entry.rootBounds);
 					if (isAbove) {
 						above.push(intersectingElemIdx);
 					} else {
