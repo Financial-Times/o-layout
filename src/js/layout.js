@@ -140,7 +140,7 @@ class Layout {
 						sidebarAnchor.setAttribute('aria-current', 'location');
 						activeIndex = index;
 					} else {
-						sidebarAnchor.setAttribute('aria-current', '');
+						sidebarAnchor.setAttribute('aria-current', 'false');
 					}
 				}
 				setTimeout(() => {
@@ -159,7 +159,7 @@ class Layout {
 						sidebarAnchor.setAttribute('aria-current', 'location');
 						activeIndex = index;
 					} else {
-						sidebarAnchor.setAttribute('aria-current', '');
+						sidebarAnchor.setAttribute('aria-current', 'false');
 					}
 				}
 				setTimeout(() => {
@@ -205,7 +205,7 @@ class Layout {
 					if (localActiveIndex === index) {
 						anchor.setAttribute('aria-current', 'location');
 					} else {
-						anchor.setAttribute('aria-current', '');
+						anchor.setAttribute('aria-current', 'false');
 					}
 				});
 				activeIndex = localActiveIndex;
@@ -226,7 +226,7 @@ class Layout {
 						if (activeIndex === index) {
 							anchor.setAttribute('aria-current', 'location');
 						} else {
-							anchor.setAttribute('aria-current', '');
+							anchor.setAttribute('aria-current', 'false');
 						}
 					});
 				}
@@ -244,7 +244,7 @@ class Layout {
 			if (currentLocation || defaultLocaiton) {
 				anchor.setAttribute('aria-current', 'location');
 			} else {
-				anchor.setAttribute('aria-current', '');
+				anchor.setAttribute('aria-current', 'false');
 			}
 		});
 
