@@ -1,4 +1,3 @@
-import { throttle } from '@financial-times/o-utils';
 import LinkedHeading from './linked-heading.js';
 
 class Layout {
