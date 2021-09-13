@@ -181,7 +181,7 @@ class Layout {
 				const below = [];
 				entries.forEach(entry => {
 					const intersectingElemIdx = this.navHeadings.findIndex(navheading => navheading === entry.target);
-					const isAbove = getY(entry.boundingClientRect) < getY(entry.rootBounds);
+					const isAbove = getY(entry.boundingClientRect) < (getY(entry.rootBounds || {}) || 0);
 					if (isAbove) {
 						above.push(intersectingElemIdx);
 					} else {
