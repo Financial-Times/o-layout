@@ -117,46 +117,137 @@ class Layout {
 	* Enables navigation item highlighting based on scroll position.
 	* Relies on heading ids and anchor href being the same.
 	* @param {HTMLElement} [navigation] - the sidebar navigation list in the DOM
+	* @returns {void}
 	*/
 	highlightNavItems(navigation) {
-		const navAnchors = navigation.querySelectorAll('A');
+		const navAnchors = Array.from(navigation.querySelectorAll('A'));
 
-		//on page load, highlight the nav item that corresponds to the url
+		// This is used to ensure that we set the correct active heading on page load
+		// After the page has loaded and the correct active heading it set, only then do we
+		// enable the scrolling code to run.
+		// The reason we need this is because the IntersectionObserver callback runs async
+		// and will run after our sync code which sets the active heading to the one in the url.
+		let isScrollingHighlightingEnabled = false;
+
+		let activeIndex = 0;
+		// highlight nav item that has been clicked on
+		navAnchors.forEach((anchor, index) => {
+			anchor.addEventListener('click', () => {
+				// Disable the scrolling highlighter as it could pick a different heading than the one the user has clicked on
+				// And that would be confusing
+				isScrollingHighlightingEnabled = false;
+				for (const sidebarAnchor of navAnchors) {
+					if (sidebarAnchor === anchor) {
+						sidebarAnchor.setAttribute('aria-current', 'location');
+						activeIndex = index;
+					} else {
+						sidebarAnchor.setAttribute('aria-current', '');
+					}
+				}
+				setTimeout(() => {
+					isScrollingHighlightingEnabled = true;
+				}, 100);
+			});
+		});
+
+		this.navHeadings.forEach((anchor, index) => {
+			anchor.addEventListener('click', () => {
+				// Disable the scrolling highlighter as it could pick a different heading than the one the user has clicked on
+				// And that would be confusing
+				isScrollingHighlightingEnabled = false;
+				for (const sidebarAnchor of navAnchors) {
+					if (sidebarAnchor.hash === '#' + anchor.id) {
+						sidebarAnchor.setAttribute('aria-current', 'location');
+						activeIndex = index;
+					} else {
+						sidebarAnchor.setAttribute('aria-current', '');
+					}
+				}
+				setTimeout(() => {
+					isScrollingHighlightingEnabled = true;
+				}, 100);
+			});
+		});
+
+		const observer = new IntersectionObserver((elements) => {
+			if (isScrollingHighlightingEnabled) {
+				let localActiveIndex = activeIndex;
+
+				// Record index of which headings are above or below the intersection target
+				const above = [];
+				const below = [];
+				elements.forEach(element => {
+					const intersectingElemIdx = this.navHeadings.findIndex(navheading => navheading === element.target);
+					const isAbove = element.boundingClientRect.y < element.rootBounds.y;
+					if (isAbove) {
+						above.push(intersectingElemIdx);
+					} else {
+						below.push(intersectingElemIdx);
+					}
+				});
+
+				// Find the first heading index which is below the intersection target
+				const minIndex = Math.min(...below);
+
+				// If there are headings above, set the active heading as the last one above
+				if (above.length > 0) {
+					// Find the last heading index which is above the intersection target
+					localActiveIndex = Math.max(...above);
+				} else if (below.length > 0 && minIndex <= activeIndex) {
+					// If there are no headings above and the current active heading is later down the page then
+					// use the first heading which is below
+					localActiveIndex = minIndex - 1 >= 0 ? minIndex - 1 : 0;
+				}
+				navAnchors.forEach((anchor, index) => {
+					if (localActiveIndex === index) {
+						anchor.setAttribute('aria-current', 'location');
+					} else {
+						anchor.setAttribute('aria-current', '');
+					}
+				});
+				activeIndex = localActiveIndex;
+
+		  }}, {
+			rootMargin: "-10% 0px 0px 0px"
+		  });
+		this.navHeadings.forEach((heading) => {
+			observer.observe(heading);
+		});
+
+		// When we reach the bottom we want to set the last heading as the current active heading
+		const observerbottom = new IntersectionObserver(function(entries){
+			if (isScrollingHighlightingEnabled) {
+				if(entries[0].isIntersecting === true) {
+					activeIndex = navAnchors.length - 1;
+					navAnchors.forEach((anchor, index) => {
+						if (activeIndex === index) {
+							anchor.setAttribute('aria-current', 'location');
+						} else {
+							anchor.setAttribute('aria-current', '');
+						}
+					});
+				}
+			}
+		 }, {
+			threshold: 1 // Trigger only when whole element was visible
+		 });
+
+		 observerbottom.observe(this.layoutEl.querySelector('.o-layout__main').lastElementChild);
+
+		 // on page load, highlight the nav item that corresponds to the url
 		navAnchors.forEach((anchor, index) => {
 			const currentLocation = anchor.hash === location.hash;
 			const defaultLocaiton = location.hash === '' && index === 0;
 			if (currentLocation || defaultLocaiton) {
 				anchor.setAttribute('aria-current', 'location');
 			} else {
-				anchor.setAttribute('aria-current', false);
+				anchor.setAttribute('aria-current', '');
 			}
 		});
 
-		//highlight nav item that has been clicked on
-		navAnchors.forEach(anchor => {
-			anchor.addEventListener('click', () => {
-				navAnchors.forEach(anchor => anchor.setAttribute('aria-current', false));
-				anchor.setAttribute('aria-current', 'location');
-			});
-		});
-
-		//on scroll, update current location in nav if we haven't scrolled to the bottom of the page
-		document.addEventListener('scroll', throttle(function () {
-			if (window.innerHeight + window.pageYOffset >= document.body.scrollHeight) {
-				return;
-			}
-			window.requestAnimationFrame(() => {
-				const currentHeadingBuffer = window.innerHeight * 0.333; // 1/3th of the viewport
-				const headingsScrolledPast = this.navHeadings.filter(
-					heading => heading.getBoundingClientRect().y <= currentHeadingBuffer
-				);
-				const currentHeading = headingsScrolledPast.length ? headingsScrolledPast[headingsScrolledPast.length - 1] : null;
-				navAnchors.forEach(anchor => {
-					const current = currentHeading && `#${currentHeading.id}` === anchor.hash;
-					anchor.setAttribute('aria-current', current ? 'location' : false);
-				});
-			});
-		}.bind(this), 300));
+		setTimeout(() => {
+			isScrollingHighlightingEnabled = true;
+		}, 100);
 	}
 
 	/**
