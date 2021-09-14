@@ -3,11 +3,12 @@ import LinkedHeading from './linked-heading.js';
 class Layout {
 	/**
 	 * Class constructor.
-	 * @param {HTMLElement} [layoutElement] - The layout element in the DOM
+	 * @param {HTMLElement} [layoutEl] - The layout element in the DOM
 	 * @param {Object} [options={}] - An options object for configuring aspects of the layout
 	 */
-	constructor (layoutEl, options) {
+	constructor(layoutEl, options) {
 		this.layoutEl = layoutEl;
+		this.highlightedHeadingIndex = 0;
 
 		const isDocsLayout = this.layoutEl.classList.contains('o-layout--docs');
 		const isQueryLayout = this.layoutEl.classList.contains('o-layout--query');
@@ -42,7 +43,7 @@ class Layout {
 		if ((isDocsLayout || isQueryLayout) && !this.options.constructNav) {
 			const navigation = this.layoutEl.querySelector(`.o-layout__navigation`);
 			if (navigation) {
-				this.highlightNavItems(navigation);
+				this.highlightNavItems();
 			}
 		}
 	}
@@ -109,79 +110,98 @@ class Layout {
 			});
 		}
 
-		this.highlightNavItems(nav);
+		/** @type {Array<HTMLAnchorElement>} */
+		this.navAnchors = Array.from(nav.querySelectorAll('a'));
+		this.highlightNavItems();
 	}
 
 	/**
-	* Enables navigation item highlighting based on scroll position.
-	* Relies on heading ids and anchor href being the same.
-	* @param {HTMLElement} [navigation] - the sidebar navigation list in the DOM
-	* @returns {void}
-	*/
-	highlightNavItems(navigation) {
-		const navAnchors = Array.from(navigation.querySelectorAll('A'));
-
-		// This is used to ensure that we set the correct active heading on page load
-		// After the page has loaded and the correct active heading it set, only then do we
-		// enable the scrolling code to run.
-		// The reason we need this is because the IntersectionObserver callback runs async
-		// and will run after our sync code which sets the active heading to the one in the url.
-		let isScrollingHighlightingEnabled = false;
-
-		let activeIndex = 0;
-		// highlight nav item that has been clicked on
-		navAnchors.forEach((anchor, index) => {
+	 * Add aria-current to the navigation link that was clicked
+	 * @private
+	 * @returns {void}
+	 */
+	setupClickHandlersForNavigationSidebar() {
+		this.navAnchors.forEach((anchor, index) => {
 			anchor.addEventListener('click', () => {
-				// Disable the scrolling highlighter as it could pick a different heading than the one the user has clicked on
-				// And that would be confusing
-				isScrollingHighlightingEnabled = false;
-				for (const sidebarAnchor of navAnchors) {
+				for (const sidebarAnchor of this.navAnchors) {
 					if (sidebarAnchor === anchor) {
 						sidebarAnchor.setAttribute('aria-current', 'location');
-						activeIndex = index;
+						this.highlightedHeadingIndex = index;
 					} else {
 						sidebarAnchor.setAttribute('aria-current', 'false');
 					}
 				}
-				setTimeout(() => {
-					isScrollingHighlightingEnabled = true;
-				}, 100);
 			});
 		});
+	}
 
+	/**
+	 * Add aria-current to the correspoding link in the navigation for the header that was clicked
+	 * @private
+	 * @returns {void}
+	 */
+	setupClickHandlersForHeadings() {
 		this.navHeadings.forEach((anchor, index) => {
 			anchor.addEventListener('click', () => {
-				// Disable the scrolling highlighter as it could pick a different heading than the one the user has clicked on
-				// And that would be confusing
-				isScrollingHighlightingEnabled = false;
-				for (const sidebarAnchor of navAnchors) {
+				for (const sidebarAnchor of this.navAnchors) {
 					if (sidebarAnchor.hash === '#' + anchor.id) {
 						sidebarAnchor.setAttribute('aria-current', 'location');
-						activeIndex = index;
+						this.highlightedHeadingIndex = index;
 					} else {
 						sidebarAnchor.setAttribute('aria-current', 'false');
 					}
 				}
-				setTimeout(() => {
-					isScrollingHighlightingEnabled = true;
-				}, 100);
 			});
 		});
+	}
 
+	/**
+	 * Add aria-current to the correspoding link in the navigation for the hash in the url if one exists
+	 * @private
+	 * @returns {void}
+	 */
+	highlightNavigationFromLocation() {
+		if (location.hash) {
+			// on page load, highlight the nav item that corresponds to the url
+			this.navAnchors.forEach((anchor, index) => {
+				const currentLocation = anchor.hash === location.hash;
+				const defaultLocation = location.hash === '' && index === 0;
+				if (currentLocation || defaultLocation) {
+					anchor.setAttribute('aria-current', 'location');
+					this.highlightedHeadingIndex = index;
+				} else {
+					anchor.setAttribute('aria-current', 'false');
+				}
+			});
+		}
+	}
+
+	/**
+	 * Add aria-current to the correspoding link in the navigation for the header that we think
+	 * should be highlighted based on scroll position
+	 * @private
+	 * @returns {void}
+	 */
+	 setupIntersectionObserversForHeadings() {
 		function getY(domRect) {
-			return Object.prototype.hasOwnProperty.call(domRect, 'y') ? domRect.y : domRect.top;
+			return Object.prototype.hasOwnProperty.call(domRect, 'y')
+				? domRect.y
+				: domRect.top;
 		}
 
-		const observer = new IntersectionObserver((entries) => {
-			if (isScrollingHighlightingEnabled) {
-				let localActiveIndex = activeIndex;
+		const observer = new IntersectionObserver(
+			entries => {
+				let headingIndexToHighlight = this.highlightedHeadingIndex;
 
 				// Record index of which headings are above or below the intersection target
 				const above = [];
 				const below = [];
 				entries.forEach(entry => {
-					const intersectingElemIdx = this.navHeadings.findIndex(navheading => navheading === entry.target);
-					const isAbove = getY(entry.boundingClientRect) < (getY(entry.rootBounds || {}) || 0);
+					const intersectingElemIdx = this.navHeadings.findIndex(
+						navheading => navheading === entry.target
+					);
+					const isAbove =
+						getY(entry.boundingClientRect) < (getY(entry.rootBounds || {}) || 0);
 					if (isAbove) {
 						above.push(intersectingElemIdx);
 					} else {
@@ -189,68 +209,68 @@ class Layout {
 					}
 				});
 
-				// Find the first heading index which is below the intersection target
-				const minIndex = Math.min(...below);
-
-				// If there are headings above, set the active heading as the last one above
+				// If there are headings above the intersection target,
+				// set the active heading as the last one which is above the intersection target
 				if (above.length > 0) {
 					// Find the last heading index which is above the intersection target
-					localActiveIndex = Math.max(...above);
-				} else if (below.length > 0 && minIndex <= activeIndex) {
-					// If there are no headings above and the current active heading is later down the page then
-					// use the first heading which is below
-					localActiveIndex = minIndex - 1 >= 0 ? minIndex - 1 : 0;
+					headingIndexToHighlight = Math.max(...above);
+				} else if (below.length > 0) {
+					// Find the first heading index which is below the intersection target
+					const minIndex = Math.min(...below);
+					if (minIndex <= this.highlightedHeadingIndex) {
+						// If there are no headings above  the intersection target and the current
+						// active heading is later down the page then use the first heading which is below
+						headingIndexToHighlight = minIndex - 1 >= 0 ? minIndex - 1 : 0;
+					}
 				}
-				navAnchors.forEach((anchor, index) => {
-					if (localActiveIndex === index) {
+				this.navAnchors.forEach((anchor, index) => {
+					if (headingIndexToHighlight === index) {
 						anchor.setAttribute('aria-current', 'location');
 					} else {
 						anchor.setAttribute('aria-current', 'false');
 					}
 				});
-				activeIndex = localActiveIndex;
-
-		  }}, {
-			rootMargin: "-10% 0px 0px 0px"
-		  });
-		this.navHeadings.forEach((heading) => {
+				this.highlightedHeadingIndex = headingIndexToHighlight;
+			}, {
+				rootMargin: `-${
+					window.getComputedStyle(document.querySelector('h2')).fontSize
+				} 0px 0px 0px`,
+				threshold: 0.1,
+			}
+		);
+		this.navHeadings.forEach(heading => {
 			observer.observe(heading);
 		});
 
 		// When we reach the bottom we want to set the last heading as the current active heading
-		const observerbottom = new IntersectionObserver(function(entries){
-			if (isScrollingHighlightingEnabled) {
-				if(entries[0].isIntersecting === true) {
-					activeIndex = navAnchors.length - 1;
-					navAnchors.forEach((anchor, index) => {
-						if (activeIndex === index) {
-							anchor.setAttribute('aria-current', 'location');
-						} else {
-							anchor.setAttribute('aria-current', 'false');
-						}
-					});
-				}
+		const observerbottom = new IntersectionObserver((entries) => {
+			if (entries[0].isIntersecting === true) {
+				this.highlightedHeadingIndex = this.navAnchors.length - 1;
+				this.navAnchors.forEach((anchor, index) => {
+					if (this.highlightedHeadingIndex === index) {
+						anchor.setAttribute('aria-current', 'location');
+					} else {
+						anchor.setAttribute('aria-current', 'false');
+					}
+				});
 			}
-		 }, {
-			threshold: 1 // Trigger only when whole element was visible
-		 });
-
-		 observerbottom.observe(this.layoutEl.querySelector('.o-layout__main').lastElementChild);
-
-		 // on page load, highlight the nav item that corresponds to the url
-		navAnchors.forEach((anchor, index) => {
-			const currentLocation = anchor.hash === location.hash;
-			const defaultLocaiton = location.hash === '' && index === 0;
-			if (currentLocation || defaultLocaiton) {
-				anchor.setAttribute('aria-current', 'location');
-			} else {
-				anchor.setAttribute('aria-current', 'false');
-			}
+		}, {
+			threshold: 1, // Trigger only when whole element was visible
 		});
 
-		setTimeout(() => {
-			isScrollingHighlightingEnabled = true;
-		}, 100);
+		observerbottom.observe(this.layoutEl.querySelector('.o-layout__footer') || this.layoutEl.querySelector('.o-layout__main').lastElementChild);
+	}
+
+	/**
+	 * Enables navigation item highlighting based on scroll position.
+	 * Relies on heading ids and anchor href being the same.
+	 * @returns {void}
+	 */
+	highlightNavItems() {
+		this.setupClickHandlersForNavigationSidebar();
+		this.setupClickHandlersForHeadings();
+		this.highlightNavigationFromLocation();
+		this.setupIntersectionObserversForHeadings();
 	}
 
 	/**
@@ -287,8 +307,9 @@ class Layout {
 
 	/**
 	 * Initialise layout component.
-	 * @param {(HTMLElement|String)} rootElement - The root element to intialise the layout in, or a CSS selector for the root element
-	 * @param {Object} [options={}] - An options object for configuring layout behaviour.
+	 * @param {(HTMLElement|String)} rootEl - The root element to intialise the layout in, or a CSS selector for the root element
+	 * @param {Object} [opts={}] - An options object for configuring layout behaviour.
+	 * @returns {Layout | Layout[]} Returns either a single Layout instance or an array of Layout instances
 	 */
 	static init (rootEl, opts) {
 		if (!rootEl) {
