@@ -1,5 +1,11 @@
 # o-layout
 
+***
+
+**This component has moved to the [Origami Component System](https://github.com/Financial-Times/origami).**
+
+***
+
 Whole page layouts including typography.
 
 ## Table of Contents
